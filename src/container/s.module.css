@@ -1,0 +1,11 @@
+.content {
+  margin: 25px;
+}
+
+.footer {
+  text-align: center;
+}
+
+.layout {
+  min-height: 100vh !important;
+}
