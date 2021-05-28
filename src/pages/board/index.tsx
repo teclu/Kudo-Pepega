@@ -4,7 +4,7 @@ import { Alert, Input, Skeleton } from 'antd';
 import type * as H from 'history';
 
 import type { BoardDetails } from '../../shared/types';
-import { ABOUT_PATH, BOARD_PATH } from '../../container/routing';
+import { ROOT_PATH, BOARD_PATH } from '../../container/routing';
 import fireNotification from '../../shared/notification';
 import fetchMessages from './fetch';
 
@@ -16,7 +16,7 @@ const Board = (): JSX.Element => {
   const location: H.Location<H.LocationState> = useLocation<H.LocationState>();
 
   /*
-   * Initialise Board Details.
+   * Initiapse Board Details.
    */
   React.useEffect((): void => {
     // Re-directed from Create A Board.
@@ -25,7 +25,7 @@ const Board = (): JSX.Element => {
       return;
     }
 
-    // Check that valid URL Query Parameters are provided.
+    // Check that vapd URL Query Parameters are provided.
     const query: URLSearchParams = new URLSearchParams(location.search);
     const title: string | null = query.get('title');
     const formUrl: string | null = query.get('formUrl');
@@ -42,7 +42,7 @@ const Board = (): JSX.Element => {
 
     // Redirect back to root page.
     fireNotification({ message: 'Invalid Board Configuration', type: 'error' });
-    history.push(ABOUT_PATH.path);
+    history.push(ROOT_PATH.path);
   }, [location]);
 
   /*
@@ -61,7 +61,7 @@ const Board = (): JSX.Element => {
             description: error,
             type: 'error',
           });
-          history.push(ABOUT_PATH.path);
+          history.push(ROOT_PATH.path);
         });
     }
   }, [boardDetails]);
@@ -82,25 +82,25 @@ const Board = (): JSX.Element => {
       />
       <br />
       <h1>Board Details</h1>
-      <ul>
-        <li>
-          Title: <Input value={boardDetails.title} readOnly />
-        </li>
-        <li>
-          Form URL: <Input value={boardDetails.formUrl} readOnly />
-        </li>
-        <li>
-          Spreadsheet URL:{' '}
-          <Input value={boardDetails.spreadsheetUrl} readOnly />
-        </li>
-        <li>
-          Sharing Link:{' '}
-          <Input
-            value={`https://www.kudopepe.ga${location.pathname}?title=${boardDetails.title}&formUrl=${boardDetails.formUrl}&spreadsheetUrl=${boardDetails.spreadsheetUrl}`}
-            readOnly
-          />
-        </li>
-      </ul>
+      <p>
+        Title
+        <Input value={boardDetails.title} readOnly />
+      </p>
+      <p>
+        Form URL
+        <Input value={boardDetails.formUrl} readOnly />
+      </p>
+      <p>
+        Spreadsheet URL
+        <Input value={boardDetails.spreadsheetUrl} readOnly />
+      </p>
+      <p>
+        Sharing Link
+        <Input
+          value={`${window.location.href}?title=${boardDetails.title}&formUrl=${boardDetails.formUrl}&spreadsheetUrl=${boardDetails.spreadsheetUrl}`}
+          readOnly
+        />
+      </p>
       <br />
       <h1>Messages</h1>
       {boardMessages.map(
