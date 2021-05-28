@@ -1,5 +1,9 @@
+.card {
+  color: #000000;
+}
+
 .content {
-  margin: 25px;
+  margin: 25px 50px 25px;
 }
 
 .footer {
@@ -8,4 +12,23 @@
 
 .layout {
   min-height: 100vh !important;
+}
+
+.logo {
+  color: #ffffff;
+  float: left;
+  font-size: 16px;
+  font-weight: 600;
+  height: 64px;
+  line-height: 60px;
+  text-align: center;
+  width: 125px;
+}
+
+.logo:hover {
+  color: #ffffff;
+}
+
+.menu {
+  text-align: right !important;
 }
