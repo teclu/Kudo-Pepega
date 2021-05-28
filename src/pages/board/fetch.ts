@@ -4,8 +4,8 @@ import Papa from 'papaparse';
  * Fetch and parses the messages from the spreadsheet.
  * @returns {Array<Array<string>>} Messages from the spreadsheet: [name, message]
  */
-const fetchMessages = (spreadsheetUrl: string): Promise<Array<Array<string>>> =>
-  fetch(spreadsheetUrl)
+const fetchMessages = (spreadsheetId: string): Promise<Array<Array<string>>> =>
+  fetch(spreadsheetId)
     .then((response: Response): Promise<string> => response.text())
     .then((value: string): Array<Array<string>> => {
       const messages: Array<Array<string>> =

@@ -88,8 +88,9 @@ const HelpModal = (): JSX.Element => {
           </li>
           <li>
             Under <b>Settings</b> {'>'} <b>General</b>, ensure that{' '}
-            <b>Limit to 1 response</b> and <b>Edit After Submit</b> are checked
-            (<i>this step is optional but encouraged</i>).
+            <b>Limit to 1 response</b> and <b>Edit After Submit</b> are checked.
+            This step is optional, but encouraged if you want submissions to be
+            editable by users.
           </li>
           <li>Add the following questions with the specified configuration:</li>
           <Table
@@ -101,16 +102,8 @@ const HelpModal = (): JSX.Element => {
           />
           <br />
           <li>
-            Under <b>Options</b>, click on <b>Get pre-filled link</b>. This
-            should open up a new window of your form.
-          </li>
-          <li>
-            Fill in the questions with some text, then click on <b>Get link</b>.
-          </li>
-          <li>
-            You should see a toast notification at the bottom-left of the
-            window. Copy the link and paste it into the{' '}
-            <b>Google Form Pre-Filled Link</b> field.
+            Click on <b>Send</b> {'>'} <b>Link</b>. Copy the link and paste it
+            into the <b>Google Form Link</b> field.
           </li>
           <li>
             Go back to the form editing page. Click on <b>Reponses</b> {'>'}{' '}

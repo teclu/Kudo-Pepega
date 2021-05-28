@@ -4,7 +4,7 @@ import { Button, Form, Input } from 'antd';
 import type { Rule } from 'antd/lib/form';
 import type * as H from 'history';
 
-import { PATTERN_FORM, PATTERN_SHEETS } from '../../../shared/constants';
+import { PATTERN_FORM, PATTERN_SPREADSHEET } from '../../../shared/constants';
 import { BOARD_PATH } from '../../../container/routing';
 import type { BoardDetails } from '../../../shared/types';
 
@@ -15,6 +15,12 @@ type FormField = {
   label: string;
   rules: Array<Rule>;
   placeholder: string;
+};
+
+type FormData = {
+  title: string;
+  formUrl: string;
+  spreadsheetUrl: string;
 };
 
 const IS_REQUIRED: Rule = {
@@ -28,7 +34,7 @@ const IS_FORM_URL: Rule = {
 };
 
 const IS_SHEET_URL: Rule = {
-  pattern: PATTERN_SHEETS,
+  pattern: PATTERN_SPREADSHEET,
   message: 'Invalid Google Sheet URL detected.',
 };
 
@@ -41,17 +47,17 @@ const FORM_FIELDS: Array<FormField> = [
   },
   {
     name: 'formUrl',
-    label: 'Google Form Pre-Filled Link',
+    label: 'Google Form Link',
     rules: [IS_REQUIRED, IS_FORM_URL],
     placeholder:
-      'e.g. https://docs.google.com/forms/<long_string>/viewform?usp=pp_url&entry.123=-&entry.456=-',
+      'e.g. https://docs.google.com/forms/<string>/viewform?usp=sf_link',
   },
   {
     name: 'spreadsheetUrl',
     label: 'Google Sheet Link (.csv)',
     rules: [IS_REQUIRED, IS_SHEET_URL],
     placeholder:
-      'e.g. https://docs.google.com/spreadsheets/<long_string>/pub?output=csv',
+      'e.g. https://docs.google.com/spreadsheets/<string>/pub?output=csv',
   },
 ];
 
@@ -61,8 +67,18 @@ const BoardDetailsForm = (): JSX.Element => {
   /*
    * Redirect to Board with the provided Board Details.
    */
-  const onCreateNewBoardClick = (boardDetails: BoardDetails): void =>
+  const onCreateNewBoardClick = (formData: FormData): void => {
+    const formIdMatch: RegExpMatchArray | null =
+      formData.formUrl.match(PATTERN_FORM);
+    const spreadsheetIdMatch: RegExpMatchArray | null =
+      formData.spreadsheetUrl.match(PATTERN_SPREADSHEET);
+    const boardDetails: BoardDetails = {
+      title: formData.title,
+      formId: formIdMatch ? formIdMatch[1] : '',
+      spreadsheetId: spreadsheetIdMatch ? spreadsheetIdMatch[1] : '',
+    };
     history.push(BOARD_PATH.path, boardDetails);
+  };
 
   return (
     <Form

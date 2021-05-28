@@ -8,12 +8,28 @@ import { ROOT_PATH, BOARD_PATH } from '../../container/routing';
 import fireNotification from '../../shared/notification';
 import fetchMessages from './fetch';
 
+const GOOGLE_DOCS_URL: string = 'https://docs.google.com';
+
 const Board = (): JSX.Element => {
   const [boardDetails, setBoardDetails] = React.useState<BoardDetails>();
   const [boardMessages, setBoardMessages] = React.useState<string[][]>([]);
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
   const history: H.History<H.LocationState> = useHistory<H.LocationState>();
   const location: H.Location<H.LocationState> = useLocation<H.LocationState>();
+
+  const formUrl: string = React.useMemo((): string => {
+    if (boardDetails) {
+      return `${GOOGLE_DOCS_URL}/forms/${boardDetails.formId}/viewform`;
+    }
+    return '';
+  }, [boardDetails]);
+
+  const spreadsheetUrl: string = React.useMemo((): string => {
+    if (boardDetails) {
+      return `${GOOGLE_DOCS_URL}/spreadsheets/${boardDetails.spreadsheetId}/pub?output=csv`;
+    }
+    return '';
+  }, [boardDetails]);
 
   /*
    * Initiapse Board Details.
@@ -28,14 +44,14 @@ const Board = (): JSX.Element => {
     // Check that vapd URL Query Parameters are provided.
     const query: URLSearchParams = new URLSearchParams(location.search);
     const title: string | null = query.get('title');
-    const formUrl: string | null = query.get('formUrl');
-    const spreadsheetUrl: string | null = query.get('spreadsheetUrl');
-    if (title && formUrl && spreadsheetUrl) {
+    const formId: string | null = query.get('formId');
+    const spreadsheetId: string | null = query.get('spreadsheetId');
+    if (title && formId && spreadsheetId) {
       // Re-direct to clear URL Query Parameters from the path.
       history.push(BOARD_PATH.path, {
         title,
-        formUrl,
-        spreadsheetUrl,
+        formId,
+        spreadsheetId,
       });
       return;
     }
@@ -50,7 +66,7 @@ const Board = (): JSX.Element => {
    */
   React.useEffect((): void => {
     if (boardDetails) {
-      fetchMessages(boardDetails.spreadsheetUrl)
+      fetchMessages(spreadsheetUrl)
         .then((messages: string[][]): void => {
           setBoardMessages(messages);
           setIsLoading(false);
@@ -88,16 +104,16 @@ const Board = (): JSX.Element => {
       </p>
       <p>
         Form URL
-        <Input value={boardDetails.formUrl} readOnly />
+        <Input value={formUrl} readOnly />
       </p>
       <p>
         Spreadsheet URL
-        <Input value={boardDetails.spreadsheetUrl} readOnly />
+        <Input value={spreadsheetUrl} readOnly />
       </p>
       <p>
         Sharing Link
         <Input
-          value={`${window.location.href}?title=${boardDetails.title}&formUrl=${boardDetails.formUrl}&spreadsheetUrl=${boardDetails.spreadsheetUrl}`}
+          value={`${window.location.href}?title=${boardDetails.title}&formId=${boardDetails.formId}&spreadsheetId=${boardDetails.spreadsheetId}`}
           readOnly
         />
       </p>

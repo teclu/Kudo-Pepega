@@ -1,7 +1,7 @@
 export type BoardDetails = {
   title: string;
-  formUrl: string;
-  spreadsheetUrl: string;
+  formId: string;
+  spreadsheetId: string;
 };
 
 export type PathDetails = {
