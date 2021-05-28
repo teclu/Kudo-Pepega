@@ -5,12 +5,7 @@ import Container from './container';
 
 import 'antd/dist/antd.css';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Container />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+ReactDOM.render(<Container />, document.getElementById('root'));
 
 // Hot Module Replacement (HMR) - Remove this snippet to remove HMR.
 // Learn more: https://snowpack.dev/concepts/hot-module-replacement

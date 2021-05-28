@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 
-import { RouteDetails, routes } from '../routing';
+import type { PathDetails } from 'src/shared/types';
+import { MENU_ITEMS } from '../routing';
 
 import s from '../s.module.css';
 
@@ -17,10 +18,10 @@ const Header = (): JSX.Element => (
       selectedKeys={[]} // Prevent selection of Menu Items.
       theme="dark"
     >
-      {routes.map(
-        (route: RouteDetails, index: number): JSX.Element => (
+      {MENU_ITEMS.map(
+        (item: PathDetails, index: number): JSX.Element => (
           <Menu.Item key={index}>
-            <Link to={route.path}>{route.name}</Link>
+            <Link to={item.path}>{item.name}</Link>
           </Menu.Item>
         ),
       )}

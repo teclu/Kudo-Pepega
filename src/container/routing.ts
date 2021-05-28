@@ -1,24 +1,43 @@
+import type { PathDetails, RouteDetails } from 'src/shared/types';
 import About from '../pages/about';
-import Home from '../pages/home';
+import Board from '../pages/board';
+import CreateNewBoard from '../pages/create-new-board';
 
-export type RouteDetails = {
-  exact: boolean;
-  name: string;
-  path: string;
-  component: () => JSX.Element;
+const ABOUT_PATH: PathDetails = {
+  name: 'About',
+  path: '/',
 };
 
-export const routes: Array<RouteDetails> = [
+const BOARD_PATH: PathDetails = {
+  name: 'Board',
+  path: '/board',
+};
+
+const CREATE_NEW_BOARD_PATH: PathDetails = {
+  name: 'Create New Board',
+  path: '/create-new-board',
+};
+
+export const MENU_ITEMS: Array<PathDetails> = [
+  ABOUT_PATH,
+  CREATE_NEW_BOARD_PATH,
+];
+
+export const ROUTE_ITEMS: Array<RouteDetails> = [
   {
+    ...ABOUT_PATH,
     exact: true,
-    name: 'Home',
-    path: '/',
-    component: Home,
+    component: About,
   },
   {
+    ...BOARD_PATH,
     exact: false,
-    name: 'About',
-    path: '/about',
-    component: About,
+    component: Board,
+  },
+  {
+    ...CREATE_NEW_BOARD_PATH,
+    exact: true,
+
+    component: CreateNewBoard,
   },
 ];
