@@ -12,9 +12,12 @@ const Content = (): JSX.Element => (
       <Switch>
         {routes.map(
           (route: RouteDetails, index: number): JSX.Element => (
-            <Route key={index} exact={route.exact} path={route.path}>
-              {route.renderElement}
-            </Route>
+            <Route
+              key={index}
+              exact={route.exact}
+              path={route.path}
+              component={route.component}
+            />
           ),
         )}
       </Switch>

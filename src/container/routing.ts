@@ -5,7 +5,7 @@ export type RouteDetails = {
   exact: boolean;
   name: string;
   path: string;
-  renderElement: () => JSX.Element;
+  component: () => JSX.Element;
 };
 
 export const routes: Array<RouteDetails> = [
@@ -13,12 +13,12 @@ export const routes: Array<RouteDetails> = [
     exact: true,
     name: 'Home',
     path: '/',
-    renderElement: Home,
+    component: Home,
   },
   {
     exact: false,
     name: 'About',
     path: '/about',
-    renderElement: About,
+    component: About,
   },
 ];
