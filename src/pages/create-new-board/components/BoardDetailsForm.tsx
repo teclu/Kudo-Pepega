@@ -1,8 +1,21 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { Button, Form, Input } from 'antd';
 import type { Rule } from 'antd/lib/form';
+import type * as H from 'history';
 
-import type { BoardDetails } from 'src/shared/types';
+import { PATTERN_FORM, PATTERN_SHEETS } from '../../../shared/constants';
+import { BOARD_PATH } from '../../../container/routing';
+import type { BoardDetails } from '../../../shared/types';
+
+import s from '../s.module.css';
+
+type FormField = {
+  name: string;
+  label: string;
+  rules: Array<Rule>;
+  placeholder: string;
+};
 
 const IS_REQUIRED: Rule = {
   required: true,
@@ -10,23 +23,13 @@ const IS_REQUIRED: Rule = {
 };
 
 const IS_FORM_URL: Rule = {
-  // Should only have 2 entry query parameters.
-  pattern:
-    /^https\:\/\/docs\.google\.com\/forms\/(.+)\/viewform\?usp=pp_url(\&entry\.([0-9]+)\=[^&=]+){2}$/,
+  pattern: PATTERN_FORM,
   message: 'Invalid Google Form URL detected.',
 };
 
 const IS_SHEET_URL: Rule = {
-  pattern:
-    /^https\:\/\/docs\.google\.com\/spreadsheets\/(.+)\/pub\?output=csv$/,
+  pattern: PATTERN_SHEETS,
   message: 'Invalid Google Sheet URL detected.',
-};
-
-type FormField = {
-  name: string;
-  label: string;
-  rules: Array<Rule>;
-  placeholder: string;
 };
 
 const FORM_FIELDS: Array<FormField> = [
@@ -44,7 +47,7 @@ const FORM_FIELDS: Array<FormField> = [
       'e.g. https://docs.google.com/forms/<long_string>/viewform?usp=pp_url&entry.123=-&entry.456=-',
   },
   {
-    name: 'sheetUrl',
+    name: 'spreadsheetUrl',
     label: 'Google Sheet Link (.csv)',
     rules: [IS_REQUIRED, IS_SHEET_URL],
     placeholder:
@@ -53,10 +56,13 @@ const FORM_FIELDS: Array<FormField> = [
 ];
 
 const BoardDetailsForm = (): JSX.Element => {
-  // To-do: Format these values and pass it elsewhere...
-  const onCreateNewBoardClick = (boardDetails: BoardDetails): void => {
-    console.debug(boardDetails);
-  };
+  const history: H.History<H.LocationState> = useHistory<H.LocationState>();
+
+  /*
+   * Redirect to Board with the provided Board Details.
+   */
+  const onCreateNewBoardClick = (boardDetails: BoardDetails): void =>
+    history.push(BOARD_PATH.path, boardDetails);
 
   return (
     <Form
@@ -72,13 +78,14 @@ const BoardDetailsForm = (): JSX.Element => {
             name={formField.name}
             label={formField.label}
             rules={formField.rules}
+            validateFirst={true}
           >
             <Input placeholder={formField.placeholder} allowClear />
           </Form.Item>
         ),
       )}
       <br />
-      <Form.Item>
+      <Form.Item className={s.formItemSubmit}>
         <Button type="primary" htmlType="submit">
           Create New Board
         </Button>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 
-import type { PathDetails } from 'src/shared/types';
+import type { PathDetails } from '../../shared/types';
 import { MENU_ITEMS } from '../routing';
 
 import s from '../s.module.css';

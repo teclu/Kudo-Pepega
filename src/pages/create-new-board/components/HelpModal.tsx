@@ -62,7 +62,7 @@ const HelpModal = (): JSX.Element => {
         type="default"
         size="small"
         shape="circle"
-        className={s.helpButton}
+        className={s.buttonHelp}
         icon={<QuestionOutlined />}
         onClick={showModal}
       />
@@ -73,6 +73,7 @@ const HelpModal = (): JSX.Element => {
             Close
           </Button>
         }
+        onCancel={hideModal}
         visible={isVisible}
         style={{ top: '89px' }}
         width={650}

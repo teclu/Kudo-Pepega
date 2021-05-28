@@ -11,7 +11,6 @@ const InformationSection = (props: {
     <>
       <h1>{props.title}</h1>
       <div>{props.description}</div>
-      <br />
     </>
   );
 };
@@ -29,6 +28,7 @@ const About = (): JSX.Element => {
           </p>
         }
       />
+      <br />
       <InformationSection
         title="Why are you doing this?"
         description={
@@ -47,6 +47,7 @@ const About = (): JSX.Element => {
           </>
         }
       />
+      <br />
       <InformationSection
         title="How will the boards work?"
         description={

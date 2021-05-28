@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Card, Layout } from 'antd';
 
-import type { RouteDetails } from 'src/shared/types';
+import type { RouteDetails } from '../../shared/types';
 import { ROUTE_ITEMS } from '../routing';
 
 import s from '../s.module.css';

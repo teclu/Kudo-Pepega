@@ -1,19 +1,19 @@
-import type { PathDetails, RouteDetails } from 'src/shared/types';
+import type { PathDetails, RouteDetails } from '../shared/types';
 import About from '../pages/about';
 import Board from '../pages/board';
 import CreateNewBoard from '../pages/create-new-board';
 
-const ABOUT_PATH: PathDetails = {
+export const ABOUT_PATH: PathDetails = {
   name: 'About',
   path: '/',
 };
 
-const BOARD_PATH: PathDetails = {
+export const BOARD_PATH: PathDetails = {
   name: 'Board',
   path: '/board',
 };
 
-const CREATE_NEW_BOARD_PATH: PathDetails = {
+export const CREATE_NEW_BOARD_PATH: PathDetails = {
   name: 'Create New Board',
   path: '/create-new-board',
 };
