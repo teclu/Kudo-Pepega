@@ -1,4 +1,6 @@
 import React from 'react';
+import { Alert } from 'antd';
+
 import CardContent from '../../shared/components/card-content';
 
 /*
@@ -22,11 +24,15 @@ const About = (): JSX.Element => {
       <InformationSection
         title="What is Kudo Pepega?"
         description={
-          <p>
-            Kudo Pepega is a free alternative to{' '}
-            <a href="https://www.kudoboard.com/">Kudoboard</a> that is currently
-            in development.
-          </p>
+          <>
+            <p>
+              Kudo Pepega is a free alternative to{' '}
+              <a href="https://www.kudoboard.com/">Kudoboard</a>. Though it is
+              still <b>under development</b> and has not yet met the minimum
+              functional requirements, you are free to try it out in its current
+              state.
+            </p>
+          </>
         }
       />
       <br />
@@ -75,8 +81,8 @@ const About = (): JSX.Element => {
               </li>
               <li>
                 Should users want to take down their boards, all they have to do
-                is revoke public access to the Google Forms and Sheets that are
-                being used for those boards.
+                is revoke public access to the spreadsheets that are being used
+                for those boards.
               </li>
             </ul>
           </>
