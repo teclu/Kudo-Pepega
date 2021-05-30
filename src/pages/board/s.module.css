@@ -1,0 +1,39 @@
+.boardHeader {
+  background: #1890ff;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: 600;
+  height: 184px;
+  line-height: 136px;
+  overflow: hidden;
+  padding: 24px;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.boardMessageAuthor {
+  color: #999999;
+  text-align: right;
+}
+
+.boardMessageContent {
+  margin-bottom: 12px;
+}
+
+.boardMessageCard {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  margin-bottom: 24px !important;
+  word-break: break-all;
+}
+
+.boardMessagesContainer {
+  margin: 25px 50px 0px !important;
+}
+
+.spinner {
+  margin-top: 48px;
+  text-align: center;
+}

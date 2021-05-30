@@ -9,20 +9,18 @@ import s from '../s.module.css';
 
 const Content = (): JSX.Element => (
   <Layout.Content className={s.content}>
-    <Card className={s.card}>
-      <Switch>
-        {ROUTE_ITEMS.map(
-          (item: RouteDetails, index: number): JSX.Element => (
-            <Route
-              key={index}
-              exact={item.exact}
-              path={item.path}
-              component={item.component}
-            />
-          ),
-        )}
-      </Switch>
-    </Card>
+    <Switch>
+      {ROUTE_ITEMS.map(
+        (item: RouteDetails, index: number): JSX.Element => (
+          <Route
+            key={index}
+            exact={item.exact}
+            path={item.path}
+            component={item.component}
+          />
+        ),
+      )}
+    </Switch>
   </Layout.Content>
 );
 

@@ -1,12 +1,15 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { Alert, Input, Skeleton } from 'antd';
+import { Spin } from 'antd';
 import type * as H from 'history';
 
 import type { BoardDetails, BoardMessage } from '../../shared/types';
 import { ROOT_PATH, BOARD_PATH } from '../../container/routing';
+import BoardMessages from './components/BoardMessages';
 import fireNotification from '../../shared/notification';
 import fetchBoardMessages from './fetch';
+
+import s from './s.module.css';
 
 const GOOGLE_DOCS_URL: string = 'https://docs.google.com';
 
@@ -19,6 +22,7 @@ const Board = (): JSX.Element => {
   const history: H.History<H.LocationState> = useHistory<H.LocationState>();
   const location: H.Location<H.LocationState> = useLocation<H.LocationState>();
 
+  // To-do: Put this in an info-modal.
   const formUrl: string = React.useMemo((): string => {
     if (boardDetails) {
       return `${GOOGLE_DOCS_URL}/forms/${boardDetails.formId}/viewform`;
@@ -26,9 +30,22 @@ const Board = (): JSX.Element => {
     return '';
   }, [boardDetails]);
 
+  // To-do: Put this in an info-modal.
   const spreadsheetUrl: string = React.useMemo((): string => {
     if (boardDetails) {
       return `${GOOGLE_DOCS_URL}/spreadsheets/${boardDetails.spreadsheetId}/pub?output=csv`;
+    }
+    return '';
+  }, [boardDetails]);
+
+  // To-do: Put this in an info-modal.
+  const boardUrl: string = React.useMemo((): string => {
+    if (boardDetails) {
+      return `${window.location.href}?title=${encodeURI(
+        boardDetails.title,
+      )}&formId=${boardDetails.formId}&spreadsheetId=${
+        boardDetails.spreadsheetId
+      }`;
     }
     return '';
   }, [boardDetails]);
@@ -84,49 +101,15 @@ const Board = (): JSX.Element => {
     }
   }, [boardDetails]);
 
-  return isLoading || !boardDetails ? (
-    <Skeleton active />
-  ) : (
+  return (
     <>
-      <Alert
-        type="warning"
-        message={
-          <span>
-            If you are seeing this, <b>VI VON ZULUL</b>. On a serious note, this
-            is still under development... there's still much to do.
-          </span>
-        }
-        showIcon
-      />
-      <br />
-      <h1>Board Details</h1>
-      <p>
-        Title
-        <Input value={boardDetails.title} readOnly />
-      </p>
-      <p>
-        Form URL
-        <Input value={formUrl} readOnly />
-      </p>
-      <p>
-        Spreadsheet URL
-        <Input value={spreadsheetUrl} readOnly />
-      </p>
-      <p>
-        Sharing Link
-        <Input
-          value={`${window.location.href}?title=${boardDetails.title}&formId=${boardDetails.formId}&spreadsheetId=${boardDetails.spreadsheetId}`}
-          readOnly
-        />
-      </p>
-      <br />
-      <h1>Messages</h1>
-      {boardMessages.map(
-        (message: BoardMessage, index: number): JSX.Element => (
-          <p key={index}>
-            <b>{message.author}</b>: {message.content}
-          </p>
-        ),
+      <div className={s.boardHeader}>{boardDetails?.title}</div>
+      {isLoading ? (
+        <div className={s.spinner}>
+          <Spin size="large" />
+        </div>
+      ) : (
+        <BoardMessages boardMessages={boardMessages} />
       )}
     </>
   );

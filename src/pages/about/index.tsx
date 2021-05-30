@@ -1,4 +1,5 @@
 import React from 'react';
+import CardContent from '../../shared/components/card-content';
 
 /*
  * Temporary About Page while things are being worked on.
@@ -17,7 +18,7 @@ const InformationSection = (props: {
 
 const About = (): JSX.Element => {
   return (
-    <>
+    <CardContent>
       <InformationSection
         title="What is Kudo Pepega?"
         description={
@@ -81,7 +82,7 @@ const About = (): JSX.Element => {
           </>
         }
       />
-    </>
+    </CardContent>
   );
 };
 
