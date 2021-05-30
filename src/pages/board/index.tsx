@@ -3,16 +3,18 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { Alert, Input, Skeleton } from 'antd';
 import type * as H from 'history';
 
-import type { BoardDetails } from '../../shared/types';
+import type { BoardDetails, BoardMessage } from '../../shared/types';
 import { ROOT_PATH, BOARD_PATH } from '../../container/routing';
 import fireNotification from '../../shared/notification';
-import fetchMessages from './fetch';
+import fetchBoardMessages from './fetch';
 
 const GOOGLE_DOCS_URL: string = 'https://docs.google.com';
 
 const Board = (): JSX.Element => {
   const [boardDetails, setBoardDetails] = React.useState<BoardDetails>();
-  const [boardMessages, setBoardMessages] = React.useState<string[][]>([]);
+  const [boardMessages, setBoardMessages] = React.useState<Array<BoardMessage>>(
+    [],
+  );
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
   const history: H.History<H.LocationState> = useHistory<H.LocationState>();
   const location: H.Location<H.LocationState> = useLocation<H.LocationState>();
@@ -66,8 +68,8 @@ const Board = (): JSX.Element => {
    */
   React.useEffect((): void => {
     if (boardDetails) {
-      fetchMessages(spreadsheetUrl)
-        .then((messages: string[][]): void => {
+      fetchBoardMessages(spreadsheetUrl)
+        .then((messages: Array<BoardMessage>): void => {
           setBoardMessages(messages);
           setIsLoading(false);
         })
@@ -120,9 +122,9 @@ const Board = (): JSX.Element => {
       <br />
       <h1>Messages</h1>
       {boardMessages.map(
-        (message: string[], index: number): JSX.Element => (
+        (message: BoardMessage, index: number): JSX.Element => (
           <p key={index}>
-            <b>{message[0]}</b>: {message[1]}
+            <b>{message.author}</b>: {message.content}
           </p>
         ),
       )}

@@ -4,6 +4,11 @@ export type BoardDetails = {
   spreadsheetId: string;
 };
 
+export type BoardMessage = {
+  author: string;
+  content: string;
+};
+
 export type PathDetails = {
   name: string;
   path: string;

@@ -1,20 +1,40 @@
 import Papa from 'papaparse';
 
+import type { BoardMessage } from '../../shared/types';
+
 /**
- * Fetch and parses the messages from the spreadsheet.
- * @returns {Array<Array<string>>} Messages from the spreadsheet: [name, message]
+ * Fetches data from the spreadsheet and format them into Board Messages.
+ * @returns {Array<BoardMessage>} Board Messages from the spreadsheet.
  */
-const fetchMessages = (spreadsheetId: string): Promise<Array<Array<string>>> =>
-  fetch(spreadsheetId)
-    .then((response: Response): Promise<string> => response.text())
-    .then((value: string): Array<Array<string>> => {
-      const messages: Array<Array<string>> =
+const fetchBoardMessages = (
+  spreadsheetUrl: string,
+): Promise<Array<BoardMessage>> =>
+  fetch(spreadsheetUrl)
+    .then((response: Response): Promise<string> => {
+      if (response.ok) {
+        return response.text();
+      }
+      const error: Error = {
+        name: `Error ${response.status}`,
+        message: `Failed to retrieve data from ${spreadsheetUrl}`,
+      };
+      throw error;
+    })
+    .then((value: string): Array<BoardMessage> => {
+      const spreadsheetRows: Array<Array<string>> =
         Papa.parse<Array<string>>(value).data;
-      messages.shift(); // Remove the header
-      return messages.map((message: Array<string>): Array<string> => {
-        message.shift(); // Remove the timestamp
-        return message;
+      spreadsheetRows.shift(); // Remove the header row.
+      return spreadsheetRows.map((row: Array<string>): BoardMessage => {
+        row.shift(); // Remove the timestamp column.
+        return {
+          author: row[0],
+          content: row[1],
+        };
       });
+    })
+    .catch((error: Error): Promise<Array<BoardMessage>> => {
+      console.error(error);
+      return Promise.reject([]);
     });
 
-export default fetchMessages;
+export default fetchBoardMessages;
