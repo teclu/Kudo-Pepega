@@ -88,7 +88,7 @@ const HelpModal = (): JSX.Element => {
           </li>
           <li>
             Under <b>Settings</b> {'>'} <b>General</b>, ensure that{' '}
-            <b>Limit to 1 response</b> and <b>Edit After Submit</b> are checked.
+            <b>Limit to 1 response</b> and <b>Edit after submit</b> are checked.
             This step is optional, but encouraged if you want submissions to be
             editable by users.
           </li>
@@ -107,17 +107,13 @@ const HelpModal = (): JSX.Element => {
           </li>
           <li>
             Go back to the form editing page. Click on <b>Reponses</b> {'>'}{' '}
-            <b>Create spreadsheet</b> (the Google Sheets icon). This should open
-            up a new window of your form's spreadsheet.
+            <b>Create spreadsheet</b> (<i>the Google Sheets icon</i>). This
+            should open up a new window of your form's spreadsheet.
           </li>
           <li>
-            Click on <b>File</b> {'>'} <b>Publish to the Web</b>. Under{' '}
-            <b>Link</b>, set it to <b>Comma-separated values (.csv)</b>, then
-            click on <b>Publish</b>.
-          </li>
-          <li>
-            Copy the link and paste it into the <b>Google Sheet Link (.csv)</b>{' '}
-            field.
+            Click on <b>Share</b>. Under <b>Get Link</b>, click on{' '}
+            <b>Change to anyone with the link</b>. Copy the link, and paste it
+            into the <b>Google Sheet Link (.csv)</b> field.
           </li>
         </ol>
       </Modal>

@@ -9,11 +9,7 @@ import type { BoardMessage } from '../../shared/types';
 const fetchBoardMessages = (
   spreadsheetUrl: string,
 ): Promise<Array<BoardMessage>> =>
-  fetch(spreadsheetUrl, {
-    headers: {
-      'Cache-Control': 'no-store',
-    },
-  })
+  fetch(spreadsheetUrl)
     .then((response: Response): Promise<string> => {
       if (response.ok) {
         return response.text();
@@ -37,6 +33,7 @@ const fetchBoardMessages = (
           };
         })
         .filter(
+          // Filter away empty rows (if any).
           (boardMessage: BoardMessage): boolean =>
             boardMessage.author.length > 0 && boardMessage.content.length > 0,
         );

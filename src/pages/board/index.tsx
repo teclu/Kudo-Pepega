@@ -25,7 +25,7 @@ const Board = (): JSX.Element => {
   // To-do: Put this in an info-modal.
   const formUrl: string = React.useMemo((): string => {
     if (boardDetails) {
-      return `${GOOGLE_DOCS_URL}/forms/${boardDetails.formId}/viewform`;
+      return `${GOOGLE_DOCS_URL}/forms/d/e/${boardDetails.formId}/viewform`;
     }
     return '';
   }, [boardDetails]);
@@ -33,7 +33,7 @@ const Board = (): JSX.Element => {
   // To-do: Put this in an info-modal.
   const spreadsheetUrl: string = React.useMemo((): string => {
     if (boardDetails) {
-      return `${GOOGLE_DOCS_URL}/spreadsheets/${boardDetails.spreadsheetId}/pub?output=csv`;
+      return `${GOOGLE_DOCS_URL}/spreadsheets/d/${boardDetails.spreadsheetId}/gviz/tq?tqx=out:csv`;
     }
     return '';
   }, [boardDetails]);

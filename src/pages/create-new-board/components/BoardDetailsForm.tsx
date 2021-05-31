@@ -50,14 +50,14 @@ const FORM_FIELDS: Array<FormField> = [
     label: 'Google Form Link',
     rules: [IS_REQUIRED, IS_FORM_URL],
     placeholder:
-      'e.g. https://docs.google.com/forms/<string>/viewform?usp=sf_link',
+      'e.g. https://docs.google.com/forms/d/e/<form_id>/viewform?usp=sf_link',
   },
   {
     name: 'spreadsheetUrl',
     label: 'Google Sheet Link (.csv)',
     rules: [IS_REQUIRED, IS_SHEET_URL],
     placeholder:
-      'e.g. https://docs.google.com/spreadsheets/<string>/pub?output=csv',
+      'e.g. https://docs.google.com/spreadsheets/d/<spreadsheet_id>/edit?usp=sharing',
   },
 ];
 
