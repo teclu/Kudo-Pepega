@@ -28,13 +28,18 @@ const fetchBoardMessages = (
       const spreadsheetRows: Array<Array<string>> =
         Papa.parse<Array<string>>(value).data;
       spreadsheetRows.shift(); // Remove the header row.
-      return spreadsheetRows.map((row: Array<string>): BoardMessage => {
-        row.shift(); // Remove the timestamp column.
-        return {
-          author: row[0],
-          content: row[1],
-        };
-      });
+      return spreadsheetRows
+        .map((row: Array<string>): BoardMessage => {
+          row.shift(); // Remove the timestamp column.
+          return {
+            author: row[0].trim(),
+            content: row[1].trim(),
+          };
+        })
+        .filter(
+          (boardMessage: BoardMessage): boolean =>
+            boardMessage.author.length > 0 && boardMessage.content.length > 0,
+        );
     })
     .catch((error: Error): Promise<Array<BoardMessage>> => {
       console.error(error);
