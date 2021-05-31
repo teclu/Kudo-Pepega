@@ -77,7 +77,8 @@ const BoardDetailsForm = (): JSX.Element => {
       formId: formIdMatch ? formIdMatch[1] : '',
       spreadsheetId: spreadsheetIdMatch ? spreadsheetIdMatch[1] : '',
     };
-    history.push(BOARD_PATH.path, boardDetails);
+    const queryParameters: URLSearchParams = new URLSearchParams(boardDetails);
+    history.push(`${BOARD_PATH.path}?${queryParameters.toString()}`);
   };
 
   return (

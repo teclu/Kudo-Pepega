@@ -54,30 +54,28 @@ const Board = (): JSX.Element => {
    * Initiapse Board Details.
    */
   React.useEffect((): void => {
-    // Re-directed from Create A Board.
-    if (location.state) {
-      setBoardDetails(location.state as BoardDetails);
-      return;
-    }
-
-    // Check that vapd URL Query Parameters are provided.
     const query: URLSearchParams = new URLSearchParams(location.search);
     const title: string | null = query.get('title');
     const formId: string | null = query.get('formId');
     const spreadsheetId: string | null = query.get('spreadsheetId');
+
+    // Initialise the Board with valid URL Query Parameters.
     if (title && formId && spreadsheetId) {
-      // Re-direct to clear URL Query Parameters from the path.
-      history.push(BOARD_PATH.path, {
+      setBoardDetails({
         title,
         formId,
         spreadsheetId,
       });
       return;
     }
-
     // Redirect back to root page.
-    fireNotification({ message: 'Invalid Board Configuration', type: 'error' });
-    history.push(ROOT_PATH.path);
+    else {
+      fireNotification({
+        message: 'Invalid Board Configuration',
+        type: 'error',
+      });
+      history.push(ROOT_PATH.path);
+    }
   }, [location]);
 
   /*
