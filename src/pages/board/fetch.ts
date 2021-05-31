@@ -9,7 +9,11 @@ import type { BoardMessage } from '../../shared/types';
 const fetchBoardMessages = (
   spreadsheetUrl: string,
 ): Promise<Array<BoardMessage>> =>
-  fetch(spreadsheetUrl)
+  fetch(spreadsheetUrl, {
+    headers: {
+      'Cache-Control': 'no-store',
+    },
+  })
     .then((response: Response): Promise<string> => {
       if (response.ok) {
         return response.text();
