@@ -5,7 +5,7 @@ import { Layout, Menu } from 'antd';
 import type { PathDetails } from '../../shared/types';
 import { MENU_ITEMS } from '../routing';
 
-import s from '../s.module.css';
+import s from '../s.module.scss';
 
 const Header = (): JSX.Element => (
   <Layout.Header>

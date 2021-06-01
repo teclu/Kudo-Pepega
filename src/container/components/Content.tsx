@@ -5,7 +5,7 @@ import { Card, Layout } from 'antd';
 import type { RouteDetails } from '../../shared/types';
 import { ROUTE_ITEMS } from '../routing';
 
-import s from '../s.module.css';
+import s from '../s.module.scss';
 
 const Content = (): JSX.Element => (
   <Layout.Content className={s.content}>

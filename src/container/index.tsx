@@ -6,7 +6,7 @@ import Content from './components/Content';
 import Footer from './components/Footer';
 import Header from './components/Header';
 
-import s from './s.module.css';
+import s from './s.module.scss';
 
 const Container = (): JSX.Element => (
   <Layout className={s.layout}>

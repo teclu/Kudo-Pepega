@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout } from 'antd';
 
-import s from '../s.module.css';
+import s from '../s.module.scss';
 
 const Footer = (): JSX.Element => (
   <Layout.Footer className={s.footer}>

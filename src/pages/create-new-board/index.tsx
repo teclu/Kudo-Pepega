@@ -1,24 +1,21 @@
 import React from 'react';
 import { Col, Row } from 'antd';
 
-import CardContent from '../../shared/components/card-content';
 import BoardDetailsForm from './components/BoardDetailsForm';
-import HelpModal from './components/HelpModal';
+import ContentContainer from '../../shared/components/content-container';
+import HelpSection from './components/HelpSection';
 
-const CreateNewBoard = (): JSX.Element => {
-  return (
-    <CardContent>
-      <Row>
-        <Col>
-          <h1>Create New Board</h1>
-        </Col>
-        <Col>
-          <HelpModal />
-        </Col>
-      </Row>
-      <BoardDetailsForm />
-    </CardContent>
-  );
-};
+const CreateNewBoard = (): JSX.Element => (
+  <ContentContainer>
+    <Row gutter={36}>
+      <Col span={24} lg={12}>
+        <HelpSection />
+      </Col>
+      <Col span={24} lg={12}>
+        <BoardDetailsForm />
+      </Col>
+    </Row>
+  </ContentContainer>
+);
 
 export default CreateNewBoard;

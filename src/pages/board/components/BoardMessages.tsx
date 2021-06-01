@@ -3,8 +3,9 @@ import { Card, Col, Row } from 'antd';
 
 import { BreakpointWidth } from '../../../shared/enums';
 import type { BoardMessage } from '../../../shared/types';
+import ContentContainer from '../../../shared/components/content-container';
 
-import s from '../s.module.css';
+import s from '../s.module.scss';
 
 type BoardMessagesProps = {
   boardMessages: Array<BoardMessage>;
@@ -85,9 +86,9 @@ const BoardMessages = ({ boardMessages }: BoardMessagesProps): JSX.Element => {
   }, []);
 
   return (
-    <Row gutter={16} className={s.boardMessagesContainer}>
-      {boardMessagesLayoutElement}
-    </Row>
+    <ContentContainer>
+      <Row gutter={36}>{boardMessagesLayoutElement}</Row>
+    </ContentContainer>
   );
 };
 

@@ -1,0 +1,15 @@
+.container {
+  margin: 12px 12px 0px !important;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    margin: 24px 24px 0px !important;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .container {
+    margin: 24px 48px 0px !important;
+  }
+}

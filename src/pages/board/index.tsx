@@ -9,7 +9,7 @@ import BoardMessages from './components/BoardMessages';
 import fireNotification from '../../shared/notification';
 import fetchBoardMessages from './fetch';
 
-import s from './s.module.css';
+import s from './s.module.scss';
 
 const GOOGLE_DOCS_URL: string = 'https://docs.google.com';
 
