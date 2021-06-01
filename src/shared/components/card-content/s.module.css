@@ -1,3 +1,17 @@
 .cardContent {
-  margin: 0px 50px 0px !important;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  margin: 15px 15px 0px !important;
+}
+
+@media screen and (min-width: 768px) {
+  .cardContent {
+    margin: 25px 25px 0px !important;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .cardContent {
+    margin: 25px 50px 0px !important;
+  }
 }

@@ -49,8 +49,7 @@ const FORM_FIELDS: Array<FormField> = [
     name: 'formUrl',
     label: 'Google Form Link',
     rules: [IS_REQUIRED, IS_FORM_URL],
-    placeholder:
-      'e.g. https://docs.google.com/forms/d/e/<form_id>/viewform?usp=sf_link',
+    placeholder: 'e.g. https://docs.google.com/forms/d/e/<form_id>/viewform',
   },
   {
     name: 'spreadsheetUrl',

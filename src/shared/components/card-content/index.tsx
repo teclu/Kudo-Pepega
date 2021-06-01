@@ -1,14 +1,12 @@
 import React from 'react';
-import { Card } from 'antd';
+import { Card, CardProps } from 'antd';
 
 import s from './s.module.css';
 
-type CardContentProps = {
-  children?: Array<JSX.Element>;
-};
-
-const CardContent = ({ children }: CardContentProps): JSX.Element => (
-  <Card className={s.cardContent}>{children}</Card>
+const CardContent = (props: CardProps): JSX.Element => (
+  <Card className={s.cardContent} {...props}>
+    {props.children}
+  </Card>
 );
 
 export default CardContent;

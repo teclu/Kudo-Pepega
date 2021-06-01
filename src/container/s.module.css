@@ -1,8 +1,12 @@
 .footer {
+  background: transparent !important;
   text-align: center;
 }
 
 .layout {
+  background: #f0f0f0 !important;
+  background-image: url('images/background.png') !important;
+  background-size: 10% !important;
   min-height: 100vh !important;
 }
 
