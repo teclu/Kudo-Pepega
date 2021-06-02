@@ -1,9 +1,24 @@
+.boardActions {
+  left: 50%;
+  margin-left: -174px;
+  position: absolute;
+  top: 236px;
+  width: 350px;
+}
+
+.boardActionButton {
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  margin: 0px 12px;
+  width: 150px;
+}
+
 .boardHeader {
-  background: #1890ff;
+  background: #187bcd;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
   color: #ffffff;
-  height: 244px;
-  overflow: hidden;
+  height: 192px;
   padding: 24px;
   text-align: center;
 }
@@ -12,6 +27,7 @@
   font-size: 36px;
   font-weight: 600;
   line-height: 128px;
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -31,8 +47,7 @@
 }
 
 .boardMessageCard {
-  margin-bottom: 24px !important;
-  word-break: break-all;
+  margin: 16px 0px !important;
 }
 
 .spinner {

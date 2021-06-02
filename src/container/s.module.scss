@@ -29,6 +29,16 @@
   text-align: right !important;
 }
 
+@media screen and (max-width: 576px) {
+  .logo {
+    display: none;
+  }
+
+  .menu {
+    text-align: center !important;
+  }
+}
+
 :global {
   .ant-card.ant-card-bordered {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,

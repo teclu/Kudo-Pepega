@@ -103,7 +103,7 @@ const BoardMessages = ({ boardMessages }: BoardMessagesProps): JSX.Element => {
 
   return (
     <ContentContainer>
-      <Row gutter={36}>{boardMessagesLayoutElement}</Row>
+      <Row gutter={24}>{boardMessagesLayoutElement}</Row>
     </ContentContainer>
   );
 };

@@ -5,6 +5,8 @@ import type * as H from 'history';
 
 import type { BoardDetails, BoardMessage } from '../../shared/types';
 import { ROOT_PATH, BOARD_PATH } from '../../container/routing';
+import AddToBoardModal from './components/AddToBoardModal';
+import BoardInformationModal from './components/BoardInformationModal';
 import BoardMessages from './components/BoardMessages';
 import fireNotification from '../../shared/notification';
 import fetchBoardMessages from './fetch';
@@ -103,7 +105,10 @@ const Board = (): JSX.Element => {
     <>
       <div className={s.boardHeader}>
         <div className={s.boardTitle}>{boardDetails?.title}</div>
-        <div>add board control icons here</div>
+      </div>
+      <div className={s.boardActions}>
+        <AddToBoardModal formUrl={formUrl} />
+        <BoardInformationModal />
       </div>
       {isLoading ? (
         <div className={s.spinner}>

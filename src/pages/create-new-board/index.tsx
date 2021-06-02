@@ -7,7 +7,7 @@ import HelpSection from './components/HelpSection';
 
 const CreateNewBoard = (): JSX.Element => (
   <ContentContainer>
-    <Row gutter={36}>
+    <Row gutter={24}>
       <Col span={24} lg={12}>
         <HelpSection />
       </Col>

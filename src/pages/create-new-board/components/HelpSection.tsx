@@ -25,12 +25,6 @@ const DATA_SOURCE: Array<QuestionDetails> = [
 
 const STATIC_COLUMNS: Array<ColumnProps<QuestionDetails>> = [
   {
-    title: 'Order',
-    width: '4rem',
-    render: (value: any, record: QuestionDetails, index: number): number =>
-      index + 1,
-  },
-  {
     title: 'Title',
     dataIndex: 'key',
   },
@@ -64,13 +58,17 @@ const HelpSection = (): JSX.Element => (
         This step is optional, but encouraged if you want submissions to be
         easily editable by users.
       </li>
-      <li>Add the following questions with the specified configuration:</li>
+      <li>
+        Add only the following questions in a top-to-bottom order with the
+        specified configuration:
+      </li>
       <Table
         size="small"
         columns={STATIC_COLUMNS}
         dataSource={DATA_SOURCE}
         bordered={true}
         pagination={false}
+        scroll={{ x: true }}
       />
       <br />
       <li>
