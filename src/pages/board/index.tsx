@@ -101,7 +101,10 @@ const Board = (): JSX.Element => {
 
   return (
     <>
-      <div className={s.boardHeader}>{boardDetails?.title}</div>
+      <div className={s.boardHeader}>
+        <div className={s.boardTitle}>{boardDetails?.title}</div>
+        <div>add board control icons here</div>
+      </div>
       {isLoading ? (
         <div className={s.spinner}>
           <Spin size="large" />

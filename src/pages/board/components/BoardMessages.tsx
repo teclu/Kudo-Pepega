@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import { Card, Col, Row } from 'antd';
 
 import { BreakpointWidth } from '../../../shared/enums';
@@ -28,7 +29,10 @@ const BoardMessages = ({ boardMessages }: BoardMessagesProps): JSX.Element => {
       boardMessages.map(
         (message: BoardMessage, index: number): JSX.Element => (
           <Card key={index} className={s.boardMessageCard}>
-            <div className={s.boardMessageContent}>{message.content}</div>
+            <ReactMarkdown
+              className={s.boardMessageContent}
+              children={message.content}
+            />
             <div className={s.boardMessageAuthor}>{message.author}</div>
           </Card>
         ),
