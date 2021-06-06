@@ -6,16 +6,9 @@ import type * as H from 'history';
 
 import { PATTERN_FORM, PATTERN_SPREADSHEET } from '../../../shared/constants';
 import { BOARD_PATH } from '../../../container/routing';
-import type { BoardDetails } from '../../../shared/types';
+import type { FormField, BoardDetails } from '../../../shared/types';
 
 import s from '../s.module.scss';
-
-type FormField = {
-  name: string;
-  label: string;
-  rules: Array<Rule>;
-  placeholder: string;
-};
 
 type FormData = {
   title: string;
@@ -82,12 +75,7 @@ const BoardDetailsForm = (): JSX.Element => {
 
   return (
     <Card title="Create New Board">
-      <Form
-        colon={false}
-        labelAlign="left"
-        layout="vertical"
-        onFinish={onCreateNewBoardClick}
-      >
+      <Form colon={false} layout="vertical" onFinish={onCreateNewBoardClick}>
         {FORM_FIELDS.map(
           (formField: FormField, index: number): JSX.Element => (
             <Form.Item

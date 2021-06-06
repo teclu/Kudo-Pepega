@@ -1,3 +1,5 @@
+import type { Rule } from 'antd/lib/form';
+
 export type BoardDetails = {
   title: string;
   formId: string;
@@ -7,6 +9,14 @@ export type BoardDetails = {
 export type BoardMessage = {
   author: string;
   content: string;
+};
+
+export type FormField = {
+  name: string;
+  label: string;
+  rules?: Array<Rule>;
+  placeholder?: string;
+  value?: string;
 };
 
 export type PathDetails = {

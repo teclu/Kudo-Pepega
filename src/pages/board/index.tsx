@@ -24,7 +24,17 @@ const Board = (): JSX.Element => {
   const history: H.History<H.LocationState> = useHistory<H.LocationState>();
   const location: H.Location<H.LocationState> = useLocation<H.LocationState>();
 
-  // To-do: Put this in an info-modal.
+  const boardUrl: string = React.useMemo((): string => {
+    if (boardDetails) {
+      return `${window.location.origin}/board?title=${encodeURI(
+        boardDetails.title,
+      )}&formId=${boardDetails.formId}&spreadsheetId=${
+        boardDetails.spreadsheetId
+      }`;
+    }
+    return '';
+  }, [boardDetails]);
+
   const formUrl: string = React.useMemo((): string => {
     if (boardDetails) {
       return `${GOOGLE_DOCS_URL}/forms/d/e/${boardDetails.formId}/viewform`;
@@ -32,22 +42,9 @@ const Board = (): JSX.Element => {
     return '';
   }, [boardDetails]);
 
-  // To-do: Put this in an info-modal.
   const spreadsheetUrl: string = React.useMemo((): string => {
     if (boardDetails) {
-      return `${GOOGLE_DOCS_URL}/spreadsheets/d/${boardDetails.spreadsheetId}/gviz/tq?tqx=out:csv`;
-    }
-    return '';
-  }, [boardDetails]);
-
-  // To-do: Put this in an info-modal.
-  const boardUrl: string = React.useMemo((): string => {
-    if (boardDetails) {
-      return `${window.location.href}?title=${encodeURI(
-        boardDetails.title,
-      )}&formId=${boardDetails.formId}&spreadsheetId=${
-        boardDetails.spreadsheetId
-      }`;
+      return `${GOOGLE_DOCS_URL}/spreadsheets/d/${boardDetails.spreadsheetId}`;
     }
     return '';
   }, [boardDetails]);
@@ -85,7 +82,7 @@ const Board = (): JSX.Element => {
    */
   React.useEffect((): void => {
     if (boardDetails) {
-      fetchBoardMessages(spreadsheetUrl)
+      fetchBoardMessages(`${spreadsheetUrl}/gviz/tq?tqx=out:csv`)
         .then((messages: Array<BoardMessage>): void => {
           setBoardMessages(messages);
           setIsLoading(false);
@@ -108,7 +105,11 @@ const Board = (): JSX.Element => {
       </div>
       <div className={s.boardActions}>
         <AddToBoardModal formUrl={formUrl} />
-        <BoardInformationModal />
+        <BoardInformationModal
+          boardUrl={boardUrl}
+          formUrl={formUrl}
+          spreadsheetUrl={spreadsheetUrl}
+        />
       </div>
       {isLoading ? (
         <div className={s.spinner}>

@@ -1,8 +1,8 @@
 .boardActions {
-  left: 50%;
-  margin-left: -174px;
-  position: absolute;
-  top: 236px;
+  left: calc(50% - 174px);
+  margin-bottom: -35px;
+  position: relative;
+  top: -20px;
   width: 350px;
 }
 
@@ -21,6 +21,10 @@
   height: 192px;
   padding: 24px;
   text-align: center;
+}
+
+.boardInformationActions {
+  width: 65px;
 }
 
 .boardTitle {
