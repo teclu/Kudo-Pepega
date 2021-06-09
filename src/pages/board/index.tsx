@@ -27,9 +27,11 @@ const Board = (): JSX.Element => {
     if (boardDetails) {
       return `${window.location.origin}/board?title=${encodeURI(
         boardDetails.title,
-      )}&formId=${boardDetails.formId}&spreadsheetId=${
-        boardDetails.spreadsheetId
-      }`;
+      )}&formId=${encodeURI(
+        boardDetails.formId,
+      )}&formEntryParameters=${encodeURI(
+        boardDetails.formEntryParameters,
+      )}&spreadsheetId=${encodeURI(boardDetails.spreadsheetId)}`;
     }
     return '';
   }, [boardDetails]);
