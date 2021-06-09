@@ -70,7 +70,7 @@ const HelpSection = (): JSX.Element => (
       />
       <br />
       <li>
-        Click on <b>More</b> (<i>3 vertical dots icons</i>) {'>'}{' '}
+        Click on <b>More</b> (<i>3 vertical dots icon</i>) {'>'}{' '}
         <b>Get pre-filled link</b>. This should open up a new window; fill in
         all of the fields with any text, click on <b>Get link</b>, copy the
         generated pre-filled link and paste it into the{' '}

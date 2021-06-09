@@ -46,7 +46,7 @@ const FORM_FIELDS: Array<FormField> = [
     name: 'formUrl',
     label: 'Google Form Pre-Filled Link',
     rules: [IS_REQUIRED, IS_FORM_URL],
-    placeholder: `${GOOGLE_DOCS_URL}/forms/d/e/<form_id>/viewform`,
+    placeholder: `${GOOGLE_DOCS_URL}/forms/d/e/<form_id>/viewform?usp=pp_url&entry.<numbers>=<field_input>&entry.<numbers>=<field_input>`,
   },
   {
     name: 'spreadsheetUrl',
