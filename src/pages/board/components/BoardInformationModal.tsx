@@ -107,7 +107,6 @@ const BoardInformationModal = ({
                     type="link"
                     size="small"
                     href={formField.value}
-                    target="_blank"
                     icon={<LinkOutlined />}
                   />
                 </Tooltip>

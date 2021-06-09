@@ -48,11 +48,7 @@ const HelpSection = (): JSX.Element => (
   <Card title="Setup Google Forms and Sheets" className={s.helpSection}>
     <ol>
       <li>
-        Create a new Google Form{' '}
-        <a href={`${GOOGLE_DOCS_URL}/forms`} target="_blank">
-          here
-        </a>
-        .
+        Create a new Google Form <a href={`${GOOGLE_DOCS_URL}/forms`}>here</a>.
       </li>
       <li>
         (<i>Optional</i>) Under <b>Settings</b> {'>'} <b>General</b>, ensure

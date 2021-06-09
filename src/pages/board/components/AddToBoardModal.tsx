@@ -178,7 +178,7 @@ const BoardModal = ({
         );
       case MAX_STEP:
         return (
-          <>
+          <div>
             <div className={s.addToBoardContent}>
               <Alert
                 type="info"
@@ -213,7 +213,7 @@ const BoardModal = ({
               className={s.addToBoardGoogleFormIframe}
               src={prefiledFormUrl}
             />
-          </>
+          </div>
         );
       case 0:
       default:
@@ -260,7 +260,7 @@ const BoardModal = ({
         closable={false}
         bodyStyle={{ padding: '0px' }}
         footer={
-          <>
+          <div>
             <Popconfirm
               title={
                 <div className={s.popconfirmContent}>
@@ -281,7 +281,7 @@ const BoardModal = ({
                 {step < 2 ? 'Cancel' : 'Done'}
               </Button>
             </Popconfirm>
-          </>
+          </div>
         }
         destroyOnClose={true}
       >

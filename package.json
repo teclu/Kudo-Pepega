@@ -1,5 +1,5 @@
 {
-  "license": "UNLICENSED",
+  "license": "CREATIVE COMMONS ATTRIBUTION-NONCOMMERCIAL 4.0 INTERNATIONAL LICENSE",
   "private": "true",
   "scripts": {
     "start": "snowpack dev",

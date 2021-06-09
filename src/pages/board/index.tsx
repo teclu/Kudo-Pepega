@@ -104,7 +104,7 @@ const Board = (): JSX.Element => {
   }, [boardDetails]);
 
   return (
-    <>
+    <div>
       <div className={s.boardHeader}>
         <div className={s.boardTitle}>{boardDetails?.title}</div>
       </div>
@@ -127,7 +127,7 @@ const Board = (): JSX.Element => {
       ) : (
         <BoardMessages boardMessages={boardMessages} />
       )}
-    </>
+    </div>
   );
 };
 
