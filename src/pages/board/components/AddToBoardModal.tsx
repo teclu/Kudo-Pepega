@@ -6,29 +6,49 @@ import {
   Alert,
   Button,
   Card,
+  Col,
   Form,
   Input,
   Modal,
   notification,
   Popconfirm,
+  Row,
   Steps,
 } from 'antd';
-import { EditOutlined } from '@ant-design/icons';
+import {
+  EditOutlined,
+  CaretLeftOutlined,
+  CaretRightOutlined,
+} from '@ant-design/icons';
 import 'easymde/dist/easymde.min.css';
 
 import s from '../s.module.scss';
 
 type BoardModalProps = {
   formUrl: string;
+  formEntryParameters: string;
+  onDoneClickCallback: () => Promise<void>;
 };
-
-const TITLE: string = 'Add to Board';
 
 const AUTHOR_PLACEHOLDER: string = 'Anonymous';
 
 const CONTENT_PLACEHOLDER: string = "*UHM*... I didn't write anything!";
 
-const BoardModal = ({ formUrl }: BoardModalProps): JSX.Element => {
+const STEPS: Array<string> = [
+  'Write Message',
+  'Confirm Preview',
+  'Submit to Form',
+];
+
+const MAX_STEP: number = STEPS.length - 1;
+
+const TITLE: string = 'Add to Board';
+
+const BoardModal = ({
+  formUrl,
+  formEntryParameters,
+  onDoneClickCallback,
+}: BoardModalProps): JSX.Element => {
   const [isVisible, setIsVisible] = React.useState<boolean>(false);
   const [isPopconfirmVisible, setIsPopconfirmVisible] =
     React.useState<boolean>(false);
@@ -44,6 +64,17 @@ const BoardModal = ({ formUrl }: BoardModalProps): JSX.Element => {
     }),
     [],
   );
+
+  const prefiledFormUrl: string = React.useMemo((): string => {
+    const entryParameterIds: Array<string> = formEntryParameters.split(',');
+    const queryParameters: URLSearchParams = new URLSearchParams({
+      [`entry.${entryParameterIds[0]}`]: author.trim()
+        ? author.trim()
+        : AUTHOR_PLACEHOLDER,
+      [`entry.${entryParameterIds[1]}`]: content.trim(),
+    });
+    return `${formUrl}?${queryParameters.toString()}`;
+  }, [author, content]);
 
   const showPopconfirm = (): void => setIsPopconfirmVisible(true);
 
@@ -63,15 +94,30 @@ const BoardModal = ({ formUrl }: BoardModalProps): JSX.Element => {
 
   const onStepChange = (value: number): void => setStep(value);
 
+  const onPreviousStepClick = (): void => {
+    if (step > 0) {
+      onStepChange(step - 1);
+    }
+  };
+
+  const onNextStepClick = (): void => {
+    if (step < MAX_STEP) {
+      onStepChange(step + 1);
+    }
+  };
+
   const onAuthorBlur = (event: React.ChangeEvent<HTMLInputElement>): void =>
     setAuthor(event.target.value);
 
   const onContentChange = (value: string): void => setContent(value);
 
   const onCancelClick = (): void => {
-    if (step < 2 && (!!author.trim() || !!content.trim())) {
+    if (step < MAX_STEP && (!!author.trim() || !!content.trim())) {
       showPopconfirm();
       return;
+    }
+    if (step === MAX_STEP) {
+      onDoneClickCallback();
     }
     hideModal();
   };
@@ -82,7 +128,6 @@ const BoardModal = ({ formUrl }: BoardModalProps): JSX.Element => {
     document.body.appendChild(element);
     element.select();
     document.execCommand('copy');
-    console.debug(element);
     document.body.removeChild(element);
     notification['success']({
       message: 'Message content copied!',
@@ -99,13 +144,25 @@ const BoardModal = ({ formUrl }: BoardModalProps): JSX.Element => {
             {!content.trim() ? (
               <Alert
                 type="error"
-                message="You have to write some content before you can continue to the next step."
+                message={
+                  <span>
+                    You have to write some content first! Go back to the{' '}
+                    <a onClick={onPreviousStepClick}>previous step</a>.
+                  </span>
+                }
                 showIcon
               />
             ) : (
               <Alert
                 type="info"
-                message="This is what your message will look like. If you are happy with the result and no longer want to make any more edits, you can continue to the next step."
+                message={
+                  <span>
+                    This is what your message will look like. If you are happy
+                    with the result and no longer want to make any more edits,
+                    you can continue to the{' '}
+                    <a onClick={onNextStepClick}>next step</a>.
+                  </span>
+                }
               />
             )}
             <Card className={s.boardMessageCard}>
@@ -119,7 +176,7 @@ const BoardModal = ({ formUrl }: BoardModalProps): JSX.Element => {
             </Card>
           </div>
         );
-      case 2:
+      case MAX_STEP:
         return (
           <>
             <div className={s.addToBoardContent}>
@@ -154,17 +211,11 @@ const BoardModal = ({ formUrl }: BoardModalProps): JSX.Element => {
             <iframe
               id={s.addToBoardGoogleFormIframe}
               className={s.addToBoardGoogleFormIframe}
-              onLoad={(): void => {
-                const iframe: HTMLIFrameElement = document.getElementById(
-                  s.addToBoardGoogleFormIframe,
-                ) as HTMLIFrameElement;
-                if (iframe) {
-                }
-              }}
-              src={formUrl}
+              src={prefiledFormUrl}
             />
           </>
         );
+      case 0:
       default:
         return (
           <div className={s.addToBoardContent}>
@@ -209,45 +260,66 @@ const BoardModal = ({ formUrl }: BoardModalProps): JSX.Element => {
         closable={false}
         bodyStyle={{ padding: '0px' }}
         footer={
-          <Popconfirm
-            title={
-              <div className={s.popconfirmContent}>
-                Are you sure you want to close? This will{' '}
-                <b>discard all changes</b>.
-              </div>
-            }
-            okText="Yes"
-            cancelText="No"
-            visible={isPopconfirmVisible}
-            onConfirm={hideModal}
-            onCancel={hidePopconfirm}
-          >
-            <Button
-              type={step < 2 ? 'default' : 'primary'}
-              onClick={onCancelClick}
+          <>
+            <Popconfirm
+              title={
+                <div className={s.popconfirmContent}>
+                  Are you sure you want to close? This will{' '}
+                  <b>discard all changes</b>.
+                </div>
+              }
+              okText="Yes"
+              cancelText="No"
+              visible={isPopconfirmVisible}
+              onConfirm={hideModal}
+              onCancel={hidePopconfirm}
             >
-              {step < 2 ? 'Cancel' : 'Done'}
-            </Button>
-          </Popconfirm>
+              <Button
+                type={step < MAX_STEP ? 'default' : 'primary'}
+                onClick={onCancelClick}
+              >
+                {step < 2 ? 'Cancel' : 'Done'}
+              </Button>
+            </Popconfirm>
+          </>
         }
         destroyOnClose={true}
       >
-        <Steps
-          className={s.addToBoardSteps}
-          current={step}
-          onChange={onStepChange}
-          progressDot
-        >
-          {['Write Message', 'Confirm Preview', 'Submit to Form'].map(
-            (title: string, index: number): JSX.Element => (
-              <Steps.Step
-                title={title}
-                key={index}
-                disabled={index === 2 && !content.trim()}
-              />
-            ),
-          )}
-        </Steps>
+        <Row className={s.addToBoardSteps} justify="space-between">
+          <Col>
+            <Button
+              type="default"
+              shape="circle"
+              className={s.addToBoardStepsButton}
+              icon={<CaretLeftOutlined />}
+              disabled={step === 0}
+              onClick={onPreviousStepClick}
+            />
+          </Col>
+          <Col span={20}>
+            <Steps current={step} onChange={onStepChange} progressDot>
+              {STEPS.map(
+                (title: string, index: number): JSX.Element => (
+                  <Steps.Step
+                    title={index === step ? <b>{title}</b> : title}
+                    key={index}
+                    disabled={index === MAX_STEP && !content.trim()}
+                  />
+                ),
+              )}
+            </Steps>
+          </Col>
+          <Col>
+            <Button
+              type="default"
+              shape="circle"
+              className={s.addToBoardStepsButton}
+              icon={<CaretRightOutlined />}
+              disabled={(step === 1 && !content.trim()) || step === MAX_STEP}
+              onClick={onNextStepClick}
+            />
+          </Col>
+        </Row>
         {renderContent}
       </Modal>
     </>

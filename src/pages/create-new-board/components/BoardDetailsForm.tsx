@@ -4,7 +4,11 @@ import { Button, Card, Form, Input } from 'antd';
 import type { Rule } from 'antd/lib/form';
 import type * as H from 'history';
 
-import { PATTERN_FORM, PATTERN_SPREADSHEET } from '../../../shared/constants';
+import {
+  GOOGLE_DOCS_URL,
+  PATTERN_FORM,
+  PATTERN_SPREADSHEET,
+} from '../../../shared/constants';
 import { BOARD_PATH } from '../../../container/routing';
 import type { FormField, BoardDetails } from '../../../shared/types';
 
@@ -40,16 +44,15 @@ const FORM_FIELDS: Array<FormField> = [
   },
   {
     name: 'formUrl',
-    label: 'Google Form Link',
+    label: 'Google Form Pre-Filled Link',
     rules: [IS_REQUIRED, IS_FORM_URL],
-    placeholder: 'https://docs.google.com/forms/d/e/<form_id>/viewform',
+    placeholder: `${GOOGLE_DOCS_URL}/forms/d/e/<form_id>/viewform`,
   },
   {
     name: 'spreadsheetUrl',
     label: 'Google Sheet Link (.csv)',
     rules: [IS_REQUIRED, IS_SHEET_URL],
-    placeholder:
-      'https://docs.google.com/spreadsheets/d/<spreadsheet_id>/edit?usp=sharing',
+    placeholder: `${GOOGLE_DOCS_URL}/spreadsheets/d/<spreadsheet_id>/edit?usp=sharing`,
   },
 ];
 
@@ -67,6 +70,9 @@ const BoardDetailsForm = (): JSX.Element => {
     const boardDetails: BoardDetails = {
       title: formData.title,
       formId: formIdMatch ? formIdMatch[1] : '',
+      formEntryParameters: formIdMatch
+        ? `${formIdMatch[4]},${formIdMatch[6]}`
+        : '',
       spreadsheetId: spreadsheetIdMatch ? spreadsheetIdMatch[1] : '',
     };
     const queryParameters: URLSearchParams = new URLSearchParams(boardDetails);
@@ -89,7 +95,6 @@ const BoardDetailsForm = (): JSX.Element => {
             </Form.Item>
           ),
         )}
-        <br />
         <Form.Item className={s.formItemSubmit}>
           <Button type="primary" htmlType="submit">
             Create New Board

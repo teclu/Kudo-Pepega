@@ -4,7 +4,8 @@ import { Spin } from 'antd';
 import type * as H from 'history';
 
 import type { BoardDetails, BoardMessage } from '../../shared/types';
-import { ROOT_PATH, BOARD_PATH } from '../../container/routing';
+import { GOOGLE_DOCS_URL } from '../../shared/constants';
+import { ROOT_PATH } from '../../container/routing';
 import AddToBoardModal from './components/AddToBoardModal';
 import BoardInformationModal from './components/BoardInformationModal';
 import BoardMessages from './components/BoardMessages';
@@ -12,8 +13,6 @@ import fireNotification from '../../shared/notification';
 import fetchBoardMessages from './fetch';
 
 import s from './s.module.scss';
-
-const GOOGLE_DOCS_URL: string = 'https://docs.google.com';
 
 const Board = (): JSX.Element => {
   const [boardDetails, setBoardDetails] = React.useState<BoardDetails>();
@@ -56,13 +55,15 @@ const Board = (): JSX.Element => {
     const query: URLSearchParams = new URLSearchParams(location.search);
     const title: string | null = query.get('title');
     const formId: string | null = query.get('formId');
+    const formEntryParameters: string | null = query.get('formEntryParameters');
     const spreadsheetId: string | null = query.get('spreadsheetId');
 
     // Initialise the Board with valid URL Query Parameters.
-    if (title && formId && spreadsheetId) {
+    if (title && formId && formEntryParameters && spreadsheetId) {
       setBoardDetails({
         title,
         formId,
+        formEntryParameters,
         spreadsheetId,
       });
       return;
@@ -77,25 +78,29 @@ const Board = (): JSX.Element => {
     }
   }, [location]);
 
-  /*
-   * Retrieve the Board Messages from the Spreadsheet.
-   */
-  React.useEffect((): void => {
+  const getBoardMessages = async (): Promise<void> => {
     if (boardDetails) {
-      fetchBoardMessages(`${spreadsheetUrl}/gviz/tq?tqx=out:csv`)
-        .then((messages: Array<BoardMessage>): void => {
-          setBoardMessages(messages);
-          setIsLoading(false);
-        })
-        .catch((error): void => {
-          fireNotification({
-            message: 'Fetch Error',
-            description: error,
-            type: 'error',
-          });
-          history.push(ROOT_PATH.path);
+      setIsLoading(true);
+      try {
+        const messages: Array<BoardMessage> = await fetchBoardMessages(
+          `${spreadsheetUrl}/gviz/tq?tqx=out:csv`,
+        );
+
+        setBoardMessages(messages);
+        setIsLoading(false);
+      } catch (error) {
+        fireNotification({
+          message: 'Fetch Error',
+          description: error,
+          type: 'error',
         });
+        history.push(ROOT_PATH.path);
+      }
     }
+  };
+
+  React.useEffect((): void => {
+    getBoardMessages();
   }, [boardDetails]);
 
   return (
@@ -104,7 +109,11 @@ const Board = (): JSX.Element => {
         <div className={s.boardTitle}>{boardDetails?.title}</div>
       </div>
       <div className={s.boardActions}>
-        <AddToBoardModal formUrl={formUrl} />
+        <AddToBoardModal
+          formUrl={formUrl}
+          formEntryParameters={boardDetails?.formEntryParameters || '0,0'}
+          onDoneClickCallback={getBoardMessages}
+        />
         <BoardInformationModal
           boardUrl={boardUrl}
           formUrl={formUrl}

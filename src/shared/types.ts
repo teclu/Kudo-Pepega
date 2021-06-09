@@ -3,6 +3,7 @@ import type { Rule } from 'antd/lib/form';
 export type BoardDetails = {
   title: string;
   formId: string;
+  formEntryParameters: string; // e.g. '1009329229,2083246063'
   spreadsheetId: string;
 };
 

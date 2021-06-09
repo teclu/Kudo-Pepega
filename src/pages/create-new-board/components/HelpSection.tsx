@@ -2,6 +2,8 @@ import React from 'react';
 import { Card, Table } from 'antd';
 import type { ColumnProps } from 'antd/lib/table';
 
+import { GOOGLE_DOCS_URL } from '../../../shared/constants';
+
 import s from '../s.module.scss';
 
 type QuestionDetails = {
@@ -25,7 +27,7 @@ const DATA_SOURCE: Array<QuestionDetails> = [
 
 const STATIC_COLUMNS: Array<ColumnProps<QuestionDetails>> = [
   {
-    title: 'Title',
+    title: 'Title (Optional)',
     dataIndex: 'key',
   },
   {
@@ -47,16 +49,16 @@ const HelpSection = (): JSX.Element => (
     <ol>
       <li>
         Create a new Google Form{' '}
-        <a href="https://docs.google.com/forms" target="_blank">
+        <a href={`${GOOGLE_DOCS_URL}/forms`} target="_blank">
           here
         </a>
         .
       </li>
       <li>
-        Under <b>Settings</b> {'>'} <b>General</b>, ensure that{' '}
-        <b>Limit to 1 response</b> and <b>Edit after submit</b> are checked.
-        This step is optional, but encouraged if you want submissions to be
-        easily editable by users.
+        (<i>Optional</i>) Under <b>Settings</b> {'>'} <b>General</b>, ensure
+        that <b>Limit to 1 response</b> and <b>Edit after submit</b> are
+        checked. This is encouraged if you want submissions to be easily
+        editable by users.
       </li>
       <li>
         Add only the following questions in a top-to-bottom order with the
@@ -72,8 +74,12 @@ const HelpSection = (): JSX.Element => (
       />
       <br />
       <li>
-        Click on <b>Send</b> {'>'} <b>Link</b>. Copy the link and paste it into
-        the <b>Google Form Link</b> field.
+        Click on <b>More</b> (<i>3 vertical dots icons</i>) {'>'}{' '}
+        <b>Get pre-filled link</b>. This should open up a new window; fill in
+        all of the fields with any text, click on <b>Get link</b>, copy the
+        generated pre-filled link and paste it into the{' '}
+        <b>Google Form Pre-Filled Link</b> field. This pre-filed link should
+        have 2 entry query parameters.
       </li>
       <li>
         Go back to the form editing page. Click on <b>Reponses</b> {'>'}{' '}
