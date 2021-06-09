@@ -12,12 +12,12 @@ type QuestionDetails = {
 
 const DATA_SOURCE: Array<QuestionDetails> = [
   {
-    key: 'Name',
+    key: 'Author',
     type: 'Short answer',
     required: true,
   },
   {
-    key: 'Message',
+    key: 'Content',
     type: 'Paragraph',
     required: true,
   },

@@ -1,3 +1,37 @@
+.addToBoardContent {
+  padding: 16px 24px;
+}
+
+.addToBoardPreviewMessage {
+  @extend .addToBoardContent;
+  background: #f0f0f0 !important;
+  background-image: url('images/background.png') !important;
+  background-size: 10% !important;
+  border: 1px solid #f0f0f0;
+}
+
+.addToBoardGoogleFormIframe {
+  border-top: 1px;
+  border-top-color: #f0f0f0;
+  border-left: 0px;
+  border-bottom: 0px;
+  border-right: 0px;
+  height: 675px;
+  margin-bottom: -6px;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.addToBoardPopconfirmMessage {
+  max-width: 220px;
+}
+
+.addToBoardSteps {
+  background-color: #fafafa;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 36px 24px 24px !important;
+}
+
 .boardActions {
   left: calc(50% - 174px);
   margin-bottom: -35px;
@@ -57,4 +91,15 @@
 .spinner {
   margin-top: 48px;
   text-align: center;
+}
+
+.submitToFormList {
+  margin: 5px 0px;
+  padding-inline-start: 20px;
+}
+
+:global {
+  .ant-modal {
+    top: 76px !important;
+  }
 }
