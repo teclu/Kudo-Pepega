@@ -18,7 +18,7 @@ So this made me think: why not I try making an alternative so that my friends do
 
 ## Any feedback?
 
-First, check out [issues page](https://github.com/teclu/kudopepega/issues) to see if there are any existing ones already. If not, then feel free to [create a new issue](https://github.com/teclu/kudopepega/issues/new) and assign an appropriate label.
+First, check out [issues page](https://github.com/teclu/Kudo-Pepega/issues) to see if there are any existing ones already. If not, then feel free to [create a new issue](https://github.com/teclu/Kudo-Pepega/issues/new) and assign an appropriate label.
 
 ## Contributing
 
