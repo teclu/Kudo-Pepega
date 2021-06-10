@@ -136,7 +136,7 @@ const BoardModal = ({
     });
   };
 
-  const renderContent: JSX.Element = React.useMemo((): JSX.Element => {
+  const renderContent = (): JSX.Element => {
     switch (step) {
       case 1:
         return (
@@ -239,7 +239,7 @@ const BoardModal = ({
           </div>
         );
     }
-  }, [step]);
+  };
 
   return (
     <>
@@ -285,8 +285,8 @@ const BoardModal = ({
         }
         destroyOnClose={true}
       >
-        <Row className={s.addToBoardSteps} justify="space-between">
-          <Col>
+        <Row className={s.addToBoardSteps} justify="space-around">
+          <Col xs={0} md={2}>
             <Button
               type="default"
               shape="circle"
@@ -296,7 +296,7 @@ const BoardModal = ({
               onClick={onPreviousStepClick}
             />
           </Col>
-          <Col span={20}>
+          <Col xs={24} md={20}>
             <Steps current={step} onChange={onStepChange} progressDot>
               {STEPS.map(
                 (title: string, index: number): JSX.Element => (
@@ -309,7 +309,7 @@ const BoardModal = ({
               )}
             </Steps>
           </Col>
-          <Col>
+          <Col xs={0} md={2}>
             <Button
               type="default"
               shape="circle"
@@ -320,7 +320,7 @@ const BoardModal = ({
             />
           </Col>
         </Row>
-        {renderContent}
+        {renderContent()}
       </Modal>
     </>
   );
