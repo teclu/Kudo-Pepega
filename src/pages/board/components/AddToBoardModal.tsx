@@ -256,8 +256,9 @@ const BoardModal = ({
       <Modal
         title={TITLE}
         visible={isVisible}
-        width={675}
         closable={false}
+        destroyOnClose={true}
+        width={675}
         bodyStyle={{ padding: '0px' }}
         footer={
           <div>
@@ -283,7 +284,6 @@ const BoardModal = ({
             </Popconfirm>
           </div>
         }
-        destroyOnClose={true}
       >
         <Row className={s.addToBoardSteps} justify="space-around">
           <Col xs={0} md={2}>

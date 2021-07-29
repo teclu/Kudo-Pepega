@@ -2,6 +2,11 @@
   padding: 16px 24px;
 }
 
+.addToBoardPlaceholderImage {
+  float: left;
+  padding-right: 24px;
+}
+
 .addToBoardPreviewMessage {
   @extend .addToBoardContent;
   background: #f0f0f0 !important;

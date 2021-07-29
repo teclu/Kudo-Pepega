@@ -79,6 +79,8 @@ const BoardInformationModal = ({
         title={TITLE}
         visible={isVisible}
         closable={false}
+        destroyOnClose={true}
+        width={675}
         footer={
           <Button type="default" onClick={hideModal}>
             Close

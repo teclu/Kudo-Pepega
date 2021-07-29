@@ -12,8 +12,13 @@ type BoardMessagesProps = {
   boardMessages: Array<BoardMessage>;
 };
 
+const MAX_SPAN = 24;
+
 const getMinWidthQuery = (breakpointWidth: BreakpointWidth): string =>
   `(min-width: ${breakpointWidth}px)`;
+
+const getColumns = (isLgWidth: boolean, isXlWidth: boolean): 1 | 2 | 3 =>
+  isXlWidth ? 3 : isLgWidth ? 2 : 1;
 
 const BoardMessages = ({ boardMessages }: BoardMessagesProps): JSX.Element => {
   const [isLgWidth, setIsLgWidth] = React.useState<boolean>(
@@ -48,7 +53,7 @@ const BoardMessages = ({ boardMessages }: BoardMessagesProps): JSX.Element => {
       ): Array<JSX.Element> => {
         const columnElements: Array<JSX.Element> = [];
         for (let i = 0; i < columns; i++) {
-          const span: number = 24 / columns;
+          const span: number = MAX_SPAN / columns;
           columnElements.push(
             <Col key={i} span={span}>
               {columns > 1
@@ -62,15 +67,7 @@ const BoardMessages = ({ boardMessages }: BoardMessagesProps): JSX.Element => {
         }
         return columnElements;
       };
-
-      switch (true) {
-        case isXlWidth:
-          return generateColumnElements(3);
-        case isLgWidth:
-          return generateColumnElements(2);
-        default:
-          return generateColumnElements(1);
-      }
+      return generateColumnElements(getColumns(isLgWidth, isXlWidth));
     }, [isLgWidth, isXlWidth]);
 
   /*
@@ -103,7 +100,27 @@ const BoardMessages = ({ boardMessages }: BoardMessagesProps): JSX.Element => {
 
   return (
     <ContentContainer>
-      <Row gutter={24}>{boardMessagesLayoutElement}</Row>
+      <Row gutter={MAX_SPAN}>
+        {boardMessagesLayoutElement.length > 0 ? (
+          boardMessagesLayoutElement
+        ) : (
+          <Col span={MAX_SPAN / getColumns(isLgWidth, isXlWidth)}>
+            <Card className={s.boardMessageCard}>
+              <img
+                className={s.addToBoardPlaceholderImage}
+                src="https://cdn.betterttv.net/emote/6089df1239b5010444d081e2/3x"
+              />
+              <p>
+                It seems that there aren't any messages posted to the board...{' '}
+                <em>yet</em>.{' '}
+              </p>
+              <p>
+                Click on <b>Add to Board</b> and write something nice!
+              </p>
+            </Card>
+          </Col>
+        )}
+      </Row>
     </ContentContainer>
   );
 };
