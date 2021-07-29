@@ -32,9 +32,6 @@
   padding: 36px 24px 24px !important;
 }
 
-.addToBoardStepsButton {
-}
-
 .boardActions {
   left: calc(50% - 174px);
   margin-bottom: -35px;
@@ -80,6 +77,7 @@
 
 .boardMessageContent {
   margin-bottom: 12px;
+  word-wrap: break-word;
 }
 
 .boardMessageContent img {
