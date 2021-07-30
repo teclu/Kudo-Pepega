@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Form, Input, Modal, notification, Row, Tooltip } from 'antd';
 import {
   CopyOutlined,
-  InfoCircleOutlined,
+  QuestionOutlined,
   LinkOutlined,
 } from '@ant-design/icons';
 
@@ -16,7 +16,7 @@ type BoardInformationModalProps = {
   spreadsheetUrl: string;
 };
 
-const TITLE: string = 'Information';
+const TITLE: string = 'Board Information';
 
 const BoardInformationModal = ({
   boardUrl,
@@ -65,16 +65,16 @@ const BoardInformationModal = ({
 
   return (
     <>
-      <Button
-        type="default"
-        shape="round"
-        size="large"
-        className={s.boardActionButton}
-        icon={<InfoCircleOutlined />}
-        onClick={showModal}
-      >
-        {TITLE}
-      </Button>
+      <Tooltip placement="top" title={TITLE}>
+        <Button
+          type="default"
+          shape="circle"
+          size="small"
+          className={s.boardHeaderActionButton}
+          icon={<QuestionOutlined />}
+          onClick={showModal}
+        />
+      </Tooltip>
       <Modal
         title={TITLE}
         visible={isVisible}

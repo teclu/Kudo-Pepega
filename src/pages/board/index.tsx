@@ -10,6 +10,7 @@ import AddToBoardModal from './components/AddToBoardModal';
 import BoardInformationModal from './components/BoardInformationModal';
 import BoardMessages from './components/BoardMessages';
 import fireNotification from '../../shared/notification';
+import useWidth from '../../shared/useWidth';
 import fetchBoardMessages from './fetch';
 
 import s from './s.module.scss';
@@ -22,6 +23,7 @@ const Board = (): JSX.Element => {
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
   const history: H.History<H.LocationState> = useHistory<H.LocationState>();
   const location: H.Location<H.LocationState> = useLocation<H.LocationState>();
+  const { isLgWidth, isXlWidth } = useWidth();
 
   const boardUrl: string = React.useMemo((): string => {
     if (boardDetails) {
@@ -109,17 +111,19 @@ const Board = (): JSX.Element => {
     <div>
       <div className={s.boardHeader}>
         <div className={s.boardTitle}>{boardDetails?.title}</div>
+        <div>
+          <BoardInformationModal
+            boardUrl={boardUrl}
+            formUrl={formUrl}
+            spreadsheetUrl={spreadsheetUrl}
+          />
+        </div>
       </div>
-      <div className={s.boardActions}>
+      <div className={s.addToBoardButtonContainer}>
         <AddToBoardModal
           formUrl={formUrl}
           formEntryParameters={boardDetails?.formEntryParameters || '0,0'}
           onDoneClickCallback={getBoardMessages}
-        />
-        <BoardInformationModal
-          boardUrl={boardUrl}
-          formUrl={formUrl}
-          spreadsheetUrl={spreadsheetUrl}
         />
       </div>
       {isLoading ? (
@@ -127,7 +131,11 @@ const Board = (): JSX.Element => {
           <Spin size="large" />
         </div>
       ) : (
-        <BoardMessages boardMessages={boardMessages} />
+        <BoardMessages
+          boardMessages={boardMessages}
+          isLgWidth={isLgWidth}
+          isXlWidth={isXlWidth}
+        />
       )}
     </div>
   );

@@ -2,33 +2,28 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Card, Col, Row } from 'antd';
 
-import { BreakpointWidth } from '../../../shared/enums';
 import type { BoardMessage } from '../../../shared/types';
 import ContentContainer from '../../../shared/components/content-container';
+import useWidth from '../../../shared/useWidth';
 
 import s from '../s.module.scss';
 
 type BoardMessagesProps = {
   boardMessages: Array<BoardMessage>;
+  isLgWidth: boolean;
+  isXlWidth: boolean;
 };
 
 const MAX_SPAN = 24;
 
-const getMinWidthQuery = (breakpointWidth: BreakpointWidth): string =>
-  `(min-width: ${breakpointWidth}px)`;
-
 const getColumns = (isLgWidth: boolean, isXlWidth: boolean): 1 | 2 | 3 =>
   isXlWidth ? 3 : isLgWidth ? 2 : 1;
 
-const BoardMessages = ({ boardMessages }: BoardMessagesProps): JSX.Element => {
-  const [isLgWidth, setIsLgWidth] = React.useState<boolean>(
-    window.matchMedia(getMinWidthQuery(BreakpointWidth.LG)).matches,
-  );
-
-  const [isXlWidth, setIsXlWidth] = React.useState<boolean>(
-    window.matchMedia(getMinWidthQuery(BreakpointWidth.XL)).matches,
-  );
-
+const BoardMessages = ({
+  boardMessages,
+  isLgWidth,
+  isXlWidth,
+}: BoardMessagesProps): JSX.Element => {
   const boardMessageElements: Array<JSX.Element> = React.useMemo(
     (): Array<JSX.Element> =>
       boardMessages.map(
@@ -70,34 +65,6 @@ const BoardMessages = ({ boardMessages }: BoardMessagesProps): JSX.Element => {
       return generateColumnElements(getColumns(isLgWidth, isXlWidth));
     }, [isLgWidth, isXlWidth]);
 
-  /*
-   * Listen for changes in window width.
-   */
-  React.useEffect((): (() => void) => {
-    const lgCallback = (event: MediaQueryListEvent): void =>
-      setIsLgWidth(event.matches);
-
-    const xlCallback = (event: MediaQueryListEvent): void =>
-      setIsXlWidth(event.matches);
-
-    const lgMediaQueryList: MediaQueryList = window.matchMedia(
-      getMinWidthQuery(BreakpointWidth.LG),
-    );
-
-    lgMediaQueryList.addEventListener('change', lgCallback);
-
-    const xlMediaQueryList: MediaQueryList = window.matchMedia(
-      getMinWidthQuery(BreakpointWidth.XL),
-    );
-    xlMediaQueryList.addEventListener('change', xlCallback);
-
-    // Remove the listeners when component is unmounted.
-    return (): void => {
-      lgMediaQueryList.removeEventListener('change', lgCallback);
-      xlMediaQueryList.removeEventListener('change', xlCallback);
-    };
-  }, []);
-
   return (
     <ContentContainer>
       <Row gutter={MAX_SPAN}>
@@ -112,7 +79,7 @@ const BoardMessages = ({ boardMessages }: BoardMessagesProps): JSX.Element => {
               />
               <p>
                 It seems that there aren't any messages posted to the board...{' '}
-                <em>yet</em>.{' '}
+                <em>yet</em>.
               </p>
               <p>
                 Click on <b>Add to Board</b> and write something nice!

@@ -16,7 +16,7 @@ import {
   Steps,
 } from 'antd';
 import {
-  EditOutlined,
+  PlusOutlined,
   CaretLeftOutlined,
   CaretRightOutlined,
 } from '@ant-design/icons';
@@ -247,8 +247,8 @@ const BoardModal = ({
         type="default"
         shape="round"
         size="large"
-        className={s.boardActionButton}
-        icon={<EditOutlined />}
+        className={s.addToBoardButton}
+        icon={<PlusOutlined />}
         onClick={showModal}
       >
         {TITLE}
