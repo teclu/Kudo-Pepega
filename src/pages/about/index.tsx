@@ -25,7 +25,7 @@ First, check out the [issues page](https://github.com/teclu/Kudo-Pepega/issues) 
 
 ## Contributing
 
-Right now, contributions are closed as this is more of a personal project that I would like to work on myself. If you would like, you can always fork or clone this repository and do whatever you want with the code base as long as you abide by the [Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/) license.
+Right now, contributions are closed as this is more of a personal project that I would like to work on myself. If you would like, you can always fork or clone this repository and do whatever you want with the code base as long as you abide by the [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
 `;
   return (
     <ContentContainer>
