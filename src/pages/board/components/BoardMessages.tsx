@@ -67,7 +67,12 @@ const BoardMessages = ({
 
   return (
     <ContentContainer>
-      <Row gutter={MAX_SPAN}>
+      <Row
+        gutter={16}
+        justify={
+          boardMessagesLayoutElement.length > 0 ? undefined : 'space-between'
+        }
+      >
         {boardMessagesLayoutElement.length > 0 ? (
           boardMessagesLayoutElement
         ) : (
