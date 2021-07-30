@@ -23,7 +23,7 @@ const Board = (): JSX.Element => {
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
   const history: H.History<H.LocationState> = useHistory<H.LocationState>();
   const location: H.Location<H.LocationState> = useLocation<H.LocationState>();
-  const { isLgWidth, isXlWidth } = useWidth();
+  const { isXsWidth, isSmWidth, isLgWidth, isXlWidth } = useWidth();
 
   const boardUrl: string = React.useMemo((): string => {
     if (boardDetails) {
@@ -89,7 +89,6 @@ const Board = (): JSX.Element => {
         const messages: Array<BoardMessage> = await fetchBoardMessages(
           `${spreadsheetUrl}/gviz/tq?tqx=out:csv`,
         );
-
         setBoardMessages(messages);
         setIsLoading(false);
       } catch (error) {
@@ -123,6 +122,8 @@ const Board = (): JSX.Element => {
         <AddToBoardModal
           formUrl={formUrl}
           formEntryParameters={boardDetails?.formEntryParameters || '0,0'}
+          isXsWidth={isXsWidth}
+          isSmWidth={isSmWidth}
           onDoneClickCallback={getBoardMessages}
         />
       </div>

@@ -19,6 +19,9 @@ import {
   PlusOutlined,
   CaretLeftOutlined,
   CaretRightOutlined,
+  EditOutlined,
+  EyeOutlined,
+  SendOutlined,
 } from '@ant-design/icons';
 import 'easymde/dist/easymde.min.css';
 
@@ -27,6 +30,8 @@ import s from '../s.module.scss';
 type BoardModalProps = {
   formUrl: string;
   formEntryParameters: string;
+  isXsWidth: boolean;
+  isSmWidth: boolean;
   onDoneClickCallback: () => Promise<void>;
 };
 
@@ -40,6 +45,12 @@ const STEPS: Array<string> = [
   'Submit to Form',
 ];
 
+const STEP_ICONS: Array<JSX.Element> = [
+  <EditOutlined />,
+  <EyeOutlined />,
+  <SendOutlined />,
+];
+
 const MAX_STEP: number = STEPS.length - 1;
 
 const TITLE: string = 'Add to Board';
@@ -47,6 +58,8 @@ const TITLE: string = 'Add to Board';
 const BoardModal = ({
   formUrl,
   formEntryParameters,
+  isXsWidth,
+  isSmWidth,
   onDoneClickCallback,
 }: BoardModalProps): JSX.Element => {
   const [isVisible, setIsVisible] = React.useState<boolean>(false);
@@ -286,7 +299,7 @@ const BoardModal = ({
         }
       >
         <Row className={s.addToBoardSteps} justify="space-around">
-          <Col xs={0} md={2}>
+          <Col xs={0} sm={0} md={2}>
             <Button
               type="default"
               shape="circle"
@@ -296,20 +309,38 @@ const BoardModal = ({
               onClick={onPreviousStepClick}
             />
           </Col>
-          <Col xs={24} md={20}>
-            <Steps current={step} onChange={onStepChange} progressDot>
-              {STEPS.map(
-                (title: string, index: number): JSX.Element => (
+          <Col xs={24} sm={24} md={20}>
+            <Steps
+              current={step}
+              onChange={onStepChange}
+              direction={isSmWidth ? 'horizontal' : 'vertical'}
+              progressDot
+            >
+              {STEPS.map((title: string, index: number): JSX.Element => {
+                const titleToRender: JSX.Element = !isSmWidth ? (
+                  <>
+                    {STEP_ICONS[index]} {title}
+                  </>
+                ) : (
+                  <>
+                    {title}
+                    <br />
+                    {STEP_ICONS[index]}
+                  </>
+                );
+                return (
                   <Steps.Step
-                    title={index === step ? <b>{title}</b> : title}
-                    key={index}
+                    key={`step-${index}`}
+                    title={
+                      index === step ? <b>{titleToRender}</b> : titleToRender
+                    }
                     disabled={index === MAX_STEP && !content.trim()}
                   />
-                ),
-              )}
+                );
+              })}
             </Steps>
           </Col>
-          <Col xs={0} md={2}>
+          <Col xs={0} sm={0} md={2}>
             <Button
               type="default"
               shape="circle"
