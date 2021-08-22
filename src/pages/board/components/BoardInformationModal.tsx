@@ -11,7 +11,8 @@ import type { FormField } from '../../../shared/types';
 import s from '../s.module.scss';
 
 type BoardInformationModalProps = {
-  boardUrl: string;
+  boardViewOnlyUrl: string;
+  boardEditableUrl: string;
   formUrl: string;
   spreadsheetUrl: string;
 };
@@ -19,7 +20,8 @@ type BoardInformationModalProps = {
 const TITLE: string = 'Board Information';
 
 const BoardInformationModal = ({
-  boardUrl,
+  boardViewOnlyUrl,
+  boardEditableUrl,
   formUrl,
   spreadsheetUrl,
 }: BoardInformationModalProps): JSX.Element => {
@@ -28,16 +30,18 @@ const BoardInformationModal = ({
   const formFields: Array<FormField> = React.useMemo((): Array<FormField> => {
     const formFields = [
       {
-        name: 'boardUrl',
-        label: 'Board URL',
-        value: boardUrl,
-      },
-      {
-        name: 'spreadsheetUrl',
-        label: 'Spreadsheet URL',
-        value: spreadsheetUrl,
+        name: 'boardViewOnlyUrl',
+        label: 'Board URL (View Only)',
+        value: boardViewOnlyUrl,
       },
     ];
+    if (boardEditableUrl) {
+      formFields.push({
+        name: 'boardEditableUrl',
+        label: 'Board URL (Editable)',
+        value: boardEditableUrl,
+      });
+    }
     if (formUrl) {
       formFields.push({
         name: 'formUrl',
@@ -45,8 +49,13 @@ const BoardInformationModal = ({
         value: formUrl,
       });
     }
+    formFields.push({
+      name: 'spreadsheetUrl',
+      label: 'Spreadsheet URL',
+      value: spreadsheetUrl,
+    });
     return formFields;
-  }, [boardUrl, formUrl, spreadsheetUrl]);
+  }, [boardViewOnlyUrl, formUrl, spreadsheetUrl]);
 
   const hideModal = (): void => setIsVisible(false);
 
@@ -122,7 +131,7 @@ const BoardInformationModal = ({
                     id={formField.name}
                     value={formField.value}
                     addonAfter={
-                      index > 0 ? (
+                      index > 1 ? (
                         <Row
                           className={s.boardInformationActions}
                           justify="space-between"

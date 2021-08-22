@@ -26,20 +26,23 @@ const Board = (): JSX.Element => {
   const location: H.Location<H.LocationState> = useLocation<H.LocationState>();
   const { isXsWidth, isSmWidth, isLgWidth, isXlWidth } = useWidth();
 
-  const boardUrl: string = React.useMemo((): string => {
+  const boardViewOnlyUrl: string = React.useMemo((): string => {
     if (boardDetails) {
-      const url = `${window.location.origin}/board?title=${encodeURI(
+      return `${window.location.origin}/board?title=${encodeURI(
         boardDetails.title,
       )}&spreadsheetId=${encodeURI(boardDetails.spreadsheetId)}`;
-      if (boardDetails.formId && boardDetails.formEntryParameters) {
-        return `${url}&formId=${encodeURI(
-          boardDetails.formId,
-        )}&formEntryParameters=${encodeURI(boardDetails.formEntryParameters)}`;
-      }
-      return url;
     }
     return '';
   }, [boardDetails]);
+
+  const boardEditableUrl: string = React.useMemo((): string => {
+    if (boardDetails?.formId && boardDetails?.formEntryParameters) {
+      return `${boardViewOnlyUrl}&formId=${encodeURI(
+        boardDetails.formId,
+      )}&formEntryParameters=${encodeURI(boardDetails.formEntryParameters)}`;
+    }
+    return '';
+  }, [boardViewOnlyUrl]);
 
   const formUrl: string = React.useMemo((): string => {
     if (boardDetails?.formId) {
@@ -115,7 +118,8 @@ const Board = (): JSX.Element => {
         <div className={s.boardTitle}>{boardDetails?.title}</div>
         <div>
           <BoardInformationModal
-            boardUrl={boardUrl}
+            boardViewOnlyUrl={boardViewOnlyUrl}
+            boardEditableUrl={boardEditableUrl}
             formUrl={formUrl}
             spreadsheetUrl={spreadsheetUrl}
           />
