@@ -131,7 +131,7 @@ const BoardInformationModal = ({
                     id={formField.name}
                     value={formField.value}
                     addonAfter={
-                      index > 1 ? (
+                      !formField.name.includes('board') ? (
                         <Row
                           className={s.boardInformationActions}
                           justify="space-between"
