@@ -14,6 +14,7 @@ import useWidth from '../../shared/useWidth';
 import fetchBoardMessages from './fetch';
 
 import s from './s.module.scss';
+import SlideshowModal from './components/SlideshowDrawer';
 
 const Board = (): JSX.Element => {
   const [boardDetails, setBoardDetails] = React.useState<BoardDetails>();
@@ -27,30 +28,32 @@ const Board = (): JSX.Element => {
 
   const boardUrl: string = React.useMemo((): string => {
     if (boardDetails) {
-      return `${window.location.origin}/board?title=${encodeURI(
+      const url = `${window.location.origin}/board?title=${encodeURI(
         boardDetails.title,
-      )}&formId=${encodeURI(
-        boardDetails.formId,
-      )}&formEntryParameters=${encodeURI(
-        boardDetails.formEntryParameters,
       )}&spreadsheetId=${encodeURI(boardDetails.spreadsheetId)}`;
+      if (boardDetails.formId && boardDetails.formEntryParameters) {
+        return `${url}&formId=${encodeURI(
+          boardDetails.formId,
+        )}&formEntryParameters=${encodeURI(boardDetails.formEntryParameters)}`;
+      }
+      return url;
     }
     return '';
   }, [boardDetails]);
 
   const formUrl: string = React.useMemo((): string => {
-    if (boardDetails) {
+    if (boardDetails?.formId) {
       return `${GOOGLE_DOCS_URL}/forms/d/e/${boardDetails.formId}/viewform`;
     }
     return '';
-  }, [boardDetails]);
+  }, [boardDetails?.formId]);
 
   const spreadsheetUrl: string = React.useMemo((): string => {
     if (boardDetails) {
       return `${GOOGLE_DOCS_URL}/spreadsheets/d/${boardDetails.spreadsheetId}`;
     }
     return '';
-  }, [boardDetails]);
+  }, [boardDetails?.spreadsheetId]);
 
   /*
    * Initiapse Board Details.
@@ -63,11 +66,11 @@ const Board = (): JSX.Element => {
     const spreadsheetId: string | null = query.get('spreadsheetId');
 
     // Initialise the Board with valid URL Query Parameters.
-    if (title && formId && formEntryParameters && spreadsheetId) {
+    if (title && spreadsheetId) {
       setBoardDetails({
         title,
-        formId,
-        formEntryParameters,
+        formId: formId ?? '',
+        formEntryParameters: formEntryParameters ?? '',
         spreadsheetId,
       });
       return;
@@ -118,14 +121,17 @@ const Board = (): JSX.Element => {
           />
         </div>
       </div>
-      <div className={s.addToBoardButtonContainer}>
-        <AddToBoardModal
-          formUrl={formUrl}
-          formEntryParameters={boardDetails?.formEntryParameters || '0,0'}
-          isXsWidth={isXsWidth}
-          isSmWidth={isSmWidth}
-          onDoneClickCallback={getBoardMessages}
-        />
+      <div className={s.boardActionButtonsContainer}>
+        {formUrl && (
+          <AddToBoardModal
+            formUrl={formUrl}
+            formEntryParameters={boardDetails?.formEntryParameters || '0,0'}
+            isXsWidth={isXsWidth}
+            isSmWidth={isSmWidth}
+            onDoneClickCallback={getBoardMessages}
+          />
+        )}
+        <SlideshowModal boardMessages={boardMessages} />
       </div>
       {isLoading ? (
         <div className={s.spinner}>

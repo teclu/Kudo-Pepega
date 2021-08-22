@@ -25,26 +25,28 @@ const BoardInformationModal = ({
 }: BoardInformationModalProps): JSX.Element => {
   const [isVisible, setIsVisible] = React.useState<boolean>(false);
 
-  const formFields: Array<FormField> = React.useMemo(
-    (): Array<FormField> => [
+  const formFields: Array<FormField> = React.useMemo((): Array<FormField> => {
+    const formFields = [
       {
         name: 'boardUrl',
         label: 'Board URL',
         value: boardUrl,
       },
       {
-        name: 'formUrl',
-        label: 'Form URL',
-        value: formUrl,
-      },
-      {
         name: 'spreadsheetUrl',
         label: 'Spreadsheet URL',
         value: spreadsheetUrl,
       },
-    ],
-    [boardUrl, formUrl, spreadsheetUrl],
-  );
+    ];
+    if (formUrl) {
+      formFields.push({
+        name: 'formUrl',
+        label: 'Form URL',
+        value: formUrl,
+      });
+    }
+    return formFields;
+  }, [boardUrl, formUrl, spreadsheetUrl]);
 
   const hideModal = (): void => setIsVisible(false);
 

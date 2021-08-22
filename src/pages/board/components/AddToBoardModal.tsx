@@ -260,7 +260,7 @@ const BoardModal = ({
         type="default"
         shape="round"
         size="large"
-        className={s.addToBoardButton}
+        className={s.boardActionButton}
         icon={<PlusOutlined />}
         onClick={showModal}
       >

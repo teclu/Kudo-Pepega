@@ -37,18 +37,19 @@
   padding: 36px 24px 24px !important;
 }
 
-.addToBoardButtonContainer {
+.boardActionButtonsContainer {
+  display: flex;
+  justify-content: center;
   margin-bottom: -36px;
+  position: relative;
+  top: -21px;
 }
 
-.addToBoardButton {
+.boardActionButton {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.125), 0px 3px 6px rgba(0, 0, 0, 0.125) !important;
   font-size: 14px !important;
   font-weight: 600 !important;
-  left: calc(50% - 75px);
-  margin-bottom: 0px;
-  position: relative;
-  top: -21px;
+  margin: 0px 8px;
   width: 150px;
 }
 
@@ -104,6 +105,53 @@
   margin: 18px 0px !important;
 }
 
+.boardMessageSlide {
+  animation: fadeIn 0.475s;
+  color: #ffffff;
+  font-size: 24px;
+  margin: 12px 24px;
+  word-wrap: break-word;
+  -webkit-animation: fadeIn 0.475s;
+  -moz-animation: fadeIn 0.475s;
+  -o-animation: fadeIn 0.475s;
+  -ms-animation: fadeIn 0.475s;
+}
+
+.slideshowActionButton {
+  background: none !important;
+  color: #ffffff !important;
+}
+
+.slideshowJumpToSlideContainer {
+  color: #ffffff;
+  text-align: center;
+}
+
+.slideshowJumpToSlideContainer a {
+  color: #ffffff;
+}
+
+.slideshowJumpToSlideInput {
+  background: transparent !important;
+  color: #ffffff !important;
+  width: 50px !important;
+}
+
+.slideshowStepButton {
+  @extend .slideshowActionButton;
+  width: 100%;
+}
+
+.slideshowStepButton:disabled {
+  border-color: #333333 !important;
+  color: #333333 !important;
+}
+
+.slideshowTitle {
+  color: #ffffff;
+  margin-bottom: 0px;
+}
+
 .spinner {
   margin-top: 48px;
   text-align: center;
@@ -114,8 +162,68 @@
   padding-inline-start: 20px;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 :global {
   .ant-modal {
     top: 76px !important;
+  }
+  .slideshowDrawer {
+    .ant-drawer-content {
+      background: hsla(0, 0%, 0%, 0.95) !important;
+    }
+    .ant-drawer-footer {
+      border-top: 1px solid hsla(0, 100%, 100%, 0.125) !important;
+    }
+    .ant-drawer-header {
+      border-bottom: 1px solid hsla(0, 0%, 100%, 0.125) !important;
+    }
+    .ant-drawer-header,
+    .ant-drawer-footer {
+      background: none !important;
+    }
   }
 }
