@@ -69,8 +69,8 @@
 }
 
 .boardHeaderActionButton:hover {
-  border-color: #ffffff !important;
-  color: #ffffff !important;
+  border-color: #fafafa !important;
+  color: #fafafa !important;
 }
 
 .boardInformationActions {
@@ -107,14 +107,24 @@
 
 .boardMessageSlide {
   animation: fadeIn 0.475s;
-  color: #ffffff;
+  color: #fafafa;
   font-size: 24px;
   margin: 12px 24px;
-  word-wrap: break-word;
   -webkit-animation: fadeIn 0.475s;
   -moz-animation: fadeIn 0.475s;
   -o-animation: fadeIn 0.475s;
   -ms-animation: fadeIn 0.475s;
+}
+
+.boardMessageSlide {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #fafafa;
+  }
 }
 
 .boardMessageSlide img {
@@ -124,21 +134,21 @@
 
 .slideshowActionButton {
   background: none !important;
-  color: #ffffff !important;
+  color: #fafafa !important;
 }
 
 .slideshowJumpToSlideContainer {
-  color: #ffffff;
+  color: #fafafa;
   text-align: center;
 }
 
 .slideshowJumpToSlideContainer a {
-  color: #ffffff;
+  color: #fafafa;
 }
 
 .slideshowJumpToSlideInput {
   background: transparent !important;
-  color: #ffffff !important;
+  color: #fafafa !important;
   width: 50px !important;
 }
 
@@ -153,7 +163,7 @@
 }
 
 .slideshowTitle {
-  color: #ffffff;
+  color: #fafafa;
   margin-bottom: 0px;
 }
 
