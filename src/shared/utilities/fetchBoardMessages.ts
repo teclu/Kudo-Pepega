@@ -1,6 +1,6 @@
 import Papa from 'papaparse';
 
-import type { BoardMessage } from '../../shared/types';
+import type { BoardMessage } from '../types';
 
 /**
  * Fetches data from the spreadsheet and format them into Board Messages.

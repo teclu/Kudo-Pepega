@@ -1,8 +1,8 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import type { NavigateFunction } from 'react-router-dom';
 import { Button, Card, Form, Input } from 'antd';
 import type { Rule } from 'antd/lib/form';
-import type * as H from 'history';
 
 import {
   GOOGLE_DOCS_URL,
@@ -57,7 +57,7 @@ const FORM_FIELDS: Array<FormField> = [
 ];
 
 const BoardDetailsForm = (): JSX.Element => {
-  const history: H.History<H.LocationState> = useHistory<H.LocationState>();
+  const navigate: NavigateFunction = useNavigate();
 
   /*
    * Redirect to Board with the provided Board Details.
@@ -76,7 +76,7 @@ const BoardDetailsForm = (): JSX.Element => {
       spreadsheetId: spreadsheetIdMatch ? spreadsheetIdMatch[1] : '',
     };
     const queryParameters: URLSearchParams = new URLSearchParams(boardDetails);
-    history.push(`${BOARD_PATH.path}?${queryParameters.toString()}`);
+    navigate(`${BOARD_PATH.path}?${queryParameters.toString()}`);
   };
 
   return (

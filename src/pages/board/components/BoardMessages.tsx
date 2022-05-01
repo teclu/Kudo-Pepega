@@ -4,7 +4,6 @@ import { Card, Col, Row } from 'antd';
 
 import type { BoardMessage } from '../../../shared/types';
 import ContentContainer from '../../../shared/components/content-container';
-import useWidth from '../../../shared/useWidth';
 
 import s from '../s.module.scss';
 

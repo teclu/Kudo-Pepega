@@ -26,6 +26,5 @@ export type PathDetails = {
 };
 
 export type RouteDetails = {
-  exact: boolean;
   component: () => JSX.Element;
 } & PathDetails;

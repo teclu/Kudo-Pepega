@@ -26,30 +26,23 @@ export const ERROR_PATH: PathDetails = {
 
 export const ROOT_PATH: PathDetails = ABOUT_PATH;
 
-export const MENU_ITEMS: Array<PathDetails> = [
-  ABOUT_PATH,
-  CREATE_NEW_BOARD_PATH,
-];
+export const PATHS: Array<PathDetails> = [ABOUT_PATH, CREATE_NEW_BOARD_PATH];
 
 export const ROUTE_ITEMS: Array<RouteDetails> = [
   {
     ...ABOUT_PATH,
-    exact: true,
     component: About,
   },
   {
     ...BOARD_PATH,
-    exact: false,
     component: Board,
   },
   {
     ...CREATE_NEW_BOARD_PATH,
-    exact: true,
     component: CreateNewBoard,
   },
   {
     ...ERROR_PATH,
-    exact: false,
     component: Error,
   },
 ];

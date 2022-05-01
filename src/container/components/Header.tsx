@@ -1,11 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
+import type { ItemType } from 'antd/lib/menu/hooks/useItems';
 
 import type { PathDetails } from '../../shared/types';
-import { MENU_ITEMS } from '../routing';
+import { PATHS } from '../routing';
 
 import s from '../s.module.scss';
+
+const MENU_ITEMS: Array<ItemType> = PATHS.map(
+  ({ name, path }: PathDetails, index: number): ItemType => ({
+    key: index,
+    title: name,
+    label: <Link to={path}>{name}</Link>,
+  }),
+);
 
 const Header = (): JSX.Element => (
   <Layout.Header>
@@ -14,18 +23,11 @@ const Header = (): JSX.Element => (
     </Link>
     <Menu
       className={s.menu}
+      items={MENU_ITEMS}
       mode="horizontal"
       selectedKeys={[]} // Prevent selection of Menu Items.
       theme="dark"
-    >
-      {MENU_ITEMS.map(
-        (item: PathDetails, index: number): JSX.Element => (
-          <Menu.Item key={index}>
-            <Link to={item.path}>{item.name}</Link>
-          </Menu.Item>
-        ),
-      )}
-    </Menu>
+    />
   </Layout.Header>
 );
 

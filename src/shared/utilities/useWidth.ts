@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { BreakpointWidth } from './enums';
+import { BreakpointWidth } from '../enums';
 
 const getMinWidthQuery = (breakpointWidth: BreakpointWidth): string =>
   `(min-width: ${breakpointWidth}px)`;

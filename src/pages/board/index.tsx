@@ -1,7 +1,7 @@
 import React from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
 import { Spin } from 'antd';
-import type * as H from 'history';
+import { useLocation, useNavigate } from 'react-router-dom';
+import type { Location, NavigateFunction } from 'react-router-dom';
 
 import type { BoardDetails, BoardMessage } from '../../shared/types';
 import { GOOGLE_DOCS_URL } from '../../shared/constants';
@@ -9,12 +9,12 @@ import { ROOT_PATH } from '../../container/routing';
 import AddToBoardModal from './components/AddToBoardModal';
 import BoardInformationModal from './components/BoardInformationModal';
 import BoardMessages from './components/BoardMessages';
-import fireNotification from '../../shared/notification';
-import useWidth from '../../shared/useWidth';
-import fetchBoardMessages from './fetch';
+import SlideshowModal from './components/SlideshowDrawer';
+import fetchBoardMessages from '../../shared/utilities/fetchBoardMessages';
+import fireNotification from '../../shared/utilities/notification';
+import useWidth from '../../shared/utilities/useWidth';
 
 import s from './s.module.scss';
-import SlideshowModal from './components/SlideshowDrawer';
 
 const Board = (): JSX.Element => {
   const [boardDetails, setBoardDetails] = React.useState<BoardDetails>();
@@ -22,8 +22,8 @@ const Board = (): JSX.Element => {
     [],
   );
   const [isLoading, setIsLoading] = React.useState<boolean>(true);
-  const history: H.History<H.LocationState> = useHistory<H.LocationState>();
-  const location: H.Location<H.LocationState> = useLocation<H.LocationState>();
+  const navigate: NavigateFunction = useNavigate();
+  const location: Location = useLocation();
   const { isXsWidth, isSmWidth, isLgWidth, isXlWidth } = useWidth();
 
   const boardViewOnlyUrl: string = React.useMemo((): string => {
@@ -84,7 +84,7 @@ const Board = (): JSX.Element => {
         message: 'Invalid Board Configuration',
         type: 'error',
       });
-      history.push(ROOT_PATH.path);
+      navigate(ROOT_PATH.path);
     }
   }, [location]);
 
@@ -100,10 +100,10 @@ const Board = (): JSX.Element => {
       } catch (error) {
         fireNotification({
           message: 'Fetch Error',
-          description: error,
+          description: String(error),
           type: 'error',
         });
-        history.push(ROOT_PATH.path);
+        navigate(ROOT_PATH.path);
       }
     }
   };

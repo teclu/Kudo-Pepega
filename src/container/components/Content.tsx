@@ -1,6 +1,6 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { Card, Layout } from 'antd';
+import { Route, Routes } from 'react-router-dom';
+import { Layout } from 'antd';
 
 import type { RouteDetails } from '../../shared/types';
 import { ROUTE_ITEMS } from '../routing';
@@ -9,18 +9,13 @@ import s from '../s.module.scss';
 
 const Content = (): JSX.Element => (
   <Layout.Content className={s.content}>
-    <Switch>
+    <Routes>
       {ROUTE_ITEMS.map(
         (item: RouteDetails, index: number): JSX.Element => (
-          <Route
-            key={index}
-            exact={item.exact}
-            path={item.path}
-            component={item.component}
-          />
+          <Route key={index} path={item.path} element={<item.component />} />
         ),
       )}
-    </Switch>
+    </Routes>
   </Layout.Content>
 );
 
