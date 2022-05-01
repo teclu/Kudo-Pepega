@@ -68,11 +68,9 @@ const BoardMessages = ({
     <ContentContainer>
       <Row
         gutter={16}
-        justify={
-          boardMessagesLayoutElement.length > 0 ? undefined : 'space-between'
-        }
+        justify={boardMessages.length > 0 ? undefined : 'space-between'}
       >
-        {boardMessagesLayoutElement.length > 0 ? (
+        {boardMessages.length > 0 ? (
           boardMessagesLayoutElement
         ) : (
           <Col span={MAX_SPAN / getColumns(isLgWidth, isXlWidth)}>

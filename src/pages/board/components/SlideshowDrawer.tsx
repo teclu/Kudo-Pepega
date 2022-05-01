@@ -82,6 +82,7 @@ const SlideshowDrawer = ({
         size="large"
         className={s.boardActionButton}
         icon={<PlayCircleOutlined />}
+        disabled={boardMessages.length === 0}
         onClick={showDrawer}
       >
         {TITLE}
