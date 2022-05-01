@@ -1,0 +1,14 @@
+._container_1wfmi_1 {
+  margin: 12px 12px !important;
+}
+
+@media screen and (min-width: 768px) {
+  ._container_1wfmi_1 {
+    margin: 24px 24px 0px !important;
+  }
+}
+@media screen and (min-width: 992px) {
+  ._container_1wfmi_1 {
+    margin: 24px 48px 0px !important;
+  }
+}

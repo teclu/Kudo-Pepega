@@ -1,0 +1,14 @@
+{
+  "imports": {
+    "@ant-design/icons": "./@ant-design/icons.js",
+    "antd": "./antd.js",
+    "antd/dist/antd.css": "./antd/dist/antd.css",
+    "easymde/dist/easymde.min.css": "./easymde/dist/easymde.min.css",
+    "papaparse": "./papaparse.js",
+    "react": "./react.js",
+    "react-dom/client": "./react-dom/client.js",
+    "react-markdown": "./react-markdown.js",
+    "react-router-dom": "./react-router-dom.js",
+    "react-simplemde-editor": "./react-simplemde-editor.js"
+  }
+}

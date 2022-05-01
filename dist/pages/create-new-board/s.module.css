@@ -1,0 +1,17 @@
+._formItemSubmit_2suve_1 {
+  margin-bottom: 0px !important;
+}
+
+ol {
+  padding-inline-start: 8px;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+@media screen and (max-width: 992px) {
+  ._helpSection_2suve_14 {
+    margin-bottom: 24px !important;
+  }
+}

@@ -1,0 +1,46 @@
+._footer_1vl02_1 {
+  background: transparent !important;
+  text-align: center;
+}
+
+._layout_1vl02_6 {
+  background: #f0f0f0 !important;
+  background-image: url("images/background.png") !important;
+  background-size: 10% !important;
+  min-height: 100vh !important;
+}
+
+._logo_1vl02_13 {
+  color: #ffffff;
+  float: left;
+  font-size: 16px;
+  font-weight: 600;
+  height: 64px;
+  line-height: 60px;
+  text-align: center;
+  width: 125px;
+}
+
+._logo_1vl02_13:hover {
+  color: #ffffff;
+}
+
+._menu_1vl02_28 {
+  text-align: right !important;
+}
+
+@media screen and (max-width: 576px) {
+  ._logo_1vl02_13 {
+    display: none;
+  }
+
+  ._menu_1vl02_28 {
+    text-align: center !important;
+  }
+}
+.ant-menu-overflow {
+  display: block !important;
+}
+.ant-card.ant-card-bordered {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
