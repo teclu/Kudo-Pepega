@@ -1,5 +1,5 @@
 yarn build
-cd build
+cd dist
 echo 'www.kudopepe.ga' > CNAME
 touch .nojekyll
 git init

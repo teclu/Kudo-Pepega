@@ -39,7 +39,7 @@ const STATIC_COLUMNS: Array<ColumnProps<QuestionDetails>> = [
     title: 'Required',
     dataIndex: 'required',
     width: '5rem',
-    render: (value: any, record: QuestionDetails, index: number): string =>
+    render: (value: unknown, record: QuestionDetails): string =>
       record.required ? 'Yes' : 'No',
   },
 ];

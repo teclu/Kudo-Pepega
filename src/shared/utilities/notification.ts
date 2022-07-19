@@ -1,7 +1,7 @@
 import { notification } from 'antd';
 import type { ArgsProps } from 'antd/lib/notification';
 
-const DEFAULT_DURATION: number = 3;
+const DEFAULT_DURATION = 3;
 
 /**
  * Fires an Ant Design notification.

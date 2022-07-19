@@ -23,7 +23,6 @@ import {
   EyeOutlined,
   SendOutlined,
 } from '@ant-design/icons';
-import 'easymde/dist/easymde.min.css';
 
 import s from '../s.module.scss';
 
@@ -35,9 +34,9 @@ type BoardModalProps = {
   onDoneClickCallback: () => Promise<void>;
 };
 
-const AUTHOR_PLACEHOLDER: string = 'Anonymous';
+const AUTHOR_PLACEHOLDER = 'Anonymous';
 
-const CONTENT_PLACEHOLDER: string = "*UHM*... I didn't write anything!";
+const CONTENT_PLACEHOLDER = "*UHM*... I didn't write anything!";
 
 const STEPS: Array<string> = [
   'Write Message',
@@ -53,12 +52,11 @@ const STEP_ICONS: Array<JSX.Element> = [
 
 const MAX_STEP: number = STEPS.length - 1;
 
-const TITLE: string = 'Add to Board';
+const TITLE = 'Add to Board';
 
 const BoardModal = ({
   formUrl,
   formEntryParameters,
-  isXsWidth,
   isSmWidth,
   onDoneClickCallback,
 }: BoardModalProps): JSX.Element => {
@@ -277,7 +275,7 @@ const BoardModal = ({
           <div>
             <Popconfirm
               title={
-                <div className={s.popconfirmContent}>
+                <div>
                   Are you sure you want to close? This will{' '}
                   <b>discard all changes</b>.
                 </div>
@@ -303,7 +301,6 @@ const BoardModal = ({
             <Button
               type="default"
               shape="circle"
-              className={s.addToBoardStepsButton}
               icon={<CaretLeftOutlined />}
               disabled={step === 0}
               onClick={onPreviousStepClick}
@@ -344,7 +341,6 @@ const BoardModal = ({
             <Button
               type="default"
               shape="circle"
-              className={s.addToBoardStepsButton}
               icon={<CaretRightOutlined />}
               disabled={(step === 1 && !content.trim()) || step === MAX_STEP}
               onClick={onNextStepClick}

@@ -17,7 +17,7 @@ type BoardInformationModalProps = {
   spreadsheetUrl: string;
 };
 
-const TITLE: string = 'Board Information';
+const TITLE = 'Board Information';
 
 const BoardInformationModal = ({
   boardViewOnlyUrl,

@@ -11,7 +11,7 @@ type SlideshowDrawerProps = {
   boardMessages: Array<BoardMessage>;
 };
 
-const TITLE: string = 'Slideshow';
+const TITLE = 'Slideshow';
 
 const SlideshowDrawer = ({
   boardMessages,

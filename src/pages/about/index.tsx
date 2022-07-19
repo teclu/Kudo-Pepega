@@ -1,11 +1,10 @@
-import React from 'react';
 import { Card } from 'antd';
-
-import ContentContainer from '../../shared/components/content-container';
 import ReactMarkdown from 'react-markdown';
 
+import ContentContainer from '../../shared/components/content-container';
+
 const About = (): JSX.Element => {
-  const content: string = `## What is Kudo Pepega?
+  const content = `## What is Kudo Pepega?
 
 It is a free alternative to [Kudoboard](https://www.kudoboard.com/) that relies on the user's own Google [Forms](https://www.google.com/forms/about/) and [Sheets](https://www.google.com/sheets/about/) to power the boards. Ultimately:
 

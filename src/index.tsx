@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom/client';
 
 import Container from './container';
 
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.min.css';
+import 'easymde/dist/easymde.min.css';
 
 const element: HTMLElement = document.getElementById('root') as HTMLElement;
 const root: ReactDOM.Root = ReactDOM.createRoot(element);
-root.render(<Container />);
-
-// Hot Module Replacement (HMR) - Remove this snippet to remove HMR.
-// Learn more: https://snowpack.dev/concepts/hot-module-replacement
-if (import.meta.hot) {
-  import.meta.hot.accept();
-}
+root.render(
+  <React.StrictMode>
+    <Container />
+  </React.StrictMode>,
+);
