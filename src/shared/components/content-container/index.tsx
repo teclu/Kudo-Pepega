@@ -1,13 +1,15 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import s from './s.module.scss';
 
-const ContentContainer = (
-  props: JSX.IntrinsicAttributes &
-    React.ClassAttributes<HTMLDivElement> &
-    React.HTMLAttributes<HTMLDivElement>,
-): JSX.Element => (
-  <div className={s.container} {...props}>
+const ContentContainer = ({
+  className,
+  ...props
+}: JSX.IntrinsicAttributes &
+  React.ClassAttributes<HTMLDivElement> &
+  React.HTMLAttributes<HTMLDivElement>): JSX.Element => (
+  <div className={classNames(s.container, className)} {...props}>
     {props.children}
   </div>
 );

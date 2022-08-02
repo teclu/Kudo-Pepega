@@ -4476,6 +4476,7 @@ __metadata:
     "@typescript-eslint/parser": ^5.30.7
     "@vitejs/plugin-react": ^2.0.0
     antd: ^4.21.7
+    classnames: ^2.3.1
     easymde: ^2.16.1
     eslint: ^8.20.0
     husky: 4.3.0
