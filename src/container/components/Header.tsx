@@ -1,7 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import type { ItemType } from 'antd/lib/menu/hooks/useItems';
+import { Link } from 'react-router-dom';
 
 import type { PathDetails } from '../../shared/types';
 import { PATHS } from '../routing';
@@ -17,7 +16,7 @@ const MENU_ITEMS: Array<ItemType> = PATHS.map(
 );
 
 const Header = (): JSX.Element => (
-  <Layout.Header>
+  <Layout.Header className={s.header}>
     <Link className={s.logo} to="/">
       Kudo Pepega
     </Link>

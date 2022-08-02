@@ -1,50 +1,47 @@
+.content {
+  display: flex;
+}
+
 .footer {
   background: transparent !important;
   text-align: center;
+  a {
+    font-weight: 500;
+  }
+}
+
+.footer,
+.header {
+  a {
+    color: #ffffff;
+  }
+  a:hover {
+    color: #cccccc;
+  }
+}
+
+.header {
+  background: rgba(32, 32, 32, 0.875) !important;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
 }
 
 .layout {
-  background: #f0f0f0 !important;
-  background-image: url('images/background.png') !important;
-  background-size: 10% !important;
+  background: #101010 !important;
   min-height: 100vh !important;
 }
 
 .logo {
-  color: #ffffff;
   float: left;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   height: 64px;
-  line-height: 60px;
+  opacity: 0.875;
   text-align: center;
-  width: 125px;
-}
-
-.logo:hover {
-  color: #ffffff;
+  width: 128px;
 }
 
 .menu {
   text-align: right !important;
-}
-
-@media screen and (max-width: 576px) {
-  .logo {
-    display: none;
-  }
-
-  .menu {
-    text-align: center !important;
-  }
-}
-
-:global {
-  .ant-menu-overflow {
-    display: block !important;
-  }
-  .ant-card.ant-card-bordered {
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
-      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-  }
 }

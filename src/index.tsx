@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 
 import Container from './container';
 
-import 'antd/dist/antd.min.css';
+import 'antd/dist/antd.dark.min.css';
 import 'easymde/dist/easymde.min.css';
 
 const element: HTMLElement = document.getElementById('root') as HTMLElement;
