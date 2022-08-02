@@ -1,7 +1,5 @@
 # Kudo Pepega
 
-> ✨ Bootstrapped with [Create Snowpack App (CSA)](https://github.com/snowpackjs/snowpack/tree/main/create-snowpack-app/cli).
-
 ## What is Kudo Pepega?
 
 It is a free alternative to [Kudoboard](https://www.kudoboard.com/) that relies on the user's own Google [Forms](https://www.google.com/forms/about/) and [Sheets](https://www.google.com/sheets/about/) to power the boards. Ultimately:
