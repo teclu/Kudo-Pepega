@@ -2,7 +2,7 @@ import { Layout, Menu } from 'antd';
 import type { ItemType } from 'antd/lib/menu/hooks/useItems';
 import { Link } from 'react-router-dom';
 
-import type { PathDetails } from '../../shared/types';
+import type { PathDetails } from '../../_shared/types';
 import { PATHS } from '../routing';
 
 import s from '../s.module.scss';

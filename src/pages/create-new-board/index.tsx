@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Row } from 'antd';
 
 import BoardDetailsForm from './components/BoardDetailsForm';
-import ContentContainer from '../../shared/components/content-container';
+import ContentContainer from '../../_shared/components/content-container';
 import HelpSection from './components/HelpSection';
 
 const CreateNewBoard = (): JSX.Element => (

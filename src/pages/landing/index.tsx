@@ -1,6 +1,6 @@
 import { Button, Image, Typography } from 'antd';
 
-import ContentContainer from '../../shared/components/content-container';
+import ContentContainer from '../../_shared/components/content-container';
 
 import s from './s.module.scss';
 

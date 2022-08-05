@@ -3,7 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import { Button, Drawer, Row, Col, InputNumber, Space } from 'antd';
 import { PlayCircleOutlined } from '@ant-design/icons';
 
-import type { BoardMessage } from '../../../shared/types';
+import type { BoardMessage } from '../../../_shared/types';
 
 import s from '../s.module.scss';
 

@@ -1,7 +1,7 @@
 import { Card } from 'antd';
 import ReactMarkdown from 'react-markdown';
 
-import ContentContainer from '../../shared/components/content-container';
+import ContentContainer from '../../_shared/components/content-container';
 
 const About = (): JSX.Element => {
   const content = `## What is Kudo Pepega?

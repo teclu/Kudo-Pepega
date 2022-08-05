@@ -3,16 +3,16 @@ import { Spin } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
 import type { Location, NavigateFunction } from 'react-router-dom';
 
-import type { BoardDetails, BoardMessage } from '../../shared/types';
-import { GOOGLE_DOCS_URL } from '../../shared/constants';
+import type { BoardDetails, BoardMessage } from '../../_shared/types';
+import { GOOGLE_DOCS_URL } from '../../_shared/constants';
 import { ROOT_PATH } from '../../container/routing';
 import AddToBoardModal from './components/AddToBoardModal';
 import BoardInformationModal from './components/BoardInformationModal';
 import BoardMessages from './components/BoardMessages';
 import SlideshowModal from './components/SlideshowDrawer';
-import fetchBoardMessages from '../../shared/utilities/fetchBoardMessages';
-import fireNotification from '../../shared/utilities/notification';
-import useWidth from '../../shared/utilities/useWidth';
+import fetchBoardMessages from '../../_shared/utilities/fetchBoardMessages';
+import fireNotification from '../../_shared/utilities/notification';
+import useWidth from '../../_shared/utilities/useWidth';
 
 import s from './s.module.scss';
 

@@ -1,4 +1,4 @@
-import type { PathDetails, RouteDetails } from '../shared/types';
+import type { PathDetails, RouteDetails } from '../_shared/types';
 import Landing from '../pages/landing';
 // import Board from '../pages/board';
 // import CreateNewBoard from '../pages/create-new-board';

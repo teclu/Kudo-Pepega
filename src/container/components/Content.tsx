@@ -1,7 +1,7 @@
 import { Layout } from 'antd';
 import { Route, Routes } from 'react-router-dom';
 
-import type { RouteDetails } from '../../shared/types';
+import type { RouteDetails } from '../../_shared/types';
 import { ROUTE_ITEMS } from '../routing';
 
 import s from '../s.module.scss';

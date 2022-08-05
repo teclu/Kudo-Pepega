@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Table } from 'antd';
 import type { ColumnProps } from 'antd/lib/table';
 
-import { GOOGLE_DOCS_URL } from '../../../shared/constants';
+import { GOOGLE_DOCS_URL } from '../../../_shared/constants';
 
 import s from '../s.module.scss';
 

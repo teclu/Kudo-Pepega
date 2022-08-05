@@ -8,9 +8,9 @@ import {
   GOOGLE_DOCS_URL,
   PATTERN_FORM,
   PATTERN_SPREADSHEET,
-} from '../../../shared/constants';
+} from '../../../_shared/constants';
 import { BOARD_PATH } from '../../../container/routing';
-import type { FormField, BoardDetails } from '../../../shared/types';
+import type { FormField, BoardDetails } from '../../../_shared/types';
 
 import s from '../s.module.scss';
 

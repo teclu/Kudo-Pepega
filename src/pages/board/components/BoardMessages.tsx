@@ -2,8 +2,8 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Card, Col, Row } from 'antd';
 
-import type { BoardMessage } from '../../../shared/types';
-import ContentContainer from '../../../shared/components/content-container';
+import type { BoardMessage } from '../../../_shared/types';
+import ContentContainer from '../../../_shared/components/content-container';
 
 import s from '../s.module.scss';
 

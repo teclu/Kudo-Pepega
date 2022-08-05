@@ -6,7 +6,7 @@ import {
   LinkOutlined,
 } from '@ant-design/icons';
 
-import type { FormField } from '../../../shared/types';
+import type { FormField } from '../../../_shared/types';
 
 import s from '../s.module.scss';
 
