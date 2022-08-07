@@ -1,7 +1,7 @@
 import React from 'react';
 import { Spin } from 'antd';
-import { useLocation, useNavigate } from 'react-router';
-import type { Location, NavigateFunction } from 'react-router';
+import { useLocation, useNavigate } from 'react-router-dom';
+import type { Location, NavigateFunction } from 'react-router-dom';
 
 import type { CardDetails, CardMessage } from '../../_shared/types';
 import { GOOGLE_DOCS_URL } from '../../_shared/constants';
