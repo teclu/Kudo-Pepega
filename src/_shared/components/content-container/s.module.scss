@@ -1,15 +1,23 @@
 .container {
-  margin: 12px 12px !important;
+  margin: 24px 48px 0px !important;
+  :global {
+    .ant-card-body {
+      background: #222222;
+    }
+    .ant-card-head {
+      background: #111111;
+    }
+  }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
   .container {
     margin: 24px 24px 0px !important;
   }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (max-width: 576px) {
   .container {
-    margin: 24px 48px 0px !important;
+    margin: 12px 12px 0px !important;
   }
 }

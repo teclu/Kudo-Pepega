@@ -1,33 +1,32 @@
-import { Layout, Menu } from 'antd';
-import type { ItemType } from 'antd/lib/menu/hooks/useItems';
+import { Layout } from 'antd';
 import { Link } from 'react-router-dom';
 
 import type { PathDetails } from '../../_shared/types';
-import { PATHS } from '../routing';
+import { ABOUT_PATH, CREATE_NEW_GROUP_CARD_PATH, HOME_PATH } from '../routing';
 
 import s from '../s.module.scss';
 
-const MENU_ITEMS: Array<ItemType> = PATHS.map(
-  ({ name, path }: PathDetails, index: number): ItemType => ({
-    key: index,
-    title: name,
-    label: <Link to={path}>{name}</Link>,
-  }),
+const MENU_ITEMS: Array<JSX.Element> = [
+  HOME_PATH,
+  ABOUT_PATH,
+  CREATE_NEW_GROUP_CARD_PATH,
+].map(
+  ({ name, path }: PathDetails, index: number): JSX.Element => (
+    <li key={index}>
+      <Link to={path}>{name}</Link>
+    </li>
+  ),
 );
 
-const Header = (): JSX.Element => (
-  <Layout.Header className={s.header}>
-    <Link className={s.logo} to="/">
-      Kudo Pepega
-    </Link>
-    <Menu
-      className={s.menu}
-      items={MENU_ITEMS}
-      mode="horizontal"
-      selectedKeys={[]} // Prevent selection of Menu Items.
-      theme="dark"
-    />
-  </Layout.Header>
-);
+const Header = (): JSX.Element => {
+  return (
+    <Layout.Header className={s.header}>
+      <Link className={s.brand} to="/">
+        Kudo Pepega
+      </Link>
+      <ul className={s.menu}>{MENU_ITEMS}</ul>
+    </Layout.Header>
+  );
+};
 
 export default Header;

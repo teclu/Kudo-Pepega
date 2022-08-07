@@ -4,7 +4,7 @@ import ContentContainer from '../../_shared/components/content-container';
 
 import s from './s.module.scss';
 
-const Landing = (): JSX.Element => {
+const Home = (): JSX.Element => {
   return (
     <ContentContainer className={s.contentContainer}>
       <Typography.Title className={s.title} level={1}>
@@ -28,4 +28,4 @@ const Landing = (): JSX.Element => {
   );
 };
 
-export default Landing;
+export default Home;

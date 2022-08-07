@@ -1,5 +1,14 @@
+.brand {
+  float: left;
+  font-size: 18px;
+  font-weight: 600;
+  height: 64px;
+  width: 128px;
+}
+
 .content {
   display: flex;
+  padding-top: 64px;
 }
 
 .footer {
@@ -13,18 +22,28 @@
 .footer,
 .header {
   a {
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+  }
+  a,
+  a:hover {
     color: #ffffff;
   }
-  a:hover {
+  a.brand:hover {
     color: #cccccc;
   }
 }
 
 .header {
-  background: rgba(32, 32, 32, 0.875) !important;
+  background: #222222 !important;
   position: fixed;
   width: 100%;
   z-index: 1;
+  :global {
+    .ant-menu {
+      background: none !important;
+      border-bottom: none !important;
+    }
+  }
 }
 
 .layout {
@@ -32,16 +51,48 @@
   min-height: 100vh !important;
 }
 
-.logo {
-  float: left;
-  font-size: 20px;
-  font-weight: 600;
-  height: 64px;
-  opacity: 0.875;
-  text-align: center;
-  width: 128px;
+.menu {
+  float: right;
+  list-style: none;
+  margin-bottom: -1em;
+  padding-inline-start: 0px;
+  a {
+    padding: 23px 24px;
+  }
+  li {
+    display: inline-block;
+    margin-bottom: 0px;
+    text-align: center;
+    transition: background 0.3s;
+  }
+  li:first-child {
+    display: none;
+  }
+  li:hover {
+    background: #303030;
+  }
 }
 
-.menu {
-  text-align: right !important;
+@media screen and (max-width: 576px) {
+  .brand {
+    display: none;
+  }
+
+  .menu {
+    display: flex;
+    float: unset;
+    justify-content: center;
+    li {
+      background: #222222;
+    }
+    li:first-child {
+      display: inline-block;
+    }
+  }
+}
+
+:global {
+  b {
+    font-weight: 500 !important;
+  }
 }
