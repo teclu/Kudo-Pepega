@@ -1,21 +1,20 @@
-import React from 'react';
 import { Col, Row } from 'antd';
 
-import BoardDetailsForm from './components/BoardDetailsForm';
+import CardDetailsForm from './components/CardDetailsForm';
 import ContentContainer from '../../_shared/components/content-container';
 import HelpSection from './components/HelpSection';
 
-const CreateNewBoard = (): JSX.Element => (
+const CreateNewCard = (): JSX.Element => (
   <ContentContainer>
     <Row gutter={24}>
       <Col span={24} lg={12}>
         <HelpSection />
       </Col>
       <Col span={24} lg={12}>
-        <BoardDetailsForm />
+        <CardDetailsForm />
       </Col>
     </Row>
   </ContentContainer>
 );
 
-export default CreateNewBoard;
+export default CreateNewCard;

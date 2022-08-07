@@ -3,36 +3,36 @@ import ReactMarkdown from 'react-markdown';
 import { Button, Drawer, Row, Col, InputNumber, Space } from 'antd';
 import { PlayCircleOutlined } from '@ant-design/icons';
 
-import type { BoardMessage } from '../../../_shared/types';
+import type { CardMessage } from '../../../_shared/types';
 
 import s from '../s.module.scss';
 
 type SlideshowDrawerProps = {
-  boardMessages: Array<BoardMessage>;
+  cardMessages: Array<CardMessage>;
 };
 
 const TITLE = 'Slideshow';
 
 const SlideshowDrawer = ({
-  boardMessages,
+  cardMessages,
 }: SlideshowDrawerProps): JSX.Element => {
   const [isVisible, setIsVisible] = React.useState<boolean>(false);
   const [slideIndex, setSlideIndex] = React.useState<number>(0);
 
-  const boardMessageElements: Array<JSX.Element> = React.useMemo(
+  const cardMessageElements: Array<JSX.Element> = React.useMemo(
     (): Array<JSX.Element> =>
-      boardMessages.map(
-        (message: BoardMessage, index: number): JSX.Element => (
-          <div key={index} className={s.boardMessageSlide}>
+      cardMessages.map(
+        (message: CardMessage, index: number): JSX.Element => (
+          <div key={index} className={s.cardMessageSlide}>
             <ReactMarkdown
-              className={s.boardMessageContent}
+              className={s.cardMessageContent}
               children={message.content}
             />
-            <div className={s.boardMessageAuthor}>{message.author}</div>
+            <div className={s.cardMessageAuthor}>{message.author}</div>
           </div>
         ),
       ),
-    [boardMessages],
+    [cardMessages],
   );
 
   const hideDrawer = (): void => setIsVisible(false);
@@ -48,13 +48,13 @@ const SlideshowDrawer = ({
   };
 
   const onNextSlideClick = (): void => {
-    if (slideIndex < boardMessages.length) {
+    if (slideIndex < cardMessages.length) {
       onSlideChange(slideIndex + 1);
     }
   };
 
   const onJumpToLastSlideClick = (): void =>
-    onSlideChange(boardMessages.length - 1);
+    onSlideChange(cardMessages.length - 1);
 
   const onJumpToSlideBlur = (
     event: React.FocusEvent<HTMLInputElement>,
@@ -62,7 +62,7 @@ const SlideshowDrawer = ({
     const value: number = parseInt(event.target.value);
     if (!isNaN(value)) {
       onSlideChange(
-        value < boardMessages.length ? value - 1 : boardMessages.length - 1,
+        value < cardMessages.length ? value - 1 : cardMessages.length - 1,
       );
     }
   };
@@ -80,9 +80,9 @@ const SlideshowDrawer = ({
         type="default"
         shape="round"
         size="large"
-        className={s.boardActionButton}
+        className={s.cardActionButton}
         icon={<PlayCircleOutlined />}
-        disabled={boardMessages.length === 0}
+        disabled={cardMessages.length === 0}
         onClick={showDrawer}
       >
         {TITLE}
@@ -126,7 +126,7 @@ const SlideshowDrawer = ({
               <Space size="small" className={s.slideshowJumpToSlideContainer}>
                 <InputNumber
                   min={1}
-                  max={boardMessages.length}
+                  max={cardMessages.length}
                   value={slideIndex + 1}
                   className={s.slideshowJumpToSlideInput}
                   onBlur={onJumpToSlideBlur}
@@ -134,7 +134,7 @@ const SlideshowDrawer = ({
                 />
                 /
                 <a onClick={onJumpToLastSlideClick}>
-                  <b>{boardMessages.length}</b>
+                  <b>{cardMessages.length}</b>
                 </a>
               </Space>
             </Col>
@@ -143,7 +143,7 @@ const SlideshowDrawer = ({
                 type="default"
                 onClick={onNextSlideClick}
                 className={s.slideshowStepButton}
-                disabled={slideIndex === boardMessages.length - 1}
+                disabled={slideIndex === cardMessages.length - 1}
               >
                 Next
               </Button>
@@ -151,7 +151,7 @@ const SlideshowDrawer = ({
           </Row>
         }
       >
-        {boardMessageElements[slideIndex]}
+        {cardMessageElements[slideIndex]}
       </Drawer>
     </>
   );

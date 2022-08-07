@@ -1,5 +1,5 @@
 import { Layout } from 'antd';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router';
 
 import type { RouteDetails } from '../../_shared/types';
 import { ROUTE_ITEMS } from '../routing';

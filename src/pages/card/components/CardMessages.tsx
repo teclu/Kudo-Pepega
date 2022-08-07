@@ -2,13 +2,13 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Card, Col, Row } from 'antd';
 
-import type { BoardMessage } from '../../../_shared/types';
+import type { CardMessage } from '../../../_shared/types';
 import ContentContainer from '../../../_shared/components/content-container';
 
 import s from '../s.module.scss';
 
-type BoardMessagesProps = {
-  boardMessages: Array<BoardMessage>;
+type CardMessagesProps = {
+  cardMessages: Array<CardMessage>;
   isLgWidth: boolean;
   isXlWidth: boolean;
 };
@@ -18,28 +18,28 @@ const MAX_SPAN = 24;
 const getColumns = (isLgWidth: boolean, isXlWidth: boolean): 1 | 2 | 3 =>
   isXlWidth ? 3 : isLgWidth ? 2 : 1;
 
-const BoardMessages = ({
-  boardMessages,
+const CardMessages = ({
+  cardMessages,
   isLgWidth,
   isXlWidth,
-}: BoardMessagesProps): JSX.Element => {
-  const boardMessageElements: Array<JSX.Element> = React.useMemo(
+}: CardMessagesProps): JSX.Element => {
+  const cardMessageElements: Array<JSX.Element> = React.useMemo(
     (): Array<JSX.Element> =>
-      boardMessages.map(
-        (message: BoardMessage, index: number): JSX.Element => (
-          <Card key={index} className={s.boardMessageCard}>
+      cardMessages.map(
+        (message: CardMessage, index: number): JSX.Element => (
+          <Card key={index} className={s.cardMessageCard}>
             <ReactMarkdown
-              className={s.boardMessageContent}
+              className={s.cardMessageContent}
               children={message.content}
             />
-            <div className={s.boardMessageAuthor}>{message.author}</div>
+            <div className={s.cardMessageAuthor}>{message.author}</div>
           </Card>
         ),
       ),
-    [boardMessages],
+    [cardMessages],
   );
 
-  const boardMessagesLayoutElement: Array<JSX.Element> =
+  const cardMessagesLayoutElement: Array<JSX.Element> =
     React.useMemo((): Array<JSX.Element> => {
       // Helper function to generate 1/2/3-Column Layouts.
       const generateColumnElements = (
@@ -51,11 +51,11 @@ const BoardMessages = ({
           columnElements.push(
             <Col key={i} span={span}>
               {columns > 1
-                ? boardMessageElements.filter(
+                ? cardMessageElements.filter(
                     (element: JSX.Element, index: number): boolean =>
                       index % columns === i,
                   )
-                : boardMessageElements}
+                : cardMessageElements}
             </Col>,
           );
         }
@@ -68,23 +68,23 @@ const BoardMessages = ({
     <ContentContainer>
       <Row
         gutter={16}
-        justify={boardMessages.length > 0 ? undefined : 'space-between'}
+        justify={cardMessages.length > 0 ? undefined : 'space-between'}
       >
-        {boardMessages.length > 0 ? (
-          boardMessagesLayoutElement
+        {cardMessages.length > 0 ? (
+          cardMessagesLayoutElement
         ) : (
           <Col span={MAX_SPAN / getColumns(isLgWidth, isXlWidth)}>
-            <Card className={s.boardMessageCard}>
+            <Card className={s.cardMessageCard}>
               <img
-                className={s.addToBoardPlaceholderImage}
+                className={s.addToCardPlaceholderImage}
                 src="https://cdn.betterttv.net/emote/6089df1239b5010444d081e2/3x"
               />
               <p>
-                It seems that there aren't any messages posted to the board...{' '}
+                It seems that there aren't any messages posted to the card...{' '}
                 <em>yet</em>.
               </p>
               <p>
-                Click on <b>Add to Board</b> and write something nice!
+                Click on <b>Add to Card</b> and write something nice!
               </p>
             </Card>
           </Col>
@@ -94,4 +94,4 @@ const BoardMessages = ({
   );
 };
 
-export default BoardMessages;
+export default CardMessages;

@@ -1,14 +1,14 @@
 import Papa from 'papaparse';
 
-import type { BoardMessage } from '../types';
+import type { CardMessage } from '../types';
 
 /**
- * Fetches data from the spreadsheet and format them into Board Messages.
- * @returns {Array<BoardMessage>} Board Messages from the spreadsheet.
+ * Fetches data from the spreadsheet and format them into Card Messages.
+ * @returns {Array<CardMessage>} Card Messages from the spreadsheet.
  */
-const fetchBoardMessages = (
+const fetchCardMessages = (
   spreadsheetUrl: string,
-): Promise<Array<BoardMessage>> =>
+): Promise<Array<CardMessage>> =>
   fetch(spreadsheetUrl)
     .then((response: Response): Promise<string> => {
       if (response.ok) {
@@ -20,12 +20,12 @@ const fetchBoardMessages = (
       };
       throw error;
     })
-    .then((value: string): Array<BoardMessage> => {
+    .then((value: string): Array<CardMessage> => {
       const spreadsheetRows: Array<Array<string>> =
         Papa.parse<Array<string>>(value).data;
       spreadsheetRows.shift(); // Remove the header row.
       return spreadsheetRows
-        .map((row: Array<string>): BoardMessage => {
+        .map((row: Array<string>): CardMessage => {
           row.shift(); // Remove the timestamp column.
           return {
             author: row[0].trim(),
@@ -34,13 +34,13 @@ const fetchBoardMessages = (
         })
         .filter(
           // Filter away empty rows (if any).
-          (boardMessage: BoardMessage): boolean =>
-            boardMessage.author.length > 0 && boardMessage.content.length > 0,
+          (cardMessage: CardMessage): boolean =>
+            cardMessage.author.length > 0 && cardMessage.content.length > 0,
         );
     })
-    .catch((error: Error): Promise<Array<BoardMessage>> => {
+    .catch((error: Error): Promise<Array<CardMessage>> => {
       console.error(error);
       return Promise.reject([]);
     });
 
-export default fetchBoardMessages;
+export default fetchCardMessages;

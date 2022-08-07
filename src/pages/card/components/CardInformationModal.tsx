@@ -10,36 +10,36 @@ import type { FormField } from '../../../_shared/types';
 
 import s from '../s.module.scss';
 
-type BoardInformationModalProps = {
-  boardViewOnlyUrl: string;
-  boardEditableUrl: string;
+type CardInformationModalProps = {
+  cardViewOnlyUrl: string;
+  cardEditableUrl: string;
   formUrl: string;
   spreadsheetUrl: string;
 };
 
-const TITLE = 'Board Information';
+const TITLE = 'Card Information';
 
-const BoardInformationModal = ({
-  boardViewOnlyUrl,
-  boardEditableUrl,
+const CardInformationModal = ({
+  cardViewOnlyUrl,
+  cardEditableUrl,
   formUrl,
   spreadsheetUrl,
-}: BoardInformationModalProps): JSX.Element => {
+}: CardInformationModalProps): JSX.Element => {
   const [isVisible, setIsVisible] = React.useState<boolean>(false);
 
   const formFields: Array<FormField> = React.useMemo((): Array<FormField> => {
     const formFields = [
       {
-        name: 'boardViewOnlyUrl',
-        label: 'Board URL (View Only)',
-        value: boardViewOnlyUrl,
+        name: 'cardViewOnlyUrl',
+        label: 'Card URL (View Only)',
+        value: cardViewOnlyUrl,
       },
     ];
-    if (boardEditableUrl) {
+    if (cardEditableUrl) {
       formFields.push({
-        name: 'boardEditableUrl',
-        label: 'Board URL (Editable)',
-        value: boardEditableUrl,
+        name: 'cardEditableUrl',
+        label: 'Card URL (Editable)',
+        value: cardEditableUrl,
       });
     }
     if (formUrl) {
@@ -55,7 +55,7 @@ const BoardInformationModal = ({
       value: spreadsheetUrl,
     });
     return formFields;
-  }, [boardViewOnlyUrl, formUrl, spreadsheetUrl]);
+  }, [cardViewOnlyUrl, formUrl, spreadsheetUrl]);
 
   const hideModal = (): void => setIsVisible(false);
 
@@ -81,7 +81,7 @@ const BoardInformationModal = ({
           type="default"
           shape="circle"
           size="small"
-          className={s.boardHeaderActionButton}
+          className={s.cardHeaderActionButton}
           icon={<QuestionOutlined />}
           onClick={showModal}
         />
@@ -131,9 +131,9 @@ const BoardInformationModal = ({
                     id={formField.name}
                     value={formField.value}
                     addonAfter={
-                      !formField.name.includes('board') ? (
+                      !formField.name.includes('card') ? (
                         <Row
-                          className={s.boardInformationActions}
+                          className={s.cardInformationActions}
                           justify="space-between"
                         >
                           {copyElement}
@@ -155,4 +155,4 @@ const BoardInformationModal = ({
   );
 };
 
-export default BoardInformationModal;
+export default CardInformationModal;

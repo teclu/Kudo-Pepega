@@ -1,19 +1,19 @@
 import type { PathDetails, RouteDetails } from '../_shared/types';
-import Landing from '../pages/home';
-// import Board from '../pages/board';
-// import CreateNewBoard from '../pages/create-new-board';
-import Error from '../pages/error';
+
 import About from '../pages/about';
-import CreateNewBoard from '../pages/create-new-board';
+import Card from '../pages/card';
+import Create from '../pages/create';
+import Error from '../pages/error';
+import Landing from '../pages/home';
 
 export const ABOUT_PATH: PathDetails = {
   name: 'About',
   path: '/about',
 };
 
-// Old Path.
+// Handle redirect from old path to new path.
 export const BOARD_PATH: PathDetails = {
-  name: 'Board',
+  name: 'Card',
   path: '/board',
 };
 
@@ -22,7 +22,7 @@ export const CARD_PATH: PathDetails = {
   path: '/card',
 };
 
-export const CREATE_NEW_GROUP_CARD_PATH: PathDetails = {
+export const CREATE_PATH: PathDetails = {
   name: 'Create',
   path: '/create',
 };
@@ -45,8 +45,12 @@ export const ROUTE_ITEMS: Array<RouteDetails> = [
     component: About,
   },
   {
-    ...CREATE_NEW_GROUP_CARD_PATH,
-    component: CreateNewBoard,
+    ...CARD_PATH,
+    component: Card,
+  },
+  {
+    ...CREATE_PATH,
+    component: Create,
   },
   {
     ...ERROR_PATH,

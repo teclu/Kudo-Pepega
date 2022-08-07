@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card, Table } from 'antd';
 import type { ColumnProps } from 'antd/lib/table';
 

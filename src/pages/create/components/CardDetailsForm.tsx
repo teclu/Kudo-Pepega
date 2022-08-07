@@ -1,6 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import type { NavigateFunction } from 'react-router-dom';
+import { useNavigate } from 'react-router';
+import type { NavigateFunction } from 'react-router';
 import { Button, Card, Form, Input } from 'antd';
 import type { Rule } from 'antd/lib/form';
 
@@ -9,8 +8,8 @@ import {
   PATTERN_FORM,
   PATTERN_SPREADSHEET,
 } from '../../../_shared/constants';
-import { BOARD_PATH } from '../../../container/routing';
-import type { FormField, BoardDetails } from '../../../_shared/types';
+import { CARD_PATH } from '../../../container/routing';
+import type { FormField, CardDetails } from '../../../_shared/types';
 
 import s from '../s.module.scss';
 
@@ -56,18 +55,18 @@ const FORM_FIELDS: Array<FormField> = [
   },
 ];
 
-const BoardDetailsForm = (): JSX.Element => {
+const CardDetailsForm = (): JSX.Element => {
   const navigate: NavigateFunction = useNavigate();
 
   /*
-   * Redirect to Board with the provided Board Details.
+   * Redirect to Card with the provided Card Details.
    */
-  const onCreateNewBoardClick = (formData: FormData): void => {
+  const onCreateNewCardClick = (formData: FormData): void => {
     const formIdMatch: RegExpMatchArray | null =
       formData.formUrl.match(PATTERN_FORM);
     const spreadsheetIdMatch: RegExpMatchArray | null =
       formData.spreadsheetUrl.match(PATTERN_SPREADSHEET);
-    const boardDetails: BoardDetails = {
+    const cardDetails: CardDetails = {
       title: formData.title,
       formId: formIdMatch ? formIdMatch[1] : '',
       formEntryParameters: formIdMatch
@@ -75,13 +74,13 @@ const BoardDetailsForm = (): JSX.Element => {
         : '',
       spreadsheetId: spreadsheetIdMatch ? spreadsheetIdMatch[1] : '',
     };
-    const queryParameters: URLSearchParams = new URLSearchParams(boardDetails);
-    navigate(`${BOARD_PATH.path}?${queryParameters.toString()}`);
+    const queryParameters: URLSearchParams = new URLSearchParams(cardDetails);
+    navigate(`${CARD_PATH.path}?${queryParameters.toString()}`);
   };
 
   return (
-    <Card title="Create New Board">
-      <Form colon={false} layout="vertical" onFinish={onCreateNewBoardClick}>
+    <Card title="Create New Card">
+      <Form colon={false} layout="vertical" onFinish={onCreateNewCardClick}>
         {FORM_FIELDS.map(
           (formField: FormField, index: number): JSX.Element => (
             <Form.Item
@@ -97,7 +96,7 @@ const BoardDetailsForm = (): JSX.Element => {
         )}
         <Form.Item className={s.formItemSubmit}>
           <Button type="primary" htmlType="submit">
-            Create New Board
+            Create New Group Card
           </Button>
         </Form.Item>
       </Form>
@@ -105,4 +104,4 @@ const BoardDetailsForm = (): JSX.Element => {
   );
 };
 
-export default BoardDetailsForm;
+export default CardDetailsForm;

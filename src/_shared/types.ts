@@ -1,13 +1,13 @@
 import type { Rule } from 'antd/lib/form';
 
-export type BoardDetails = {
+export type CardDetails = {
   title: string;
   formId: string;
   formEntryParameters: string; // e.g. '1009329229,2083246063'
   spreadsheetId: string;
 };
 
-export type BoardMessage = {
+export type CardMessage = {
   author: string;
   content: string;
 };

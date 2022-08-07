@@ -1,7 +1,7 @@
 import React from 'react';
 import { Skeleton } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import type { NavigateFunction } from 'react-router-dom';
+import { useNavigate } from 'react-router';
+import type { NavigateFunction } from 'react-router';
 
 import { ROOT_PATH } from '../../container/routing';
 

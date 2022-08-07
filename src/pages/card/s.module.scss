@@ -1,21 +1,21 @@
-.addToBoardContent {
+.addToCardContent {
   padding: 16px 24px;
 }
 
-.addToBoardPlaceholderImage {
+.addToCardPlaceholderImage {
   float: left;
   margin-right: 24px;
 }
 
-.addToBoardPreviewMessage {
-  @extend .addToBoardContent;
+.addToCardPreviewMessage {
+  @extend .addToCardContent;
   background: #f0f0f0 !important;
   background-image: url('images/background.png') !important;
   background-size: 10% !important;
   border: 1px solid #f0f0f0;
 }
 
-.addToBoardGoogleFormIframe {
+.addToCardGoogleFormIframe {
   border-top: 1px;
   border-top-color: #f0f0f0;
   border-left: 0px;
@@ -27,17 +27,17 @@
   width: 100%;
 }
 
-.addToBoardPopconfirmMessage {
+.addToCardPopconfirmMessage {
   max-width: 220px;
 }
 
-.addToBoardSteps {
+.addToCardSteps {
   background-color: #fafafa;
   border-bottom: 1px solid #f0f0f0;
   padding: 36px 24px 24px !important;
 }
 
-.boardActionButtonsContainer {
+.cardActionButtonsContainer {
   display: flex;
   justify-content: center;
   margin-bottom: -36px;
@@ -45,7 +45,7 @@
   top: -21px;
 }
 
-.boardActionButton {
+.cardActionButton {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.125), 0px 3px 6px rgba(0, 0, 0, 0.125) !important;
   font-size: 14px !important;
   font-weight: 600 !important;
@@ -53,7 +53,7 @@
   width: 150px;
 }
 
-.boardHeader {
+.cardHeader {
   background: #187bcd;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
   color: #ffffff;
@@ -62,22 +62,22 @@
   text-align: center;
 }
 
-.boardHeaderActionButton {
+.cardHeaderActionButton {
   background: transparent !important;
   border: 1px solid #dddddd !important;
   color: #dddddd !important;
 }
 
-.boardHeaderActionButton:hover {
+.cardHeaderActionButton:hover {
   border-color: #fafafa !important;
   color: #fafafa !important;
 }
 
-.boardInformationActions {
+.cardInformationActions {
   width: 65px;
 }
 
-.boardTitle {
+.cardTitle {
   font-size: 48px;
   font-weight: 600;
   line-height: 162px;
@@ -86,27 +86,27 @@
   white-space: nowrap;
 }
 
-.boardMessageAuthor {
+.cardMessageAuthor {
   color: #999999;
   text-align: right;
 }
 
-.boardMessageContent {
+.cardMessageContent {
   margin-bottom: 12px;
   word-wrap: break-word;
 }
 
-.boardMessageContent img,
-.boardMessageSlide img {
+.cardMessageContent img,
+.cardMessageSlide img {
   max-width: 100%;
   max-height: 100%;
 }
 
-.boardMessageCard {
+.cardMessageCard {
   margin: 18px 0px !important;
 }
 
-.boardMessageSlide {
+.cardMessageSlide {
   animation: fadeIn 0.475s;
   color: #fafafa;
   font-size: 24px;
@@ -118,7 +118,7 @@
   -ms-animation: fadeIn 0.475s;
 }
 
-.boardMessageSlide {
+.cardMessageSlide {
   h1,
   h2,
   h3,
@@ -175,19 +175,19 @@
 }
 
 @media screen and (max-width: 1200px) {
-  .boardMessageSlide {
+  .cardMessageSlide {
     padding: 0px 15%;
   }
 }
 
 @media screen and (max-width: 992px) {
-  .boardMessageSlide {
+  .cardMessageSlide {
     padding: 0px 10%;
   }
 }
 
 @media screen and (max-width: 576px) {
-  .boardMessageSlide {
+  .cardMessageSlide {
     padding: 0px 0px;
   }
 }

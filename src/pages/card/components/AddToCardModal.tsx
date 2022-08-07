@@ -26,7 +26,7 @@ import {
 
 import s from '../s.module.scss';
 
-type BoardModalProps = {
+type CardModalProps = {
   formUrl: string;
   formEntryParameters: string;
   isXsWidth: boolean;
@@ -52,14 +52,14 @@ const STEP_ICONS: Array<JSX.Element> = [
 
 const MAX_STEP: number = STEPS.length - 1;
 
-const TITLE = 'Add to Board';
+const TITLE = 'Add to Card';
 
-const BoardModal = ({
+const CardModal = ({
   formUrl,
   formEntryParameters,
   isSmWidth,
   onDoneClickCallback,
-}: BoardModalProps): JSX.Element => {
+}: CardModalProps): JSX.Element => {
   const [isVisible, setIsVisible] = React.useState<boolean>(false);
   const [isPopconfirmVisible, setIsPopconfirmVisible] =
     React.useState<boolean>(false);
@@ -151,7 +151,7 @@ const BoardModal = ({
     switch (step) {
       case 1:
         return (
-          <div className={s.addToBoardPreviewMessage}>
+          <div className={s.addToCardPreviewMessage}>
             {!content.trim() ? (
               <Alert
                 type="error"
@@ -176,12 +176,12 @@ const BoardModal = ({
                 }
               />
             )}
-            <Card className={s.boardMessageCard}>
+            <Card className={s.cardMessageCard}>
               <ReactMarkdown
-                className={s.boardMessageContent}
+                className={s.cardMessageContent}
                 children={content.trim() ? content.trim() : CONTENT_PLACEHOLDER}
               />
-              <div className={s.boardMessageAuthor}>
+              <div className={s.cardMessageAuthor}>
                 {author.trim() ? author.trim() : AUTHOR_PLACEHOLDER}
               </div>
             </Card>
@@ -190,7 +190,7 @@ const BoardModal = ({
       case MAX_STEP:
         return (
           <div>
-            <div className={s.addToBoardContent}>
+            <div className={s.addToCardContent}>
               <Alert
                 type="info"
                 message={
@@ -220,8 +220,8 @@ const BoardModal = ({
               />
             </div>
             <iframe
-              id={s.addToBoardGoogleFormIframe}
-              className={s.addToBoardGoogleFormIframe}
+              id={s.addToCardGoogleFormIframe}
+              className={s.addToCardGoogleFormIframe}
               src={prefiledFormUrl}
             />
           </div>
@@ -229,7 +229,7 @@ const BoardModal = ({
       case 0:
       default:
         return (
-          <div className={s.addToBoardContent}>
+          <div className={s.addToCardContent}>
             <Form colon={false} layout="vertical">
               <Form.Item label="Author">
                 <Input
@@ -258,7 +258,7 @@ const BoardModal = ({
         type="default"
         shape="round"
         size="large"
-        className={s.boardActionButton}
+        className={s.cardActionButton}
         icon={<PlusOutlined />}
         onClick={showModal}
       >
@@ -296,7 +296,7 @@ const BoardModal = ({
           </div>
         }
       >
-        <Row className={s.addToBoardSteps} justify="space-around">
+        <Row className={s.addToCardSteps} justify="space-around">
           <Col xs={0} sm={0} md={2}>
             <Button
               type="default"
@@ -353,4 +353,4 @@ const BoardModal = ({
   );
 };
 
-export default BoardModal;
+export default CardModal;
