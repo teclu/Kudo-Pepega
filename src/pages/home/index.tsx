@@ -16,30 +16,31 @@ const Home = (): JSX.Element => {
   };
 
   return (
-    <ContentContainer className={s.contentContainer}>
-      <Typography.Title className={s.title} level={1}>
-        A Group Card Alternative
-      </Typography.Title>
-      <Typography.Title className={s.subTitle} level={2}>
-        Free of charge; no pesky catches.
-      </Typography.Title>
-      <div>
-        <Image
-          className={s.kudoPepega}
-          preview={false}
-          src="./images/KudoPepega.png"
-          width={196}
-        />
-      </div>
-      <Button
-        className={s.buttonCreate}
-        href={CREATE_PATH.path}
-        type="primary"
-        onClick={onClick}
-      >
-        Create New Group Card
-      </Button>
-    </ContentContainer>
+    <div className={s.contentWrapper}>
+      <ContentContainer className={s.contentContainer}>
+        <Typography.Title className={s.title} level={1}>
+          A Group Card Alternative
+        </Typography.Title>
+        <Typography.Title className={s.subTitle} level={2}>
+          Free of charge; no pesky catches.
+        </Typography.Title>
+        <div>
+          <Image
+            className={s.kudoPepega}
+            preview={false}
+            src="./images/KudoPepega.png"
+          />
+        </div>
+        <Button
+          className={s.buttonCreate}
+          href={CREATE_PATH.path}
+          type="primary"
+          onClick={onClick}
+        >
+          Create New Group Card
+        </Button>
+      </ContentContainer>
+    </div>
   );
 };
 
