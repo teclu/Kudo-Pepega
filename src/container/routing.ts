@@ -1,6 +1,7 @@
 import type { PathDetails, RouteDetails } from '../_shared/types';
 
 import About from '../pages/about';
+import Board from '../pages/board';
 import Card from '../pages/card';
 import Create from '../pages/create';
 import Error from '../pages/error';
@@ -43,6 +44,10 @@ export const ROUTE_ITEMS: Array<RouteDetails> = [
   {
     ...ABOUT_PATH,
     component: About,
+  },
+  {
+    ...BOARD_PATH,
+    component: Board,
   },
   {
     ...CARD_PATH,
