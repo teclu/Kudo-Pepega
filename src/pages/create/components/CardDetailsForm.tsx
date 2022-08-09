@@ -79,8 +79,13 @@ const CardDetailsForm = (): JSX.Element => {
   };
 
   return (
-    <Card title="Create New Card">
-      <Form colon={false} layout="vertical" onFinish={onCreateNewCardClick}>
+    <Card title="Create New Group Card">
+      <Form
+        className={s.form}
+        colon={false}
+        layout="vertical"
+        onFinish={onCreateNewCardClick}
+      >
         {FORM_FIELDS.map(
           (formField: FormField, index: number): JSX.Element => (
             <Form.Item
@@ -94,11 +99,9 @@ const CardDetailsForm = (): JSX.Element => {
             </Form.Item>
           ),
         )}
-        <Form.Item className={s.formItemSubmit}>
-          <Button type="primary" htmlType="submit">
-            Create New Group Card
-          </Button>
-        </Form.Item>
+        <Button type="primary" htmlType="submit">
+          Create New Group Card
+        </Button>
       </Form>
     </Card>
   );

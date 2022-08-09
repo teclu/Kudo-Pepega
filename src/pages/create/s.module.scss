@@ -1,13 +1,18 @@
-.formItemSubmit {
-  margin-bottom: 0px !important;
+.form {
+  :global {
+    .ant-form-item:nth-last-child(2) {
+      margin-bottom: 32px;
+    }
+  }
 }
 
-ol {
-  padding-inline-start: 8px;
-}
-
-li {
-  margin-bottom: 8px;
+.helpSection {
+  ol {
+    padding-inline-start: 8px;
+  }
+  li {
+    margin-bottom: 8px;
+  }
 }
 
 @media screen and (max-width: 992px) {
