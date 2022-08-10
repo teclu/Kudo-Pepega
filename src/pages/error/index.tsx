@@ -1,4 +1,3 @@
-import { Skeleton } from 'antd';
 import { useEffect } from 'react';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
@@ -14,7 +13,7 @@ const Error = (): JSX.Element => {
     navigate(ROOT_PATH.path);
   }, [history]);
 
-  return <Skeleton active />;
+  return <></>;
 };
 
 export default Error;
