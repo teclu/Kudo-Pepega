@@ -1,5 +1,5 @@
 import { notification } from 'antd';
-import type { ArgsProps } from 'antd/lib/notification';
+import { ArgsProps } from 'antd/lib/notification';
 
 const DEFAULT_DURATION = 3;
 

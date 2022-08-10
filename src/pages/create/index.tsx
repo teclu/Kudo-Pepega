@@ -1,7 +1,7 @@
 import { Col, Row } from 'antd';
 
-import CardDetailsForm from './components/CardDetailsForm';
 import ContentContainer from '../../_shared/components/content-container';
+import CardDetailsForm from './components/CardDetailsForm';
 import HelpSection from './components/HelpSection';
 
 const CreateNewCard = (): JSX.Element => (

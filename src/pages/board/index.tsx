@@ -1,6 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import type { NavigateFunction } from 'react-router-dom';
+import { useEffect } from 'react';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 import { CARD_PATH } from '../../container/routing';
 
@@ -10,7 +9,7 @@ import { CARD_PATH } from '../../container/routing';
 const Board = (): JSX.Element => {
   const navigate: NavigateFunction = useNavigate();
 
-  React.useEffect((): void => {
+  useEffect((): void => {
     navigate(`${CARD_PATH.path}${window.location.search}`);
   }, []);
 

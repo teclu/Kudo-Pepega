@@ -1,4 +1,4 @@
-import type { Rule } from 'antd/lib/form';
+import { Rule } from 'antd/lib/form';
 
 export type CardDetails = {
   title: string;

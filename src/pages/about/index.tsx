@@ -1,7 +1,7 @@
 import { Card } from 'antd';
 
-import { html } from '../../../README.md';
 import ContentContainer from '../../_shared/components/content-container';
+import { html } from '../../../README.md';
 
 const About = (): JSX.Element => {
   // Remove the main header.

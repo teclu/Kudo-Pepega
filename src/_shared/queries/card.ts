@@ -4,7 +4,6 @@ import {
   UseQueryOptions,
   UseQueryResult,
 } from '@tanstack/react-query';
-import type {} from '@tanstack/react-query';
 
 import { GOOGLE_DOCS_URL } from '../constants';
 import { CardMessage } from '../types';

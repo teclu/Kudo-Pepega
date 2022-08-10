@@ -1,5 +1,5 @@
 import { Card, Table } from 'antd';
-import type { ColumnProps } from 'antd/lib/table';
+import { ColumnProps } from 'antd/lib/table';
 
 import { GOOGLE_DOCS_URL } from '../../../_shared/constants';
 

@@ -1,7 +1,7 @@
 import { Layout } from 'antd';
 import { Link } from 'react-router-dom';
 
-import type { PathDetails } from '../../_shared/types';
+import { PathDetails } from '../../_shared/types';
 import { ABOUT_PATH, CREATE_PATH, HOME_PATH } from '../routing';
 
 import s from '../s.module.scss';

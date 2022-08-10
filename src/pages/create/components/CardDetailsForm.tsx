@@ -1,7 +1,6 @@
-import { useNavigate } from 'react-router-dom';
-import type { NavigateFunction } from 'react-router-dom';
 import { Button, Card, Form, Input } from 'antd';
-import type { Rule } from 'antd/lib/form';
+import { Rule } from 'antd/lib/form';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 import {
   GOOGLE_DOCS_URL,
@@ -9,7 +8,7 @@ import {
   PATTERN_SPREADSHEET,
 } from '../../../_shared/constants';
 import { CARD_PATH } from '../../../container/routing';
-import type { FormField, CardDetails } from '../../../_shared/types';
+import { FormField, CardDetails } from '../../../_shared/types';
 
 import s from '../s.module.scss';
 

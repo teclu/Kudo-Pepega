@@ -1,6 +1,5 @@
 import { Button, Image, Typography } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import type { NavigateFunction } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 import { CREATE_PATH } from '../../container/routing';
 import ContentContainer from '../../_shared/components/content-container';
