@@ -1,5 +1,4 @@
-import type { PathDetails, RouteDetails } from '../_shared/types';
-
+import { PathDetails, RouteDetails } from '../_shared/types';
 import About from '../pages/about';
 import Board from '../pages/board';
 import Card from '../pages/card-temp';

@@ -1,0 +1,50 @@
+.cardMessage {
+  border-radius: 8px !important;
+  box-shadow: rgba(0, 0, 0, 0.375) 0 4px 6px -1px,
+    rgba(0, 0, 0, 0.375) 0 2px 4px -1px;
+  margin-bottom: 24px !important;
+  :global {
+    .ant-card-body {
+      border-radius: 7px;
+      transition: background 0.125s ease-in-out;
+    }
+  }
+}
+
+.cardMessage:hover {
+  .cardMessageContent {
+    mask-image: linear-gradient(to bottom, #000000 100%, transparent 100%);
+    max-height: fit-content;
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      #000000 100%,
+      transparent 100%
+    );
+  }
+  :global {
+    .ant-card-body {
+      background: #2a2a2a !important;
+    }
+  }
+}
+
+.cardMessageAuthor {
+  font-size: 16px;
+  font-style: italic;
+  text-align: right;
+}
+
+.cardMessageContent {
+  font-size: 18px;
+  margin-bottom: 24px;
+  mask-image: linear-gradient(to bottom, #000000 50%, transparent 100%);
+  max-height: 256px;
+  min-height: 256px;
+  overflow-y: hidden;
+  word-wrap: break-word;
+  -webkit-mask-image: linear-gradient(to bottom, #000000 50%, transparent 100%);
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
