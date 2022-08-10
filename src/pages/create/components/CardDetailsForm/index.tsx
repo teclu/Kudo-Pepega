@@ -6,11 +6,11 @@ import {
   GOOGLE_DOCS_URL,
   PATTERN_FORM,
   PATTERN_SPREADSHEET,
-} from '../../../_shared/constants';
-import { CARD_PATH } from '../../../container/routing';
-import { FormField, CardDetails } from '../../../_shared/types';
+} from '../../../../_shared/constants';
+import { CARD_PATH } from '../../../../container/routing';
+import { FormField, CardDetails } from '../../../../_shared/types';
 
-import s from '../s.module.scss';
+import s from './s.module.scss';
 
 type FormData = {
   title: string;
@@ -89,17 +89,17 @@ const CardDetailsForm = (): JSX.Element => {
           (formField: FormField, index: number): JSX.Element => (
             <Form.Item
               key={index}
-              name={formField.name}
               label={formField.label}
+              name={formField.name}
               rules={formField.rules}
               validateFirst={true}
             >
-              <Input placeholder={formField.placeholder} allowClear />
+              <Input allowClear={true} placeholder={formField.placeholder} />
             </Form.Item>
           ),
         )}
-        <Button type="primary" htmlType="submit">
-          Create New Group Card
+        <Button className={s.buttonCreate} htmlType="submit" type="primary">
+          Create
         </Button>
       </Form>
     </Card>

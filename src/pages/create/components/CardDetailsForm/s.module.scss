@@ -1,0 +1,11 @@
+.buttonCreate {
+  float: right;
+}
+
+.form {
+  :global {
+    .ant-form-item:nth-last-child(2) {
+      margin-bottom: 32px;
+    }
+  }
+}

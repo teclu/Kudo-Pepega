@@ -1,9 +1,9 @@
 import { Card, Table } from 'antd';
 import { ColumnProps } from 'antd/lib/table';
 
-import { GOOGLE_DOCS_URL } from '../../../_shared/constants';
+import { GOOGLE_DOCS_URL } from '../../../../_shared/constants';
 
-import s from '../s.module.scss';
+import s from './s.module.scss';
 
 type QuestionDetails = {
   key: string;
@@ -44,7 +44,7 @@ const STATIC_COLUMNS: Array<ColumnProps<QuestionDetails>> = [
 ];
 
 const HelpSection = (): JSX.Element => (
-  <Card title="Setup Google Forms and Sheets" className={s.helpSection}>
+  <Card className={s.helpSection} title="Setup Google Forms and Sheets">
     <ol>
       <li>
         Create a new Google Form <a href={`${GOOGLE_DOCS_URL}/forms`}>here</a>.
@@ -60,12 +60,12 @@ const HelpSection = (): JSX.Element => (
         specified configuration:
       </li>
       <Table
-        size="small"
+        bordered={true}
         columns={STATIC_COLUMNS}
         dataSource={DATA_SOURCE}
-        bordered={true}
         pagination={false}
         scroll={{ x: true }}
+        size="small"
       />
       <br />
       <li>
