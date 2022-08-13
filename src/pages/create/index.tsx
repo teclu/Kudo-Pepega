@@ -1,6 +1,6 @@
 import { Col, Row } from 'antd';
 
-import ContentContainer from '../../_shared/components/content-container';
+import { ContentContainer } from '../../_shared/components';
 import CardDetailsForm from './components/CardDetailsForm';
 import HelpSection from './components/HelpSection';
 

@@ -1,3 +1,10 @@
+body[data-theme='light'] {
+  .subTitle,
+  .title {
+    color: #333333;
+  }
+}
+
 .buttonCreate {
   border-radius: 8px !important;
   font-size: 24px !important;
@@ -20,7 +27,7 @@
 .contentWrapper {
   display: flex;
   position: absolute;
-  height: calc(100% - 128px);
+  height: calc(100% - 64px - 70px);
   width: 100%;
 }
 
@@ -33,13 +40,13 @@
 .subTitle {
   font-weight: 300 !important;
   margin-top: 0px !important;
-  text-shadow: 2px 2px 2px #000000;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.125);
 }
 
 .title {
   font-weight: 400 !important;
   margin-bottom: 8px !important;
-  text-shadow: 2px 2px 2px #000000;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.125);
 }
 
 @keyframes tilt {
@@ -51,5 +58,11 @@
   }
   100% {
     transform: rotate(-7.25deg);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contentWrapper {
+    height: calc(100% - 64px - 102px);
   }
 }

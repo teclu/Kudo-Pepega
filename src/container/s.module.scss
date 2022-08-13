@@ -1,93 +1,14 @@
-.brand {
-  float: left;
-  font-size: 18px;
-  font-weight: 600;
-  height: 64px;
-  width: 128px;
-}
-
-.content {
-  padding-top: 64px;
-}
-
-.footer {
-  background: transparent !important;
-  text-align: center;
-  a {
-    font-weight: 500;
-  }
-}
-
-.footer,
-.header {
-  a {
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
-  }
-  a,
-  a:hover {
-    color: #ffffff;
-  }
-  a.brand:hover {
-    color: #cccccc;
-  }
-}
-
-.header {
-  background: rgba(34, 34, 34, 0.975) !important;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175), 0 3px 6px rgba(0, 0, 0, 0.25);
-  position: fixed;
-  width: 100%;
-  z-index: 1;
-  :global {
-    .ant-menu {
-      background: none !important;
-      border-bottom: none !important;
-    }
-  }
-}
-
 .layout {
-  background: #101010 !important;
+  animation: fadeIn 0.25s ease-in-out;
   min-height: 100vh !important;
 }
 
-.menu {
-  float: right;
-  list-style: none;
-  margin-bottom: -1em;
-  padding-inline-start: 0px;
-  a {
-    padding: 23px 24px;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  li {
-    display: inline-block;
-    margin-bottom: 0px;
-    text-align: center;
-    transition: background 0.125s ease-in-out;
-  }
-  li:first-child {
-    display: none;
-  }
-  li:hover {
-    background: #303030;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .brand {
-    display: none;
-  }
-
-  .menu {
-    display: flex;
-    float: unset;
-    justify-content: center;
-    li {
-      background: #222222;
-    }
-    li:first-child {
-      display: inline-block;
-    }
+  100% {
+    opacity: 1;
   }
 }
 
@@ -96,9 +17,36 @@
   b {
     font-weight: 500 !important;
   }
+
   body {
-    background: #101010 !important;
+    > div#root {
+      background: transparent;
+      section {
+        background: transparent;
+        main,
+        footer {
+          background: transparent;
+        }
+      }
+    }
   }
+
+  body[data-theme='dark'] {
+    background: #101010;
+    a:not(.ant-btn) {
+      color: #69b6ff;
+    }
+  }
+
+  body[data-theme='light'] {
+    background: #eeeeee;
+  }
+
+  .ant-card {
+    box-shadow: rgba(0, 0, 0, 0.125) 0 4px 6px -1px,
+      rgba(0, 0, 0, 0.125) 0 2px 4px -1px;
+  }
+
   .ant-form-item-explain-error {
     font-size: 12px;
   }

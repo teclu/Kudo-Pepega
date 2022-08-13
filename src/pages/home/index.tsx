@@ -1,8 +1,8 @@
 import { Button, Image, Typography } from 'antd';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
+import { ContentContainer } from '../../_shared/components';
 import { CREATE_PATH } from '../../container/routing';
-import ContentContainer from '../../_shared/components/content-container';
 
 import s from './s.module.scss';
 

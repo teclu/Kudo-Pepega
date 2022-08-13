@@ -1,6 +1,6 @@
 import { Card } from 'antd';
 
-import ContentContainer from '../../_shared/components/content-container';
+import { ContentContainer } from '../../_shared/components';
 import { html } from '../../../README.md';
 
 const About = (): JSX.Element => {

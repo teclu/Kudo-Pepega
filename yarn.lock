@@ -4440,6 +4440,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-css-theme-switcher@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "react-css-theme-switcher@npm:0.3.0"
+  peerDependencies:
+    react: ">=16"
+  checksum: 503ba6595d2db2d47af8a4f7f8e2441c0d5acbca95769bdc83c6695e3b242063833ad9c74ef58832ef91087ed97c8631efbfbd81404a2827bc101615d30e1890
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:^18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
@@ -4721,6 +4730,7 @@ __metadata:
     papaparse: ^5.3.2
     prettier: ^2.7.1
     react: ^18.2.0
+    react-css-theme-switcher: ^0.3.0
     react-dom: ^18.2.0
     react-markdown: ^8.0.3
     react-router-dom: ^6.3.0

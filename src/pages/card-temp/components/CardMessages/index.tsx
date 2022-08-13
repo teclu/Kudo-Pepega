@@ -1,8 +1,8 @@
 import { Row } from 'antd';
 import { useMemo } from 'react';
 
+import { ContentContainer } from '../../../../_shared/components';
 import { CardMessage } from '../../../../_shared/types';
-import ContentContainer from '../../../../_shared/components/content-container';
 import CardMessageElement from '../CardMessageElement';
 
 type CardMessagesProps = {

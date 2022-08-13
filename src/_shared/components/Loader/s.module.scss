@@ -1,8 +1,14 @@
 .kudoPepega {
   animation: spin 3s linear infinite;
+  padding: 45px 30px;
+}
+
+.loader {
+  align-self: center;
+  animation: loading 3s linear infinite;
   border: 3px solid #333333;
   border-radius: 50%;
-  padding: 45px 30px;
+  margin: 0px auto !important;
 }
 
 .loadingContainer {
@@ -10,25 +16,28 @@
   position: absolute;
   height: calc(100% - 128px);
   width: 100%;
-  :global {
-    .ant-image {
-      align-self: center;
-      margin: 0px auto !important;
-    }
+}
+
+@keyframes loading {
+  0% {
+    border: 3px solid rgba(23, 125, 220, 0.125);
+  }
+  50% {
+    border: 3px solid #177ddc;
+  }
+  100% {
+    border: 3px solid rgba(23, 125, 220, 0.125);
   }
 }
 
 @keyframes spin {
   0% {
-    border: 3px solid rgba(23, 125, 220, 0.125);
     transform: rotate(0deg);
   }
   50% {
-    border: 3px solid #177ddc;
     transform: rotate(180deg);
   }
   100% {
-    border: 3px solid rgba(23, 125, 220, 0.125);
     transform: rotate(360deg);
   }
 }

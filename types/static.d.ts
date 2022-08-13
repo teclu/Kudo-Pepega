@@ -1,3 +1,8 @@
+declare module '*.css' {
+  const content: string;
+  export default content;
+}
+
 declare module '*.md' {
   // "unknown" would be more detailed depends on how you structure frontmatter
   const attributes: Record<string, unknown>;

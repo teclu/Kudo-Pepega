@@ -6,3 +6,8 @@ export enum BreakpointWidth {
   XL = 1200,
   XXL = 1600,
 }
+
+export enum Theme {
+  Dark = 'dark',
+  Light = 'light',
+}

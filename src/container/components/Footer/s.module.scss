@@ -1,0 +1,39 @@
+body[data-theme='light'] {
+  .themeSwitch {
+    background: rgba(48, 48, 48, 0.125);
+  }
+}
+
+body[data-theme='dark'] {
+  .themeSwitch {
+    background: rgba(48, 48, 48, 0.975);
+  }
+}
+
+.footer {
+  text-align: center;
+}
+
+.footerText {
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.125);
+}
+
+.themeSwitch {
+  border-radius: 32px;
+  display: none;
+  padding: 16px 0px;
+  width: 112px;
+}
+
+@media screen and (max-width: 768px) {
+  .footerText {
+    float: none;
+    padding: 0px;
+    margin-bottom: 24px;
+  }
+  .themeSwitch {
+    float: none;
+    margin: 0px auto;
+    display: block;
+  }
+}

@@ -2,8 +2,8 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Card, Col, Row } from 'antd';
 
+import { ContentContainer } from '../../../_shared/components';
 import type { CardMessage } from '../../../_shared/types';
-import ContentContainer from '../../../_shared/components/content-container';
 
 import s from '../s.module.scss';
 

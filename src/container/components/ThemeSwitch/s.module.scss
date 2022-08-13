@@ -1,0 +1,17 @@
+.iconDisabled {
+  opacity: 0.25;
+}
+
+.iconEnabled {
+  text-shadow: 0px 0px 12px rgba(221, 255, 0, 0.5);
+}
+
+.switch {
+  background: #666666;
+  margin: 0px 4px 3px 4px;
+  &:global {
+    &.ant-switch-checked {
+      background: #177ddc;
+    }
+  }
+}
