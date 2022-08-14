@@ -15,6 +15,11 @@ const configuration: UserConfigExport = defineConfig({
     react(),
     sassDts(),
   ],
+  preview: {
+    host: 'localhost',
+    open: true,
+    port: 8081,
+  },
   server: {
     host: 'localhost',
     open: true,
