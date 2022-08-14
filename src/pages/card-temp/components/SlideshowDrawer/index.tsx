@@ -128,7 +128,7 @@ const SlideshowDrawer = (): JSX.Element => {
             </Col>
           </Row>
         }
-        placement="left"
+        placement="top"
         title={
           <Row align="middle" justify="space-between">
             <Col>
