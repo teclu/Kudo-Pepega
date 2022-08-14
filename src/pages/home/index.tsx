@@ -31,7 +31,7 @@ const Home = (): JSX.Element => {
           />
         </div>
         <Button
-          className={s.buttonCreate}
+          className={s.createButton}
           href={CREATE_PATH.path}
           type="primary"
           onClick={onClick}

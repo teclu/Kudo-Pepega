@@ -1,3 +1,21 @@
+.cardActions {
+  padding: 50px 0px 38px;
+  text-align: center;
+}
+
+.cardActions > button,
+.cardActions > button:focus {
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px solid #dddddd;
+  color: #ffffff;
+}
+
+.cardActions > button:hover {
+  background: #ffffff;
+  border: 2px solid #dddddd;
+  color: #333333;
+}
+
 .jumbotron {
   background: #328bde;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.175), 0 3px 6px rgba(0, 0, 0, 0.25);
@@ -8,7 +26,7 @@
   color: #ffffff;
   font-size: 56px;
   font-weight: 600;
-  padding: 156px 0px 100px;
+  padding: 144px 0px 0px 0px;
   text-align: center;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }

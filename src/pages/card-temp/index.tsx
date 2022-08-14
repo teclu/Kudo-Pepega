@@ -1,8 +1,11 @@
 import { BackTop } from 'antd';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
+import { CardDetailsContext } from '../../_shared/contexts';
 import { Loader } from '../../_shared/components';
 import { useGetCardMessages } from '../../_shared/queries/card';
+import { CardDetails } from '../../_shared/types';
+import { getCardDetails } from '../../_shared/utilities';
 import { ROOT_PATH } from '../../container/routing';
 import CardMessages from './components/CardMessages';
 import Jumbotron from './components/Jumbotron';
@@ -12,11 +15,9 @@ import s from './s.module.scss';
 const Card = (): JSX.Element => {
   const navigate: NavigateFunction = useNavigate();
 
-  const query: URLSearchParams = new URLSearchParams(location.search);
+  const cardDetails: CardDetails = getCardDetails(location.search);
 
-  const title: string = query.get('title') ?? '';
-
-  const spreadsheetId: string = query.get('spreadsheetId') ?? '';
+  const { spreadsheetId = '' } = cardDetails;
 
   const { data: cardMessages = [], isFetching: isGetCardMessagesFetching } =
     useGetCardMessages(
@@ -28,14 +29,18 @@ const Card = (): JSX.Element => {
       },
     );
 
-  return isGetCardMessagesFetching ? (
-    <Loader />
-  ) : (
-    <>
-      <Jumbotron title={title} />
-      <CardMessages cardMessages={cardMessages} />
-      <BackTop className={s.backTop} />
-    </>
+  return (
+    <CardDetailsContext.Provider value={cardDetails}>
+      {isGetCardMessagesFetching ? (
+        <Loader />
+      ) : (
+        <>
+          <Jumbotron />
+          <CardMessages cardMessages={cardMessages} />
+          <BackTop className={s.backTop} />
+        </>
+      )}
+    </CardDetailsContext.Provider>
   );
 };
 

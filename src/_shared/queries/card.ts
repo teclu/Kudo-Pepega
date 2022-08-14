@@ -7,7 +7,7 @@ import {
 
 import { GOOGLE_DOCS_URL } from '../constants';
 import { CardMessage } from '../types';
-import fireNotification from '../utilities/notification';
+import { fireNotification } from '../utilities';
 
 enum QueryKey {
   CARD_SPREADSHEET = 'CARD_SPREADSHEET',

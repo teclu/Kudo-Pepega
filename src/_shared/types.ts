@@ -1,15 +1,22 @@
 import { Rule } from 'antd/lib/form';
 
 export type CardDetails = {
-  title: string;
-  formId: string;
-  formEntryParameters: string; // e.g. '1009329229,2083246063'
-  spreadsheetId: string;
+  title?: string;
+  formId?: string;
+  formEntryParameters?: string; // e.g. '1009329229,2083246063'
+  spreadsheetId?: string;
 };
 
 export type CardMessage = {
   author: string;
   content: string;
+};
+
+export type CardUrls = {
+  cardViewOnlyUrl?: string;
+  cardEditableUrl?: string;
+  formUrl?: string;
+  spreadsheetUrl?: string;
 };
 
 export type FormField = {

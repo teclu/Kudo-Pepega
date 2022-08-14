@@ -98,7 +98,7 @@ const CardDetailsForm = (): JSX.Element => {
             </Form.Item>
           ),
         )}
-        <Button className={s.buttonCreate} htmlType="submit" type="primary">
+        <Button className={s.createButton} htmlType="submit" type="primary">
           Create
         </Button>
       </Form>
