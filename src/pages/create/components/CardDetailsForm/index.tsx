@@ -86,15 +86,19 @@ const CardDetailsForm = (): JSX.Element => {
         onFinish={onCreateNewCardClick}
       >
         {FORM_FIELDS.map(
-          (formField: FormField, index: number): JSX.Element => (
+          (
+            { name, label, rules, placeholder }: FormField,
+            index: number,
+          ): JSX.Element => (
             <Form.Item
+              hasFeedback={true}
               key={index}
-              label={formField.label}
-              name={formField.name}
-              rules={formField.rules}
+              label={label}
+              name={name}
+              rules={rules}
               validateFirst={true}
             >
-              <Input allowClear={true} placeholder={formField.placeholder} />
+              <Input allowClear={true} placeholder={placeholder} />
             </Form.Item>
           ),
         )}
