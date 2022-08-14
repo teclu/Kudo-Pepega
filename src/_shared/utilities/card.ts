@@ -1,4 +1,4 @@
-import { useMemo } from 'React';
+import { useMemo } from 'react';
 
 import { GOOGLE_DOCS_URL } from '../constants';
 import { CardDetails, CardUrls } from '../types';
