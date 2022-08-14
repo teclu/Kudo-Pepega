@@ -1,15 +1,15 @@
 import { Row } from 'antd';
-import { useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 
 import { ContentContainer } from '../../../../_shared/components';
+import { CardMessagesContext } from '../../../../_shared/contexts';
 import { CardMessage } from '../../../../_shared/types';
 import CardMessageElement from '../CardMessageElement';
 
-type CardMessagesProps = {
-  cardMessages: CardMessage[];
-};
+const CardMessages = (): JSX.Element => {
+  const cardMessages: CardMessage[] =
+    useContext<CardMessage[]>(CardMessagesContext);
 
-const CardMessages = ({ cardMessages }: CardMessagesProps): JSX.Element => {
   const cardMessageElements: JSX.Element[] = useMemo(
     (): JSX.Element[] =>
       cardMessages.map(

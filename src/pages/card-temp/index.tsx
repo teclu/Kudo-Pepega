@@ -1,7 +1,10 @@
 import { BackTop } from 'antd';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
-import { CardDetailsContext } from '../../_shared/contexts';
+import {
+  CardDetailsContext,
+  CardMessagesContext,
+} from '../../_shared/contexts';
 import { Loader } from '../../_shared/components';
 import { useGetCardMessages } from '../../_shared/queries/card';
 import { CardDetails } from '../../_shared/types';
@@ -29,17 +32,15 @@ const Card = (): JSX.Element => {
       },
     );
 
-  return (
+  return isGetCardMessagesFetching ? (
+    <Loader />
+  ) : (
     <CardDetailsContext.Provider value={cardDetails}>
-      {isGetCardMessagesFetching ? (
-        <Loader />
-      ) : (
-        <>
-          <Jumbotron />
-          <CardMessages cardMessages={cardMessages} />
-          <BackTop className={s.backTop} />
-        </>
-      )}
+      <CardMessagesContext.Provider value={cardMessages}>
+        <Jumbotron />
+        <CardMessages />
+        <BackTop className={s.backTop} />
+      </CardMessagesContext.Provider>
     </CardDetailsContext.Provider>
   );
 };
