@@ -1,7 +1,7 @@
 import { PathDetails, RouteDetails } from '../_shared/types';
 import About from '../pages/about';
 import Board from '../pages/board';
-import Card from '../pages/card-temp';
+import Card from '../pages/card';
 import Create from '../pages/create';
 import Error from '../pages/error';
 import Landing from '../pages/home';
