@@ -1,0 +1,110 @@
+body[data-theme='dark'] {
+  .addToCardPreviewMessage {
+    background: #101010;
+  }
+  .addToCardSteps {
+    background: #222222;
+    border-bottom: 1px solid #303030;
+  }
+  :global {
+    .EasyMDEContainer {
+      > .CodeMirror {
+        background: #101010;
+        border-color: #434343;
+        color: rgba(255, 255, 255, 0.85);
+        .CodeMirror-cursor {
+          border-color: rgba(255, 255, 255, 0.85);
+        }
+      }
+      > .editor-preview-side {
+        background: #101010;
+        border-color: #434343;
+      }
+      > .editor-toolbar {
+        border-color: #434343;
+        > button.active {
+          background: #333333;
+          border-color: #434343;
+        }
+        > button:hover {
+          background: #303030;
+          border-color: #434343;
+        }
+      }
+      > .editor-toolbar.fullscreen {
+        background: #1f1f1f;
+      }
+    }
+  }
+}
+
+body[data-theme='light'] {
+  .addToCardPreviewMessage {
+    background: #eeeeee;
+  }
+  .addToCardSteps {
+    background: #fafafa;
+    border-bottom: 1px solid #f0f0f0;
+  }
+}
+
+ul > li:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.addToCardContent {
+  padding: 16px 24px;
+}
+
+.addToCardPlaceholderImage {
+  float: left;
+  margin-right: 24px;
+}
+
+.addToCardPreviewMessage {
+  @extend .addToCardContent;
+}
+
+.addToCardGoogleFormIframe {
+  border-top: 1px;
+  border-top-color: #f0f0f0;
+  border-left: 0px;
+  border-bottom: 0px;
+  border-right: 0px;
+  height: 675px;
+  margin-bottom: -6px;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+.addToCardPopconfirmMessage {
+  max-width: 220px;
+}
+
+.addToCardSteps {
+  padding: 36px 24px 24px !important;
+}
+
+.cardMessageAuthor {
+  color: #999999;
+  text-align: right;
+}
+
+.cardMessageContent {
+  margin-bottom: 12px;
+  word-wrap: break-word;
+}
+
+.cardMessageContent img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.cardMessageCard {
+  margin: 18px 0px !important;
+}
+
+.submitToFormList {
+  margin: 5px 0px;
+  padding-inline-start: 20px;
+}

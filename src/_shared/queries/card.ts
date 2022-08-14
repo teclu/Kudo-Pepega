@@ -9,7 +9,7 @@ import { GOOGLE_DOCS_URL } from '../constants';
 import { CardMessage } from '../types';
 import { fireNotification } from '../utilities';
 
-enum QueryKey {
+export enum CardQueryKey {
   CARD_SPREADSHEET = 'CARD_SPREADSHEET',
 }
 
@@ -24,7 +24,7 @@ export const useGetCardMessages = (
   const { spreadsheetId } = params;
   const spreadsheetUrl = `${GOOGLE_DOCS_URL}/spreadsheets/d/${spreadsheetId}/gviz/tq?tqx=out:csv`;
   return useQuery<string, string, CardMessage[]>(
-    [QueryKey.CARD_SPREADSHEET, params],
+    [CardQueryKey.CARD_SPREADSHEET, params],
     async (): Promise<string> => {
       const response: Response = await fetch(spreadsheetUrl);
       if (response.ok) {

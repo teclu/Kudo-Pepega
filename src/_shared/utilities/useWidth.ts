@@ -5,7 +5,7 @@ import { BreakpointWidth } from '../enums';
 const getMinWidthQuery = (breakpointWidth: BreakpointWidth): string =>
   `(min-width: ${breakpointWidth}px)`;
 
-const useWidth = (): {
+export const useWidth = (): {
   isXsWidth: boolean;
   isSmWidth: boolean;
   isMdWidth: boolean;
@@ -109,5 +109,3 @@ const useWidth = (): {
     isXxlWidth,
   };
 };
-
-export default useWidth;
