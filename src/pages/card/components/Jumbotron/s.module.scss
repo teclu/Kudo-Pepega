@@ -1,20 +1,23 @@
 .cardActions {
   padding: 50px 0px 38px;
   text-align: center;
-}
-
-.cardActions > button,
-.cardActions > button:focus {
-  background: rgba(255, 255, 255, 0.25);
-  border: 2px solid #dddddd;
-  color: #ffffff;
-  margin: 0px 12px;
-}
-
-.cardActions > button:hover {
-  background: #ffffff;
-  border: 2px solid #dddddd;
-  color: #333333;
+  > button,
+  > button:focus {
+    background: rgba(255, 255, 255, 0.25);
+    border: 2px solid #dddddd;
+    color: #ffffff;
+    margin: 0px 12px;
+  }
+  > button:hover {
+    background: #ffffff;
+    border: 2px solid #dddddd;
+    color: #333333;
+  }
+  > span > button:disabled {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(221, 221, 221, 0.75);
+    color: rgba(255, 255, 255, 0.5);
+  }
 }
 
 .jumbotron {

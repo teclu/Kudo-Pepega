@@ -1,0 +1,14 @@
+.cardMessagePlaceholder {
+  border-radius: 8px !important;
+  margin-bottom: 24px !important;
+  :global {
+    .ant-card-body {
+      border-radius: 7px;
+    }
+  }
+}
+
+.notedEmote {
+  float: left;
+  margin-right: 24px;
+}

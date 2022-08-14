@@ -261,8 +261,8 @@ const AddToCardModal = (): JSX.Element => {
                 okText="Yes"
                 onConfirm={hideModal}
                 title={
-                  <div>
-                    Are you sure you want to close? This will{' '}
+                  <div className={s.cancelPopconfirmMessage}>
+                    Are you sure you want to cancel? This will{' '}
                     <b>discard all changes</b>.
                   </div>
                 }

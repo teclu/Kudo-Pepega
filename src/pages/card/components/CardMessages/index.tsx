@@ -5,6 +5,7 @@ import { ContentContainer } from '../../../../_shared/components';
 import { CardMessagesContext } from '../../../../_shared/contexts';
 import { CardMessage } from '../../../../_shared/types';
 import CardMessageElement from '../CardMessageElement';
+import CardMessagePlaceholder from '../CardMessagePlaceholder';
 
 const CardMessages = (): JSX.Element => {
   const cardMessages: CardMessage[] =
@@ -22,7 +23,10 @@ const CardMessages = (): JSX.Element => {
 
   return (
     <ContentContainer>
-      <Row gutter={24}>{cardMessageElements}</Row>
+      <Row gutter={24} justify="center">
+        {cardMessageElements.length === 0 && <CardMessagePlaceholder />}
+        {cardMessageElements}
+      </Row>
     </ContentContainer>
   );
 };
