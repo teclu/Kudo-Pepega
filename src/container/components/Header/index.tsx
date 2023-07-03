@@ -18,7 +18,7 @@ const MENU_ITEMS: Array<JSX.Element> = [HOME_PATH, ABOUT_PATH, CREATE_PATH].map(
 const Header = (): JSX.Element => {
   return (
     <Layout.Header className={s.header}>
-      <Link className={s.brand} to="/">
+      <Link className={s.brand} to={HOME_PATH.path}>
         Kudo Pepega
       </Link>
       <ThemeSwitch className={s.themeSwitch} />

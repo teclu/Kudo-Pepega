@@ -6,35 +6,37 @@ import Create from '../pages/create';
 import Error from '../pages/error';
 import Landing from '../pages/home';
 
+export const REPOSITORY_PREFIX = '/Kudo-Pepega';
+
 export const ABOUT_PATH: PathDetails = {
   name: 'About',
-  path: '/about',
+  path: `${REPOSITORY_PREFIX}/about`,
 };
 
 // Handle redirect from old path to new path.
 export const BOARD_PATH: PathDetails = {
   name: 'Card',
-  path: '/board',
+  path: `${REPOSITORY_PREFIX}/board`,
 };
 
 export const CARD_PATH: PathDetails = {
   name: 'Card',
-  path: '/card',
+  path: `${REPOSITORY_PREFIX}/card`,
 };
 
 export const CREATE_PATH: PathDetails = {
   name: 'Create',
-  path: '/create',
+  path: `${REPOSITORY_PREFIX}/create`,
 };
 
 export const ERROR_PATH: PathDetails = {
   name: 'Error',
-  path: '*', // Match all other (invalid) routes.
+  path: `${REPOSITORY_PREFIX}/*`, // Match all other (invalid) routes.
 };
 
 export const HOME_PATH: PathDetails = {
   name: 'Home',
-  path: '/',
+  path: `${REPOSITORY_PREFIX}/`,
 };
 
 export const ROOT_PATH: PathDetails = HOME_PATH;

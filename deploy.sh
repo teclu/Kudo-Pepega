@@ -1,6 +1,6 @@
 yarn build
 cd dist
-echo 'www.kudopepe.ga' > CNAME
+# echo 'www.kudopepe.ga' > CNAME
 touch .nojekyll
 git init
 git add -A

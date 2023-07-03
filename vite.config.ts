@@ -8,6 +8,7 @@ import { setDefaultResultOrder } from 'node:dns';
 setDefaultResultOrder('verbatim');
 
 const configuration: UserConfigExport = defineConfig({
+  base: '/Kudo-Pepega/',
   plugins: [
     mdPlugin({
       mode: [Mode.HTML],
